@@ -4,18 +4,16 @@ extends Node3D
 
 @onready var animation_tree = $AnimationTree
 
-var Conditions = [
-	"is_idle",
-	"is_walking"
-]
+const IS_WALKING = "parameters/conditions/is_walking"
+const IS_IDLE = "parameters/conditions/is_idle"
 
 func _ready():
 	animation_tree.active = true
 
-func set_condition(c):
-	for i in Conditions:
-		animation_tree["parameters/conditions/" + i] = i == c
-
 func _process(_delta):
-	var condition = "is_walking" if player.is_walking else "is_idle"
-	set_condition(condition)
+	if player.is_walking:
+		animation_tree[IS_IDLE] = false
+		animation_tree[IS_WALKING] = true
+	else:
+		animation_tree[IS_WALKING] = false
+		animation_tree[IS_IDLE] = true
