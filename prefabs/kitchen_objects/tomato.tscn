@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2q0hnrchcbxs"]
+
+[ext_resource type="PackedScene" uid="uid://jjlsrtgvkhry" path="res://meshes/kitchen_objects/Tomato_Visual.glb" id="1_5u7s2"]
+
+[node name="Tomato" type="Node3D"]
+
+[node name="Tomato_Visual" parent="." instance=ExtResource("1_5u7s2")]

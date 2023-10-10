@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="KitchenObjectResource" load_steps=3 format=3 uid="uid://fx3geao8pkop"]
+
+[ext_resource type="PackedScene" uid="uid://c2q0hnrchcbxs" path="res://prefabs/kitchen_objects/tomato.tscn" id="1_2my32"]
+[ext_resource type="Script" path="res://resources/kitchen_objects/kitchen_object_resource.gd" id="1_k46ff"]
+
+[resource]
+script = ExtResource("1_k46ff")
+name = "tomato"
+scene = ExtResource("1_2my32")

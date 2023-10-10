@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://buap5yfna0b0"]
+
+[ext_resource type="PackedScene" uid="uid://8hwt1oedrmdy" path="res://meshes/kitchen_objects/Cabbage_Visual.glb" id="1_c2kgr"]
+
+[node name="Cabbage" type="Node3D"]
+
+[node name="Cabbage_Visual" parent="." instance=ExtResource("1_c2kgr")]
