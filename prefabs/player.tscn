@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxcjdiex5bmyl"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_sgjaw"]
+[ext_resource type="PackedScene" uid="uid://dnd0rryp53332" path="res://prefabs_visuals/player_visuals.tscn" id="2_xvlbv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2opjm"]
+radius = 0.65
+
+[node name="Player" type="CharacterBody3D"]
+collision_mask = 2
+script = ExtResource("1_sgjaw")
+
+[node name="player_visuals" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_xvlbv")]
+player = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_2opjm")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.974654, 0)
+target_position = Vector3(0, 0, 2)
+collision_mask = 2
