@@ -50,7 +50,7 @@ fov = 20.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.766569, 0, 2.74674)
 
 [node name="ClearCounter" parent="." instance=ExtResource("3_rvysv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.352798, 0, -0.0301037)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33476, 0, -1.01767)
 
 [node name="ClearCounter2" parent="." instance=ExtResource("3_rvysv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.72535, 0, -0.0135574)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.740023, 0, -0.86785)
