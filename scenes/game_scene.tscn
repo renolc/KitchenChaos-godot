@@ -49,4 +49,5 @@ fov = 20.0
 [node name="Player" type="CharacterBody3D" parent="."]
 script = ExtResource("2_eul34")
 
-[node name="player_visuals" parent="Player" instance=ExtResource("3_y5lus")]
+[node name="player_visuals" parent="Player" node_paths=PackedStringArray("player") instance=ExtResource("3_y5lus")]
+player = NodePath("..")
