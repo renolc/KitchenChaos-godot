@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5pywpg28515m"]
+
+[ext_resource type="Material" uid="uid://sv4vq030f0j8" path="res://materials/floor.tres" id="1_51bdx"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="2_eul34"]
+[ext_resource type="PackedScene" uid="uid://dnd0rryp53332" path="res://prefabs_visuals/player_visuals.tscn" id="3_y5lus"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_anjpy"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_qdujw"]
+sky_material = SubResource("ProceduralSkyMaterial_anjpy")
+
+[sub_resource type="Environment" id="Environment_gf11u"]
+background_mode = 2
+sky = SubResource("Sky_qdujw")
+tonemap_mode = 2
+ssao_radius = 0.3
+ssao_intensity = 4.0
+ssao_light_affect = 1.0
+glow_enabled = true
+glow_intensity = 1.0
+glow_strength = 0.95
+glow_bloom = 0.04
+glow_blend_mode = 1
+glow_hdr_threshold = 0.5
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_r5tf6"]
+lightmap_size_hint = Vector2i(127, 127)
+material = ExtResource("1_51bdx")
+size = Vector2(25, 25)
+
+[node name="GameScene" type="Node"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.950725, -0.116754, 0.28721, 0.297372, -0.605454, 0.738238, 0.0876999, 0.78727, 0.61034, -1.95866, 4.71214, 1.76132)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gf11u")
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_r5tf6")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.694658, 0.71934, 0, -0.71934, 0.694658, 0, 21.5, 21.3)
+fov = 20.0
+
+[node name="Player" type="CharacterBody3D" parent="."]
+script = ExtResource("2_eul34")
+
+[node name="player_visuals" parent="Player" instance=ExtResource("3_y5lus")]
