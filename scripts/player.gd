@@ -6,7 +6,7 @@ extends CharacterBody3D
 
 var is_walking := false
 
-func _process(delta):
+func _process(_delta):
 	var input_vector := Input.get_vector("left", "right", "up", "down")
 	velocity = Vector3(input_vector.x, 0, input_vector.y) * move_speed
 	is_walking = !velocity.is_equal_approx(Vector3.ZERO)

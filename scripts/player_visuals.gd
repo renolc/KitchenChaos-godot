@@ -16,6 +16,6 @@ func set_condition(c):
 	for i in Conditions:
 		animation_tree["parameters/conditions/" + i] = i == c
 
-func _process(delta):
+func _process(_delta):
 	var condition = "is_walking" if player.is_walking else "is_idle"
 	set_condition(condition)
