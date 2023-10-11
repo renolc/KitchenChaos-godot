@@ -9,8 +9,11 @@ var ko: KitchenObject
 
 func interact():
 	if !ko:
-		var o = resource.scene.instantiate() as KitchenObject
-		o.holder = self
+		if Player.Instance.has_kitchen_object():
+			Player.Instance.ko.holder = self
+		else:
+			var new_ko = resource.scene.instantiate() as KitchenObject
+			new_ko.holder = self
 	else:
 		ko.holder = Player.Instance
 
