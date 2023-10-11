@@ -58,5 +58,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.133245, 0, -0.848094)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.92213, 0, -0.405085)
 
 [node name="ContainerCounter" parent="." instance=ExtResource("6_5jfhd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.71695, 0, -0.454613)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.29361, 0, -0.44688)
 resource = ExtResource("4_obb3m")
