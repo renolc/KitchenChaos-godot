@@ -1,21 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://v0nbyrafj5ki"]
+[gd_scene load_steps=4 format=3 uid="uid://c3iaod6id1ifx"]
 
+[ext_resource type="PackedScene" uid="uid://d1mw6nt0p34d7" path="res://prefabs/counters/_base_counter.tscn" id="1_3ces7"]
 [ext_resource type="Script" path="res://scripts/counters/clear_counter.gd" id="1_bj85s"]
 [ext_resource type="PackedScene" uid="uid://bbggyvr80a2d3" path="res://prefabs_visuals/counters/clear_counter_visuals.tscn" id="2_peudi"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_okcgb"]
-size = Vector3(1.5, 1.25, 1.5)
-
-[node name="ClearCounter" type="StaticBody3D"]
-collision_layer = 2
+[node name="ClearCounter" instance=ExtResource("1_3ces7")]
 script = ExtResource("1_bj85s")
 
-[node name="ClearCounterVisuals" parent="." node_paths=PackedStringArray("counter") instance=ExtResource("2_peudi")]
+[node name="ClearCounterVisuals" parent="." index="2" node_paths=PackedStringArray("counter") instance=ExtResource("2_peudi")]
 counter = NodePath("..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
-shape = SubResource("BoxShape3D_okcgb")
-
-[node name="CounterTopPoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0.199521)

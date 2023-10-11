@@ -1,4 +1,7 @@
 extends BaseCounter
 
+@export var resource: KitchenObjectResource
+
 func interact():
-	print("interact with ", self)
+	var ko = resource.scene.instantiate() as KitchenObject
+	ko.holder = Player.Instance

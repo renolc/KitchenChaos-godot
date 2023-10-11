@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://c5pywpg28515m"]
+[gd_scene load_steps=10 format=3 uid="uid://c5pywpg28515m"]
 
 [ext_resource type="Material" uid="uid://sv4vq030f0j8" path="res://materials/floor.tres" id="1_51bdx"]
 [ext_resource type="PackedScene" uid="uid://cxcjdiex5bmyl" path="res://prefabs/player.tscn" id="2_kc4gf"]
-[ext_resource type="PackedScene" uid="uid://v0nbyrafj5ki" path="res://prefabs/counters/clear_counter.tscn" id="3_rvysv"]
+[ext_resource type="PackedScene" uid="uid://c3iaod6id1ifx" path="res://prefabs/counters/clear_counter.tscn" id="3_rvysv"]
 [ext_resource type="Resource" uid="uid://fx3geao8pkop" path="res://resources/kitchen_objects/tomato_resource.tres" id="4_obb3m"]
-[ext_resource type="Resource" uid="uid://bbjm2vpiers50" path="res://resources/kitchen_objects/cabbage_resource.tres" id="5_2nd0t"]
-[ext_resource type="PackedScene" uid="uid://doy0xddu152kn" path="res://prefabs/counters/container_counter.tscn" id="6_5jfhd"]
+[ext_resource type="PackedScene" uid="uid://ckiytt65f7a3j" path="res://prefabs/counters/container_counter.tscn" id="6_5jfhd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_anjpy"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -53,12 +52,11 @@ fov = 20.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.766569, 0, 2.74674)
 
 [node name="ClearCounter" parent="." instance=ExtResource("3_rvysv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33476, 0, -1.01767)
-resource = ExtResource("4_obb3m")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.133245, 0, -0.848094)
 
 [node name="ClearCounter2" parent="." instance=ExtResource("3_rvysv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.740023, 0, -0.86785)
-resource = ExtResource("5_2nd0t")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.92213, 0, -0.405085)
 
 [node name="ContainerCounter" parent="." instance=ExtResource("6_5jfhd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.34334, 0, -0.761465)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.71695, 0, -0.454613)
+resource = ExtResource("4_obb3m")
