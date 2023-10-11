@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://ba2txr7des42q"]
+[gd_scene load_steps=13 format=3 uid="uid://ba2txr7des42q"]
 
-[ext_resource type="Script" path="res://scripts/counters/counter_visual.gd" id="1_l2oe0"]
+[ext_resource type="Script" path="res://scripts/counters/container_counter_visual.gd" id="1_7df2r"]
 [ext_resource type="PackedScene" uid="uid://be5qbo0ycfs8b" path="res://meshes/counters/ContainerCounter_Visual.glb" id="2_oy5yj"]
 [ext_resource type="Material" uid="uid://btppu55du1ymn" path="res://materials/counter_selected.tres" id="3_pk5cy"]
 
@@ -100,10 +100,50 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_g18kp")
 
+[sub_resource type="Animation" id="Animation_w2oof"]
+resource_name = "open"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ContainerCounter_Visual/ContainerCounter_Visual2/Single door:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.5708, 3.14159, 1.5708), Vector3(-0.349066, 3.14159, 1.5708), Vector3(-1.5708, 3.14159, 1.5708)]
+}
+
+[sub_resource type="Animation" id="Animation_l1syf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ContainerCounter_Visual/ContainerCounter_Visual2/Single door:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5708, -1.5708, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ocdkm"]
+_data = {
+"RESET": SubResource("Animation_l1syf"),
+"open": SubResource("Animation_w2oof")
+}
+
 [node name="ContainerCounterVisuals" type="Node3D"]
-script = ExtResource("1_l2oe0")
+script = ExtResource("1_7df2r")
 
 [node name="ContainerCounter_Visual" parent="." instance=ExtResource("2_oy5yj")]
+
+[node name="Single door" parent="ContainerCounter_Visual/ContainerCounter_Visual2" index="2"]
+transform = Transform3D(-1.12277e-07, 2.15882, 6.77526e-08, 0, -9.4365e-08, 1.55, 2.5686, 9.4365e-08, 2.96156e-15, -0.002, 1.294, -0.406)
 
 [node name="Selected" parent="." instance=ExtResource("2_oy5yj")]
 transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0, 0)
@@ -119,10 +159,13 @@ mesh = SubResource("ArrayMesh_jjiyy")
 material_override = ExtResource("3_pk5cy")
 mesh = SubResource("ArrayMesh_ivwhl")
 
-[node name="ObjectSprite" parent="Selected/ContainerCounter_Visual2/Single door" index="0"]
-visible = false
-
 [node name="Black" parent="Selected/ContainerCounter_Visual2" index="3"]
 material_override = ExtResource("3_pk5cy")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ocdkm")
+}
+
+[editable path="ContainerCounter_Visual"]
 [editable path="Selected"]

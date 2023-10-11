@@ -1,3 +1,4 @@
+class_name CounterVisual
 extends Node
 
 @export var counter: BaseCounter
