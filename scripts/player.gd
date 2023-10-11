@@ -20,8 +20,10 @@ func _init():
 	Instance = self
 
 func _process(_delta):
-	handle_movement()
 	update_selected_counter()
+	handle_movement()
+
+func _unhandled_input(_event):
 	handle_interact()
 
 func handle_movement():
