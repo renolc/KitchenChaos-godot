@@ -11,8 +11,6 @@ resource = null
 [node name="ContainerCounterVisuals" parent="." index="2" node_paths=PackedStringArray("counter") instance=ExtResource("2_y68kl")]
 counter = NodePath("..")
 
-[node name="Sprite3D" type="Sprite3D" parent="ContainerCounterVisuals/ContainerCounter_Visual/ContainerCounter_Visual2/Single door/ObjectSprite" index="0"]
-
 [editable path="ContainerCounterVisuals"]
 [editable path="ContainerCounterVisuals/ContainerCounter_Visual"]
 [editable path="ContainerCounterVisuals/Selected"]
