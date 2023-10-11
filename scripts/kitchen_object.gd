@@ -1,6 +1,8 @@
 class_name KitchenObject
 extends Node3D
 
+@export var sprite: Texture
+
 var holder:
 	set(v):
 		if !v.has_method("set_kitchen_object"): return
