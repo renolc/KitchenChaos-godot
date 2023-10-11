@@ -1,11 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://c5pywpg28515m"]
+[gd_scene load_steps=14 format=3 uid="uid://c5pywpg28515m"]
 
 [ext_resource type="Material" uid="uid://sv4vq030f0j8" path="res://materials/floor.tres" id="1_51bdx"]
 [ext_resource type="PackedScene" uid="uid://cxcjdiex5bmyl" path="res://prefabs/player.tscn" id="2_kc4gf"]
 [ext_resource type="PackedScene" uid="uid://c3iaod6id1ifx" path="res://prefabs/counters/clear_counter.tscn" id="3_rvysv"]
 [ext_resource type="Resource" uid="uid://fx3geao8pkop" path="res://resources/kitchen_objects/tomato_resource.tres" id="4_obb3m"]
+[ext_resource type="Resource" uid="uid://d0mun7jq0606t" path="res://resources/kitchen_objects/cheese_resource.tres" id="5_6rlb2"]
 [ext_resource type="PackedScene" uid="uid://ckiytt65f7a3j" path="res://prefabs/counters/container_counter.tscn" id="6_5jfhd"]
+[ext_resource type="Resource" uid="uid://dnhme8kt3uvqf" path="res://resources/kitchen_objects/meat_resource.tres" id="6_ei1x3"]
 [ext_resource type="Resource" uid="uid://bbjm2vpiers50" path="res://resources/kitchen_objects/cabbage_resource.tres" id="6_yo3r0"]
+[ext_resource type="Resource" uid="uid://bs6btdrdwm7gs" path="res://resources/kitchen_objects/bread_resource.tres" id="7_aqoee"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_anjpy"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -44,24 +47,51 @@ environment = SubResource("Environment_gf11u")
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_r5tf6")
+metadata/_edit_lock_ = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.694658, 0.71934, 0, -0.71934, 0.694658, 0, 21.5, 21.3)
 fov = 20.0
 
 [node name="Player" parent="." instance=ExtResource("2_kc4gf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.766569, 0, 2.74674)
 
 [node name="ClearCounter" parent="." instance=ExtResource("3_rvysv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.133245, 0, -0.848094)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.5)
+
+[node name="ClearCounter5" parent="." instance=ExtResource("3_rvysv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3.5)
+
+[node name="ClearCounter6" parent="." instance=ExtResource("3_rvysv")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.5, 0, 5)
+
+[node name="ClearCounter7" parent="." instance=ExtResource("3_rvysv")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3, 0, 5)
 
 [node name="ClearCounter2" parent="." instance=ExtResource("3_rvysv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.92213, 0, -0.405085)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -3.5)
+
+[node name="ClearCounter3" parent="." instance=ExtResource("3_rvysv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -3.5)
+
+[node name="ClearCounter4" parent="." instance=ExtResource("3_rvysv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -3.5)
 
 [node name="ContainerCounter" parent="." instance=ExtResource("6_5jfhd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.29361, 0, -0.44688)
-resource = ExtResource("4_obb3m")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -3.5)
+resource = ExtResource("5_6rlb2")
+
+[node name="ContainerCounter5" parent="." instance=ExtResource("6_5jfhd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -3.5)
+resource = ExtResource("6_ei1x3")
+
+[node name="ContainerCounter4" parent="." instance=ExtResource("6_5jfhd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3.5)
+resource = ExtResource("7_aqoee")
 
 [node name="ContainerCounter2" parent="." instance=ExtResource("6_5jfhd")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.83578, 0, 4.61068)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.5, 0, 5)
 resource = ExtResource("6_yo3r0")
+
+[node name="ContainerCounter3" parent="." instance=ExtResource("6_5jfhd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 5)
+resource = ExtResource("4_obb3m")
