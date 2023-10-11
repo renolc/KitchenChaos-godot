@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpjphlkv8dqex"]
+
+[ext_resource type="PackedScene" uid="uid://d1mw6nt0p34d7" path="res://prefabs/counters/_base_counter.tscn" id="1_5xlxw"]
+[ext_resource type="PackedScene" uid="uid://clj58j3c3wjle" path="res://prefabs_visuals/counters/cutting_counter_visuals.tscn" id="2_la5i6"]
+
+[node name="BaseCounter" instance=ExtResource("1_5xlxw")]
+
+[node name="CuttingCounterVisuals" parent="." index="2" node_paths=PackedStringArray("counter") instance=ExtResource("2_la5i6")]
+counter = NodePath("..")

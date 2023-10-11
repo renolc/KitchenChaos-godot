@@ -2,6 +2,7 @@ class_name KitchenObject
 extends Node3D
 
 @export var sprite: Texture
+@export var cuts_into: PackedScene
 
 var holder:
 	set(v):

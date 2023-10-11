@@ -8,10 +8,11 @@ extends BaseCounter
 signal player_grabbed_object
 
 func _ready():
-	if scene:
-		var tmp = scene.instantiate() as KitchenObject
-		sprite.texture = tmp.sprite
-		tmp.queue_free()
+	if !scene: return
+
+	var tmp := scene.instantiate() as KitchenObject
+	sprite.texture = tmp.sprite
+	tmp.queue_free()
 
 func interact():
 	if Player.Instance.has_kitchen_object(): return

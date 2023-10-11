@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://d2fheokudfngf"]
+[gd_scene load_steps=5 format=3 uid="uid://d2fheokudfngf"]
 
 [ext_resource type="Script" path="res://scripts/kitchen_object.gd" id="1_8nwfg"]
 [ext_resource type="Texture2D" uid="uid://b0h6ux84t07lg" path="res://textures/icons/CheeseBlock.png" id="2_8i38a"]
 [ext_resource type="PackedScene" uid="uid://csnglnh30bpy7" path="res://meshes/kitchen_objects/CheeseBlock_Visual.glb" id="2_wyc1c"]
+[ext_resource type="PackedScene" uid="uid://cakx0ydsoyort" path="res://prefabs/kitchen_objects/cheese_cut.tscn" id="3_e8xcm"]
 
 [node name="Cheese" type="Node3D"]
 script = ExtResource("1_8nwfg")
 sprite = ExtResource("2_8i38a")
+cuts_into = ExtResource("3_e8xcm")
 
 [node name="CheeseBlock_Visual" parent="." instance=ExtResource("2_wyc1c")]

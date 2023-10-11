@@ -5,9 +5,6 @@ extends StaticBody3D
 
 var ko: KitchenObject
 
-func interact():
-	print("not implemented on ", self)
-
 func remove_kitchen_object():
 	top_point.remove_child(ko)
 	ko = null
