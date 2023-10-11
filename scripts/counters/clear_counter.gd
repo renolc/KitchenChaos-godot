@@ -5,19 +5,22 @@ extends StaticBody3D
 
 @onready var top_point := $CounterTopPoint
 
-var ko: KitchenObject:
-	set(v):
-		ko = v
-		if ko:
-			top_point.add_child(ko)
+var ko: KitchenObject
 
 func interact():
 	if !ko:
-		ko = resource.scene.instantiate() as KitchenObject
-		ko.counter = self
+		var o = resource.scene.instantiate() as KitchenObject
+		o.holder = self
 	else:
-		pass
+		ko.holder = Player.Instance
 
 func remove_kitchen_object():
 	top_point.remove_child(ko)
 	ko = null
+
+func set_kitchen_object(v: KitchenObject):
+	ko = v
+	top_point.add_child(ko)
+
+func has_kitchen_object() -> bool:
+	return !!ko

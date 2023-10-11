@@ -1,10 +1,14 @@
 class_name KitchenObject
 extends Node3D
 
-var counter: ClearCounter:
+var holder:
 	set(v):
-		if counter:
-			counter.remove_kitchen_object()
-		counter = v
-		counter.ko = self
+		if !v.has_method("set_kitchen_object"): return
+		if v.has_kitchen_object(): return
+
+		if holder:
+			holder.remove_kitchen_object()
+
+		holder = v
+		holder.set_kitchen_object(self)
 		position = Vector3.ZERO

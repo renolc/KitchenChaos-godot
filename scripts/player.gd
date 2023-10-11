@@ -5,11 +5,13 @@ extends CharacterBody3D
 @export var rot_speed := 0.3
 
 @onready var ray_cast := $RayCast3D
+@onready var hold_point := $HoldPoint
 
 signal selected_counter_changed(counter)
 
 static var Instance: Player
 
+var ko: KitchenObject
 var is_walking := false
 var selected_counter: ClearCounter:
 	set(c):
@@ -43,3 +45,14 @@ func handle_interact():
 	if !selected_counter.has_method("interact"): return
 
 	selected_counter.interact()
+
+func remove_kitchen_object():
+	hold_point.remove_child(ko)
+	ko = null
+
+func set_kitchen_object(v: KitchenObject):
+	ko = v
+	hold_point.add_child(ko)
+
+func has_kitchen_object() -> bool:
+	return !!ko
