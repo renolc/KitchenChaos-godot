@@ -1,0 +1,2 @@
+class_name BaseCounter
+extends StaticBody3D

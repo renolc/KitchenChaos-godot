@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dv20dcakrclre"]
-
-[ext_resource type="PackedScene" uid="uid://dfl8hhmh3v6jy" path="res://meshes/counters/ClearCounter_Visual.glb" id="1_20886"]
-
-[node name="ClearCounter_Visual" instance=ExtResource("1_20886")]

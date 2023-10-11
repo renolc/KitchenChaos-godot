@@ -1,5 +1,4 @@
-class_name ClearCounter
-extends StaticBody3D
+extends BaseCounter
 
 @export var resource: KitchenObjectResource
 

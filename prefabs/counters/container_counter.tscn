@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://doy0xddu152kn"]
+
+[ext_resource type="Script" path="res://scripts/counters/container_counter.gd" id="1_6y48u"]
+[ext_resource type="PackedScene" uid="uid://ba2txr7des42q" path="res://prefabs_visuals/counters/container_counter_visuals.tscn" id="2_y68kl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_okcgb"]
+size = Vector3(1.5, 1.25, 1.5)
+
+[node name="ContainerCounter" type="StaticBody3D"]
+collision_layer = 2
+script = ExtResource("1_6y48u")
+
+[node name="ContainerCounterVisuals" parent="." node_paths=PackedStringArray("counter") instance=ExtResource("2_y68kl")]
+counter = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
+shape = SubResource("BoxShape3D_okcgb")

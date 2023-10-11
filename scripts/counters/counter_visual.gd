@@ -1,6 +1,6 @@
 extends Node
 
-@export var counter: ClearCounter
+@export var counter: BaseCounter
 
 @onready var selected := $Selected
 

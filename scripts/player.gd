@@ -13,7 +13,7 @@ static var Instance: Player
 
 var ko: KitchenObject
 var is_walking := false
-var selected_counter: ClearCounter:
+var selected_counter: BaseCounter:
 	set(c):
 		if selected_counter != c: selected_counter_changed.emit(c)
 		selected_counter = c
