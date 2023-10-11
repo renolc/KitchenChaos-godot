@@ -5,7 +5,11 @@ extends StaticBody3D
 
 @onready var top_point := $CounterTopPoint
 
+var ko: KitchenObject
+
 func interact():
-	var ko := resource.scene.instantiate()
-	ko.position = top_point.position
-	add_child(ko)
+	if !ko:
+		ko = resource.scene.instantiate()
+		ko.position = top_point.position
+		add_child(ko)
+		print(ko.name)
