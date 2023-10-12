@@ -1,13 +1,78 @@
-[gd_scene load_steps=4 format=3 uid="uid://clj58j3c3wjle"]
+[gd_scene load_steps=7 format=3 uid="uid://clj58j3c3wjle"]
 
 [ext_resource type="Script" path="res://scripts/counters/cutting_counter_visual.gd" id="1_dp1x5"]
 [ext_resource type="PackedScene" uid="uid://bjcyy7e5fbw3t" path="res://meshes/counters/CuttingCounter_Visual.glb" id="2_rnwxx"]
 [ext_resource type="Material" uid="uid://btppu55du1ymn" path="res://materials/counter_selected.tres" id="3_gofag"]
 
+[sub_resource type="Animation" id="Animation_warto"]
+resource_name = "cut"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CuttingCounter_Visual/CuttingCounter_Visual2/Knife:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.318152, 1.87573, 0.156007), Vector3(-0.253957, 1.42173, 0.410637), Vector3(-0.253957, 1.42173, 0.410637), Vector3(-0.327, 1.284, 0.503)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CuttingCounter_Visual/CuttingCounter_Visual2/Knife:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.651456, -0.748053, 1.5532), Vector3(-0.140295, -0.563344, 1.56788), Vector3(-0.140295, -0.563344, 1.56788), Vector3(0, -1.5708, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mfkl6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CuttingCounter_Visual/CuttingCounter_Visual2/Knife:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.327, 1.284, 0.503)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CuttingCounter_Visual/CuttingCounter_Visual2/Knife:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_51pg0"]
+_data = {
+"RESET": SubResource("Animation_mfkl6"),
+"cut": SubResource("Animation_warto")
+}
+
 [node name="CuttingCounterVisuals" type="Node3D"]
 script = ExtResource("1_dp1x5")
 
 [node name="CuttingCounter_Visual" parent="." instance=ExtResource("2_rnwxx")]
+
+[node name="Knife" parent="CuttingCounter_Visual/CuttingCounter_Visual2" index="2"]
+transform = Transform3D(1.31623e-06, 0, -1.96, 0, 1.96, 0, 1.96, 0, 1.31623e-06, -0.327, 1.284, 0.503)
 
 [node name="Selected" parent="." instance=ExtResource("2_rnwxx")]
 transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0, 0)
@@ -20,6 +85,13 @@ material_override = ExtResource("3_gofag")
 material_override = ExtResource("3_gofag")
 
 [node name="Knife" parent="Selected/CuttingCounter_Visual2" index="2"]
+visible = false
 material_override = ExtResource("3_gofag")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_51pg0")
+}
+
+[editable path="CuttingCounter_Visual"]
 [editable path="Selected"]
