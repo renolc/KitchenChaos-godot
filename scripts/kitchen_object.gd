@@ -3,6 +3,7 @@ extends Node3D
 
 @export var sprite: Texture
 @export var cuts_into: PackedScene
+@export var cuts_required := 0
 
 var holder:
 	set(v):

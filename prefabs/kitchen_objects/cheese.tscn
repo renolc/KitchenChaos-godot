@@ -9,5 +9,6 @@
 script = ExtResource("1_8nwfg")
 sprite = ExtResource("2_8i38a")
 cuts_into = ExtResource("3_e8xcm")
+cuts_required = 3
 
 [node name="CheeseBlock_Visual" parent="." instance=ExtResource("2_wyc1c")]

@@ -9,5 +9,6 @@
 script = ExtResource("1_66bbf")
 sprite = ExtResource("2_vbka2")
 cuts_into = ExtResource("3_spvp7")
+cuts_required = 5
 
 [node name="Cabbage_Visual" parent="." instance=ExtResource("1_c2kgr")]

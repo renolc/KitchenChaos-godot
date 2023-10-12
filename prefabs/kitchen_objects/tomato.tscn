@@ -9,5 +9,6 @@
 script = ExtResource("1_lf3kc")
 sprite = ExtResource("2_8tto2")
 cuts_into = ExtResource("3_j8etk")
+cuts_required = 3
 
 [node name="Tomato_Visual" parent="." instance=ExtResource("1_5u7s2")]
