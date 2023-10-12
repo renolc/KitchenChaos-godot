@@ -12,7 +12,7 @@ var cutting_progress := 0:
 
 func interact():
 	if !ko:
-		if Player.Instance.has_kitchen_object():
+		if Player.Instance.has_kitchen_object() && Player.Instance.ko.cuts_into:
 			Player.Instance.ko.holder = self
 			cutting_progress = 0
 	else:

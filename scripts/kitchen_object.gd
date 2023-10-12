@@ -3,7 +3,9 @@ extends Node3D
 
 @export var sprite: Texture
 @export var cuts_into: PackedScene
-@export var cuts_required := 0
+@export var cuts_required: int
+@export var cooks_into: PackedScene
+@export var cook_time: float
 
 var holder:
 	set(v):
