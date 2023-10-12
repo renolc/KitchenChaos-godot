@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://bfam0o0byw1w5"]
+
+[ext_resource type="PackedScene" uid="uid://d1mw6nt0p34d7" path="res://prefabs/counters/_base_counter.tscn" id="1_dqb05"]
+[ext_resource type="PackedScene" uid="uid://bh53cwhs3pjtb" path="res://prefabs_visuals/counters/stove_counter_visuals.tscn" id="2_uhkpa"]
+[ext_resource type="Script" path="res://scripts/counters/stove_counter.gd" id="2_vn1bu"]
+
+[node name="StoveCounter" instance=ExtResource("1_dqb05")]
+script = ExtResource("2_vn1bu")
+
+[node name="CounterTopPoint" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0399428, 1.456, 0)
+
+[node name="StoveCounterVisuals" parent="." index="2" node_paths=PackedStringArray("counter") instance=ExtResource("2_uhkpa")]
+counter = NodePath("..")
