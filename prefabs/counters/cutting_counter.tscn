@@ -1,12 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dpjphlkv8dqex"]
+[gd_scene load_steps=5 format=3 uid="uid://dpjphlkv8dqex"]
 
 [ext_resource type="PackedScene" uid="uid://d1mw6nt0p34d7" path="res://prefabs/counters/_base_counter.tscn" id="1_5xlxw"]
 [ext_resource type="Script" path="res://scripts/counters/cutting_counter.gd" id="2_6c1py"]
 [ext_resource type="PackedScene" uid="uid://clj58j3c3wjle" path="res://prefabs_visuals/counters/cutting_counter_visuals.tscn" id="2_la5i6"]
 [ext_resource type="PackedScene" uid="uid://bejloxpo6md40" path="res://prefabs/ui/progress.tscn" id="4_yafn5"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_sgw16"]
-viewport_path = NodePath("SubViewport")
 
 [node name="CuttingCounter" instance=ExtResource("1_5xlxw")]
 script = ExtResource("2_6c1py")
@@ -15,7 +12,6 @@ script = ExtResource("2_6c1py")
 counter = NodePath("..")
 
 [node name="Progress" parent="." index="3" instance=ExtResource("4_yafn5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.32889, 0)
-texture = SubResource("ViewportTexture_sgw16")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 
 [connection signal="cut_progress_update" from="." to="Progress" method="progress_updated"]
