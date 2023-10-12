@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://wf65vitga8po"]
+
+[ext_resource type="Script" path="res://scripts/counters/counter_visual.gd" id="1_gb6kp"]
+[ext_resource type="PackedScene" uid="uid://cn4lcpd8vuqqq" path="res://meshes/counters/TrashCounter_Visual.glb" id="2_yvdnu"]
+[ext_resource type="Material" uid="uid://btppu55du1ymn" path="res://materials/counter_selected.tres" id="3_et4mm"]
+
+[node name="TrashCounterVisuals" type="Node3D"]
+script = ExtResource("1_gb6kp")
+
+[node name="TrashCounter_Visual" parent="." instance=ExtResource("2_yvdnu")]
+
+[node name="Selected" parent="." instance=ExtResource("2_yvdnu")]
+transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0, 0)
+visible = false
+
+[node name="Trash bin" parent="Selected/TrashCounter_Visual2" index="0"]
+material_override = ExtResource("3_et4mm")
+
+[editable path="Selected"]

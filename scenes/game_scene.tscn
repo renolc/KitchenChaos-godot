@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c5pywpg28515m"]
+[gd_scene load_steps=16 format=3 uid="uid://c5pywpg28515m"]
 
 [ext_resource type="Material" uid="uid://sv4vq030f0j8" path="res://materials/floor.tres" id="1_51bdx"]
 [ext_resource type="PackedScene" uid="uid://cxcjdiex5bmyl" path="res://prefabs/player.tscn" id="2_kc4gf"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://buap5yfna0b0" path="res://prefabs/kitchen_objects/cabbage.tscn" id="8_62pwg"]
 [ext_resource type="PackedScene" uid="uid://c2q0hnrchcbxs" path="res://prefabs/kitchen_objects/tomato.tscn" id="9_225ck"]
 [ext_resource type="PackedScene" uid="uid://dpjphlkv8dqex" path="res://prefabs/counters/cutting_counter.tscn" id="10_rsvae"]
+[ext_resource type="PackedScene" uid="uid://d1688ycced2kg" path="res://prefabs/counters/trash_counter.tscn" id="11_2wqg4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_anjpy"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -103,4 +104,7 @@ scene = ExtResource("9_225ck")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, -3.5)
 
 [node name="CuttingCounter2" parent="Counters" instance=ExtResource("10_rsvae")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3, 0, 5)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.5, 0, 5)
+
+[node name="TrashCounter" parent="Counters" instance=ExtResource("11_2wqg4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 5)
