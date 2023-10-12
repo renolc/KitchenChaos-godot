@@ -105,12 +105,12 @@ animation = &"walk"
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p1cv1"]
-xfade_time = 0.2
+xfade_time = 0.1
 advance_mode = 2
 advance_condition = &"is_walking"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vmqxi"]
-xfade_time = 0.2
+xfade_time = 0.1
 advance_mode = 2
 advance_condition = &"is_idle"
 
