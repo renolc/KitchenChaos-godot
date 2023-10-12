@@ -17,4 +17,5 @@ counter = NodePath("..")
 [node name="Progress" parent="." index="3" instance=ExtResource("4_peopr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 
+[connection signal="cook_progress_update" from="." to="StoveCounterVisuals" method="progress_update"]
 [connection signal="cook_progress_update" from="." to="Progress" method="progress_updated"]

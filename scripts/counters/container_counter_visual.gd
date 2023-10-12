@@ -11,9 +11,6 @@ func _ready() -> void:
 	var parent := counter as ContainerCounter
 	if !parent: return
 
-	if !Engine.is_editor_hint():
-		parent.player_grabbed_object.connect(play_open_anim)
-
 	set_sprite(parent.scene)
 
 func set_sprite(scene: PackedScene):

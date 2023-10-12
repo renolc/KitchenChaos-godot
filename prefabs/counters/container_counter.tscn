@@ -10,3 +10,5 @@ scene = null
 
 [node name="ContainerCounterVisuals" parent="." index="2" node_paths=PackedStringArray("counter") instance=ExtResource("2_y68kl")]
 counter = NodePath("..")
+
+[connection signal="player_grabbed_object" from="." to="ContainerCounterVisuals" method="play_open_anim"]

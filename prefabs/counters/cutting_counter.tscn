@@ -14,4 +14,5 @@ counter = NodePath("..")
 [node name="Progress" parent="." index="3" instance=ExtResource("4_yafn5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 
+[connection signal="cut_performed" from="." to="CuttingCounterVisuals" method="cut_performed"]
 [connection signal="cut_progress_update" from="." to="Progress" method="progress_updated"]
