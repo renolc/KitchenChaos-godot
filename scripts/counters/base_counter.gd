@@ -5,8 +5,9 @@ extends StaticBody3D
 
 var ko: KitchenObject
 
-func remove_kitchen_object():
+func remove_kitchen_object(del_ko: bool = false):
 	top_point.remove_child(ko)
+	if del_ko: ko.queue_free()
 	ko = null
 
 func set_kitchen_object(v: KitchenObject):

@@ -40,11 +40,13 @@ func update_selected_counter():
 	selected_counter = ray_cast.get_collider()
 
 func handle_interact():
-	if !Input.is_action_just_pressed("interact"): return
 	if selected_counter == null: return
-	if !selected_counter.has_method("interact"): return
 
-	selected_counter.interact()
+	if Input.is_action_just_pressed("interact") && selected_counter.has_method("interact"):
+		selected_counter.interact()
+
+	if Input.is_action_just_pressed("interact_alt") && selected_counter.has_method("interact_alt"):
+		selected_counter.interact_alt()
 
 func remove_kitchen_object():
 	hold_point.remove_child(ko)
