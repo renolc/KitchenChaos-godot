@@ -1,37 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://clj58j3c3wjle"]
+[gd_scene load_steps=8 format=3 uid="uid://clj58j3c3wjle"]
 
 [ext_resource type="Script" path="res://scripts/counters/cutting_counter_visual.gd" id="1_dp1x5"]
 [ext_resource type="PackedScene" uid="uid://bjcyy7e5fbw3t" path="res://meshes/counters/CuttingCounter_Visual.glb" id="2_rnwxx"]
 [ext_resource type="Material" uid="uid://btppu55du1ymn" path="res://materials/counter_selected.tres" id="3_gofag"]
-
-[sub_resource type="Animation" id="Animation_warto"]
-resource_name = "cut"
-length = 0.2
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CuttingCounter_Visual/CuttingCounter_Visual2/Knife:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.15, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-0.318152, 1.87573, 0.156007), Vector3(-0.253957, 1.42173, 0.410637), Vector3(-0.253957, 1.42173, 0.410637), Vector3(-0.327, 1.284, 0.503)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CuttingCounter_Visual/CuttingCounter_Visual2/Knife:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.15, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0.651456, -0.748053, 1.5532), Vector3(-0.140295, -0.563344, 1.56788), Vector3(-0.140295, -0.563344, 1.56788), Vector3(0, -1.5708, 0)]
-}
+[ext_resource type="Texture2D" uid="uid://gvwancfadsio" path="res://textures/white_triangle.png" id="3_s1gf5"]
 
 [sub_resource type="Animation" id="Animation_mfkl6"]
 length = 0.001
@@ -59,6 +31,107 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, -1.5708, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CuttingCounter_Visual/CuttingCounter_Visual2/Knife/Trail/Sprite3D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CuttingCounter_Visual/CuttingCounter_Visual2/Knife/Trail/Sprite3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.001, 0.063, -0.003)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CuttingCounter_Visual/CuttingCounter_Visual2/Knife/Trail/Sprite3D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.188, 0.99)]
+}
+
+[sub_resource type="Animation" id="Animation_warto"]
+resource_name = "cut"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CuttingCounter_Visual/CuttingCounter_Visual2/Knife:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.522191, 2.43221, 0.438259), Vector3(-0.253957, 1.42173, 0.410637), Vector3(-0.253957, 1.42173, 0.410637), Vector3(-0.327, 1.284, 0.503)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CuttingCounter_Visual/CuttingCounter_Visual2/Knife:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.35457, -0.801131, 1.50553), Vector3(-0.140295, -0.563344, 1.56788), Vector3(-0.140295, -0.563344, 1.56788), Vector3(0, -1.5708, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CuttingCounter_Visual/CuttingCounter_Visual2/Knife/Trail/Sprite3D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CuttingCounter_Visual/CuttingCounter_Visual2/Knife/Trail/Sprite3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.049, 0.05, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.001, 0.063, -0.003), Vector3(0.201231, 0.062777, -0.0029998), Vector3(0.262844, 0.0629309, -0.00299992), Vector3(0.201231, 0.062777, -0.0029998), Vector3(0, 0.063, -0.003)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CuttingCounter_Visual/CuttingCounter_Visual2/Knife/Trail/Sprite3D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.188, 0.99), Vector3(2, 1.188, 0.99), Vector3(1.6, 1.188, 0.99), Vector3(0, 1.188, 0.99)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_51pg0"]
 _data = {
@@ -72,7 +145,13 @@ script = ExtResource("1_dp1x5")
 [node name="CuttingCounter_Visual" parent="." instance=ExtResource("2_rnwxx")]
 
 [node name="Knife" parent="CuttingCounter_Visual/CuttingCounter_Visual2" index="2"]
-transform = Transform3D(1.31623e-06, 0, -1.96, 0, 1.96, 0, 1.96, 0, 1.31623e-06, -0.327, 1.284, 0.503)
+transform = Transform3D(-7.09518e-06, 0, -1.96, 0, 1.96, 0, 1.96, 0, -7.09518e-06, -0.327, 1.284, 0.503)
+
+[node name="Sprite3D" type="Sprite3D" parent="CuttingCounter_Visual/CuttingCounter_Visual2/Knife/Trail" index="0"]
+transform = Transform3D(0, -0.00130932, 8.57589e-07, 0, -1.188, -1.25172e-07, 0, 1.49072e-07, -0.99, -0.001, 0.063, -0.003)
+visible = false
+pixel_size = 0.004
+texture = ExtResource("3_s1gf5")
 
 [node name="Selected" parent="." instance=ExtResource("2_rnwxx")]
 transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0, 0)
