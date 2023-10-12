@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://clj58j3c3wjle"]
 
-[ext_resource type="Script" path="res://scripts/counters/counter_visual.gd" id="1_kyjt0"]
+[ext_resource type="Script" path="res://scripts/counters/cutting_counter_visual.gd" id="1_dp1x5"]
 [ext_resource type="PackedScene" uid="uid://bjcyy7e5fbw3t" path="res://meshes/counters/CuttingCounter_Visual.glb" id="2_rnwxx"]
 [ext_resource type="Material" uid="uid://btppu55du1ymn" path="res://materials/counter_selected.tres" id="3_gofag"]
 
 [node name="CuttingCounterVisuals" type="Node3D"]
-script = ExtResource("1_kyjt0")
+script = ExtResource("1_dp1x5")
 
 [node name="CuttingCounter_Visual" parent="." instance=ExtResource("2_rnwxx")]
 
