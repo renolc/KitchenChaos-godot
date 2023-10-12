@@ -4,7 +4,6 @@ signal cut_progress_update(progress)
 
 var cutting_progress := 0:
 	set(v):
-		print("here")
 		cutting_progress = v
 		var progress = 0 if !ko else float(cutting_progress) / ko.cuts_required
 		cut_progress_update.emit(progress)
