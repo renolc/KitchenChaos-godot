@@ -7,5 +7,8 @@
 [node name="CuttingCounter" instance=ExtResource("1_5xlxw")]
 script = ExtResource("2_6c1py")
 
+[node name="CounterTopPoint" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
+
 [node name="CuttingCounterVisuals" parent="." index="2" node_paths=PackedStringArray("counter") instance=ExtResource("2_la5i6")]
 counter = NodePath("..")
