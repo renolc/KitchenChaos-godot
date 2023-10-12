@@ -8,7 +8,7 @@ extends CounterVisual
 func _ready() -> void:
 	if !Engine.is_editor_hint(): super()
 
-	var parent := counter as ContainerCounter
+	var parent := get_parent() as ContainerCounter
 	if !parent: return
 
 	set_sprite(parent.scene)

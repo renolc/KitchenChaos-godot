@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7ukk6uvwgcg8"]
+
+[ext_resource type="PackedScene" uid="uid://d1mw6nt0p34d7" path="res://prefabs/counters/_base_counter.tscn" id="1_l22re"]
+[ext_resource type="PackedScene" uid="uid://cnsbknbxmuhk6" path="res://prefabs_visuals/counters/plates_counter_visuals.tscn" id="2_kin6d"]
+[ext_resource type="Script" path="res://scripts/counters/plates_counter.gd" id="2_kmvee"]
+[ext_resource type="PackedScene" uid="uid://c63ihihvs6gev" path="res://prefabs/kitchen_objects/plate.tscn" id="3_cadau"]
+
+[node name="PlatesCounter" instance=ExtResource("1_l22re")]
+script = ExtResource("2_kmvee")
+plate_scene = ExtResource("3_cadau")
+
+[node name="PlatesCounterVisuals" parent="." index="2" node_paths=PackedStringArray("top_point") instance=ExtResource("2_kin6d")]
+top_point = NodePath("../CounterTopPoint")
+
+[node name="SpawnTimer" type="Timer" parent="." index="3"]
+wait_time = 4.0
+autostart = true
+
+[connection signal="plate_removed" from="." to="PlatesCounterVisuals" method="plate_removed"]
+[connection signal="plate_spawned" from="." to="PlatesCounterVisuals" method="plate_spawned"]
+[connection signal="timeout" from="SpawnTimer" to="." method="spawn_plate"]
