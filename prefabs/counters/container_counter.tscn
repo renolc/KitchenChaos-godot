@@ -6,11 +6,7 @@
 
 [node name="ContainerCounter" instance=ExtResource("1_3p5de")]
 script = ExtResource("1_6y48u")
-resource = null
+scene = null
 
 [node name="ContainerCounterVisuals" parent="." index="2" node_paths=PackedStringArray("counter") instance=ExtResource("2_y68kl")]
 counter = NodePath("..")
-
-[editable path="ContainerCounterVisuals"]
-[editable path="ContainerCounterVisuals/ContainerCounter_Visual"]
-[editable path="ContainerCounterVisuals/Selected"]
