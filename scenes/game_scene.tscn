@@ -56,46 +56,48 @@ fov = 20.0
 
 [node name="Player" parent="." instance=ExtResource("2_kc4gf")]
 
-[node name="ClearCounter" parent="." instance=ExtResource("3_rvysv")]
+[node name="Counters" type="Node" parent="."]
+
+[node name="ClearCounter" parent="Counters" instance=ExtResource("3_rvysv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.5)
 
-[node name="ClearCounter5" parent="." instance=ExtResource("3_rvysv")]
+[node name="ClearCounter5" parent="Counters" instance=ExtResource("3_rvysv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3.5)
 
-[node name="ClearCounter6" parent="." instance=ExtResource("3_rvysv")]
+[node name="ClearCounter6" parent="Counters" instance=ExtResource("3_rvysv")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.5, 0, 5)
 
-[node name="ClearCounter7" parent="." instance=ExtResource("3_rvysv")]
+[node name="ClearCounter7" parent="Counters" instance=ExtResource("3_rvysv")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3, 0, 5)
 
-[node name="ClearCounter2" parent="." instance=ExtResource("3_rvysv")]
+[node name="ClearCounter2" parent="Counters" instance=ExtResource("3_rvysv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, -3.5)
 
-[node name="ClearCounter3" parent="." instance=ExtResource("3_rvysv")]
+[node name="ClearCounter3" parent="Counters" instance=ExtResource("3_rvysv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, -3.5)
 
-[node name="ClearCounter4" parent="." instance=ExtResource("3_rvysv")]
+[node name="ClearCounter4" parent="Counters" instance=ExtResource("3_rvysv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -3.5)
 
-[node name="ContainerCounter" parent="." instance=ExtResource("6_5jfhd")]
+[node name="ContainerCounter" parent="Counters" instance=ExtResource("6_5jfhd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -3.5)
 scene = ExtResource("5_6da6e")
 
-[node name="ContainerCounter2" parent="." instance=ExtResource("6_5jfhd")]
+[node name="ContainerCounter2" parent="Counters" instance=ExtResource("6_5jfhd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -3.5)
 scene = ExtResource("5_074ul")
 
-[node name="ContainerCounter3" parent="." instance=ExtResource("6_5jfhd")]
+[node name="ContainerCounter3" parent="Counters" instance=ExtResource("6_5jfhd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -3.5)
 scene = ExtResource("7_dhkvg")
 
-[node name="ContainerCounter4" parent="." instance=ExtResource("6_5jfhd")]
+[node name="ContainerCounter4" parent="Counters" instance=ExtResource("6_5jfhd")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.5, 0, 5)
 scene = ExtResource("8_62pwg")
 
-[node name="ContainerCounter5" parent="." instance=ExtResource("6_5jfhd")]
+[node name="ContainerCounter5" parent="Counters" instance=ExtResource("6_5jfhd")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 5)
 scene = ExtResource("9_225ck")
 
-[node name="CuttingCounter" parent="." instance=ExtResource("10_rsvae")]
+[node name="CuttingCounter" parent="Counters" instance=ExtResource("10_rsvae")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, -3.5)
