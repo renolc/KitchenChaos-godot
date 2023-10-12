@@ -3,7 +3,7 @@ extends CounterVisual
 
 @onready var door := $"ContainerCounter_Visual/ContainerCounter_Visual2/Single door"
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var sprite: Sprite3D = $"ContainerCounter_Visual/ContainerCounter_Visual2/Single door/ObjectSprite/Sprite3D"
+@onready var sprite: Sprite3D = %Sprite3D
 
 func _ready() -> void:
 	if !Engine.is_editor_hint(): super()

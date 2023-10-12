@@ -5,6 +5,10 @@ extends Sprite3D
 
 func _ready() -> void:
 	visible = false
+
+	# there is currently a bug where viewport textures don't stick when
+	# set in the editor:
+	#   https://github.com/godotengine/godot/issues/66247
 	RenderingServer.frame_post_draw.connect(func():
 		texture = viewport.get_texture()
 	)

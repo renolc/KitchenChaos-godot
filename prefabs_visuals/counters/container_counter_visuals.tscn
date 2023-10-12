@@ -146,6 +146,7 @@ script = ExtResource("1_7df2r")
 transform = Transform3D(-9.29831e-06, 2.15882, 5.61098e-06, 0, -7.81491e-06, 1.55, 2.5686, 7.81491e-06, 2.03117e-11, -0.002, 1.294, -0.406)
 
 [node name="Sprite3D" type="Sprite3D" parent="ContainerCounter_Visual/ContainerCounter_Visual2/Single door/ObjectSprite" index="0"]
+unique_name_in_owner = true
 
 [node name="Selected" parent="." instance=ExtResource("2_oy5yj")]
 transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0, 0)
