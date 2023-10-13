@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://xse052q073n6"]
+
+[ext_resource type="Script" path="res://scripts/counters/counter_visual.gd" id="1_t02yx"]
+[ext_resource type="PackedScene" uid="uid://jcc1f56n0v6o" path="res://meshes/counters/DeliveryCounter_Visual.glb" id="2_a65gb"]
+
+[node name="DeliveryCounterVisuals" type="Node3D" node_paths=PackedStringArray("mesh_array")]
+script = ExtResource("1_t02yx")
+mesh_array = [NodePath("DeliveryCounter_Visual/DeliveryCounter_Visual2/KitchenCounter")]
+
+[node name="DeliveryCounter_Visual" parent="." instance=ExtResource("2_a65gb")]
+
+[editable path="DeliveryCounter_Visual"]

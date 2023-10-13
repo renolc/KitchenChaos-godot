@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d1mw6nt0p34d7" path="res://prefabs/counters/_base_counter.tscn" id="1_3p5de"]
 [ext_resource type="Script" path="res://scripts/counters/container_counter.gd" id="1_6y48u"]
-[ext_resource type="PackedScene" uid="uid://ba2txr7des42q" path="res://prefabs_visuals/counters/container_counter_visuals.tscn" id="2_y68kl"]
+[ext_resource type="PackedScene" uid="uid://2ncg8b1e0ef7" path="res://prefabs_visuals/counters/container_counter_visuals.tscn" id="2_y68kl"]
 
 [node name="ContainerCounter" instance=ExtResource("1_3p5de")]
 script = ExtResource("1_6y48u")

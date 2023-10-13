@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d1mw6nt0p34d7" path="res://prefabs/counters/_base_counter.tscn" id="1_3ces7"]
 [ext_resource type="Script" path="res://scripts/counters/clear_counter.gd" id="1_bj85s"]
-[ext_resource type="PackedScene" uid="uid://bbggyvr80a2d3" path="res://prefabs_visuals/counters/clear_counter_visuals.tscn" id="2_peudi"]
+[ext_resource type="PackedScene" uid="uid://dfl8hhmh3v6jy" path="res://prefabs_visuals/counters/clear_counter_visuals.tscn" id="2_peudi"]
 
 [node name="ClearCounter" instance=ExtResource("1_3ces7")]
 script = ExtResource("1_bj85s")

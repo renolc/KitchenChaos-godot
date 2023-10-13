@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d1mw6nt0p34d7" path="res://prefabs/counters/_base_counter.tscn" id="1_5xlxw"]
 [ext_resource type="Script" path="res://scripts/counters/cutting_counter.gd" id="2_6c1py"]
-[ext_resource type="PackedScene" uid="uid://clj58j3c3wjle" path="res://prefabs_visuals/counters/cutting_counter_visuals.tscn" id="2_la5i6"]
+[ext_resource type="PackedScene" uid="uid://cs8s7vh7r077i" path="res://prefabs_visuals/counters/cutting_counter_visuals.tscn" id="2_la5i6"]
 [ext_resource type="PackedScene" uid="uid://bejloxpo6md40" path="res://prefabs/ui/progress.tscn" id="4_yafn5"]
 
 [node name="CuttingCounter" instance=ExtResource("1_5xlxw")]
