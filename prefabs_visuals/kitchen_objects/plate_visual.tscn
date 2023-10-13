@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgsjhvolpo2ko"]
+
+[ext_resource type="PackedScene" uid="uid://bcwums642t6y0" path="res://meshes/kitchen_objects/Plate_Visual.glb" id="2_4lrum"]
+
+[node name="PlateVisual" type="Node3D"]
+
+[node name="Plate_Visual" parent="." instance=ExtResource("2_4lrum")]

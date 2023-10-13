@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cj4t7lsnwviks" path="res://textures/icons/CheeseSlice.png" id="2_53rlu"]
 [ext_resource type="PackedScene" uid="uid://ddx03i4n7igqv" path="res://meshes/kitchen_objects/CheeseSlices_Visual.glb" id="3_ag64a"]
 
-[node name="Cheesecut" type="Node3D"]
+[node name="CheeseCut" type="Node3D"]
 script = ExtResource("1_4fyll")
 sprite = ExtResource("2_53rlu")
 can_be_plated = true

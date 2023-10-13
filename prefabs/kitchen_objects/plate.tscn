@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://c63ihihvs6gev"]
+[gd_scene load_steps=4 format=3 uid="uid://c63ihihvs6gev"]
 
 [ext_resource type="Script" path="res://scripts/kitchen_objects/plate_kitchen_object.gd" id="1_1q23g"]
-[ext_resource type="PackedScene" uid="uid://bcwums642t6y0" path="res://meshes/kitchen_objects/Plate_Visual.glb" id="3_5vlkb"]
+[ext_resource type="PackedScene" uid="uid://bgsjhvolpo2ko" path="res://prefabs_visuals/kitchen_objects/plate_visual.tscn" id="2_7erjt"]
+[ext_resource type="PackedScene" uid="uid://bruyupk8mh3dh" path="res://prefabs_visuals/kitchen_objects/plate_complete_visual.tscn" id="3_6cl1y"]
 
 [node name="Plate" type="Node3D"]
 script = ExtResource("1_1q23g")
 
-[node name="Plate_Visual" parent="." instance=ExtResource("3_5vlkb")]
+[node name="PlateVisual" parent="." instance=ExtResource("2_7erjt")]
+
+[node name="PlateCompleteVisual" parent="." instance=ExtResource("3_6cl1y")]
+
+[connection signal="ingredient_added" from="." to="PlateCompleteVisual" method="ingredient_added"]

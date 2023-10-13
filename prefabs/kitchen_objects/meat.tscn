@@ -1,12 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://xt3olg06k3uh"]
 
-[ext_resource type="Script" path="res://scripts/kitchen_objects/kitchen_object.gd" id="1_tc0i1"]
+[ext_resource type="Script" path="res://scripts/kitchen_objects/kitchen_object.gd" id="1_0d73y"]
 [ext_resource type="PackedScene" uid="uid://b01jyfpgsrpin" path="res://meshes/kitchen_objects/MeatPattyUncooked_Visual.glb" id="2_7nklt"]
 [ext_resource type="Texture2D" uid="uid://bkxpn8oxsfb4p" path="res://textures/icons/MeatPattyUncooked.png" id="2_vusae"]
 [ext_resource type="PackedScene" uid="uid://cecoonwh7xyd5" path="res://prefabs/kitchen_objects/meat_cooked.tscn" id="3_vft4r"]
 
 [node name="Meat" type="Node3D"]
-script = ExtResource("1_tc0i1")
+script = ExtResource("1_0d73y")
 sprite = ExtResource("2_vusae")
 cooks_into = ExtResource("3_vft4r")
 cook_time = 3.0

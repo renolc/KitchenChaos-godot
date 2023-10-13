@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bruyupk8mh3dh"]
+
+[ext_resource type="Script" path="res://scripts/kitchen_objects/plate_complete_visual.gd" id="1_dr3jo"]
+[ext_resource type="PackedScene" uid="uid://bt2jjr6kv0pwe" path="res://meshes/kitchen_objects/PlateCompleteVisual.glb" id="2_rhx4k"]
+
+[node name="PlateCompleteVisual" type="Node3D"]
+script = ExtResource("1_dr3jo")
+
+[node name="PlateCompleteVisual" parent="." instance=ExtResource("2_rhx4k")]
+
+[node name="MeatPattyBurned" parent="PlateCompleteVisual/PlateCompleteVisual2" index="5"]
+visible = false
+
+[editable path="PlateCompleteVisual"]
