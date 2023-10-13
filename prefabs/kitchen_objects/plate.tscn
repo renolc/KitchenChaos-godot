@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://c63ihihvs6gev"]
+[gd_scene load_steps=7 format=3 uid="uid://c63ihihvs6gev"]
 
 [ext_resource type="Script" path="res://scripts/kitchen_objects/plate_kitchen_object.gd" id="1_1q23g"]
 [ext_resource type="PackedScene" uid="uid://bgsjhvolpo2ko" path="res://prefabs_visuals/kitchen_objects/plate_visual.tscn" id="2_7erjt"]
 [ext_resource type="PackedScene" uid="uid://bruyupk8mh3dh" path="res://prefabs_visuals/kitchen_objects/plate_complete_visual.tscn" id="3_6cl1y"]
 [ext_resource type="Script" path="res://scripts/ui/plate_icons_list.gd" id="4_sxskf"]
 [ext_resource type="PackedScene" uid="uid://1usu4t1qcauj" path="res://prefabs/ui/ingredient_icon.tscn" id="5_kmcms"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6lvcp"]
+viewport_path = NodePath("IngredientsIcons/SubViewport")
 
 [node name="Plate" type="Node3D"]
 script = ExtResource("1_1q23g")
@@ -16,6 +19,7 @@ script = ExtResource("1_1q23g")
 [node name="IngredientsIcons" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
 billboard = 1
+texture = SubResource("ViewportTexture_6lvcp")
 script = ExtResource("4_sxskf")
 ingredient_icon = ExtResource("5_kmcms")
 
@@ -23,10 +27,21 @@ ingredient_icon = ExtResource("5_kmcms")
 transparent_bg = true
 size = Vector2i(119, 80)
 
-[node name="GridContainer" type="GridContainer" parent="IngredientsIcons/SubViewport"]
-offset_right = 766.0
-offset_bottom = 432.0
-columns = 3
+[node name="VBoxContainer" type="VBoxContainer" parent="IngredientsIcons/SubViewport"]
+custom_minimum_size = Vector2(0, 80)
+offset_right = 40.0
+offset_bottom = 40.0
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="IngredientsIcons/SubViewport/VBoxContainer"]
+custom_minimum_size = Vector2(119, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="IngredientsIcons/SubViewport/VBoxContainer"]
+custom_minimum_size = Vector2(119, 0)
+layout_mode = 2
+alignment = 1
 
 [connection signal="ingredient_added" from="." to="PlateCompleteVisual" method="ingredient_added"]
 [connection signal="ingredient_added" from="." to="IngredientsIcons" method="ingredient_added"]
