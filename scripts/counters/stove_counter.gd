@@ -11,15 +11,15 @@ func _process(_delta):
 func interact():
 	if !ko:
 		if Player.Instance.ko && Player.Instance.ko.cooks_into:
-			Player.Instance.ko.holder = self
-			start_cooking()
-	elif !Player.Instance.ko:
-		ko.holder = Player.Instance
-		cook_progress_update.emit(0)
-		if fry_timer && fry_timer.time_left > 0:
-			fry_timer.timeout.disconnect(finished_cooking)
-			fry_timer.timeout.emit()
-			fry_timer = null
+			if Player.Instance.ko.try_set_holder(self):
+				start_cooking()
+	else:
+		if ko.try_set_holder(Player.Instance):
+			cook_progress_update.emit(0)
+			if fry_timer && fry_timer.time_left > 0:
+				fry_timer.timeout.disconnect(finished_cooking)
+				fry_timer.timeout.emit()
+				fry_timer = null
 
 func start_cooking():
 	if ko.cooks_into:
@@ -31,5 +31,5 @@ func finished_cooking():
 	cook_progress_update.emit(0)
 	var new_ko := ko.cooks_into.instantiate() as KitchenObject
 	remove_kitchen_object(true)
-	new_ko.holder = self
-	start_cooking()
+	if new_ko.try_set_holder(self):
+		start_cooking()

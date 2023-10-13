@@ -16,5 +16,5 @@ func interact():
 	if Player.Instance.ko: return
 
 	var new_ko := scene.instantiate() as KitchenObject
-	new_ko.holder = Player.Instance
-	player_grabbed_object.emit()
+	if new_ko.try_set_holder(Player.Instance):
+		player_grabbed_object.emit()

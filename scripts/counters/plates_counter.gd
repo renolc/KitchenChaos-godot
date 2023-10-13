@@ -13,8 +13,8 @@ func interact():
 	if plate_count > 0 && !Player.Instance.ko:
 		plate_count -= 1
 		var plate := plate_scene.instantiate() as KitchenObject
-		plate.holder = Player.Instance
-		plate_removed.emit()
+		if plate.try_set_holder(Player.Instance):
+			plate_removed.emit()
 
 func spawn_plate():
 	if plate_count == MAX_PLATES: return
