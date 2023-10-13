@@ -1,29 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnsbknbxmuhk6"]
+[gd_scene load_steps=5 format=3 uid="uid://b0c814nrthqxe"]
 
 [ext_resource type="Script" path="res://scripts/counters/plates_counter_visual.gd" id="1_mws4u"]
 [ext_resource type="PackedScene" uid="uid://cmrwp4sfcpj0" path="res://meshes/counters/PlatesCounter_Visual.glb" id="2_570el"]
 [ext_resource type="PackedScene" uid="uid://bcwums642t6y0" path="res://meshes/kitchen_objects/Plate_Visual.glb" id="2_grehu"]
 [ext_resource type="Texture2D" uid="uid://c1uky5q8vc0mu" path="res://textures/CircleDashed.png" id="3_3vpkd"]
-[ext_resource type="Material" uid="uid://btppu55du1ymn" path="res://materials/counter_selected.tres" id="3_ooi0e"]
 
-[node name="PlatesCounterVisuals" type="Node3D"]
+[node name="PlatesCounterVisuals" type="Node3D" node_paths=PackedStringArray("mesh_array")]
 script = ExtResource("1_mws4u")
 plate_visual_scene = ExtResource("2_grehu")
+mesh_array = [NodePath("PlatesCounter_Visual/PlatesCounter_Visual2/KitchenCounter")]
 
 [node name="PlatesCounter_Visual" parent="." instance=ExtResource("2_570el")]
 
 [node name="Sprite3D" type="Sprite3D" parent="PlatesCounter_Visual/PlatesCounter_Visual2/CircleSprite" index="0"]
 texture = ExtResource("3_3vpkd")
 
-[node name="Selected" parent="." instance=ExtResource("2_570el")]
-transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0, 0)
-visible = false
-
-[node name="KitchenCounter" parent="Selected/PlatesCounter_Visual2" index="0"]
-material_override = ExtResource("3_ooi0e")
-
-[node name="CircleSprite" parent="Selected/PlatesCounter_Visual2" index="1"]
-visible = false
-
 [editable path="PlatesCounter_Visual"]
-[editable path="Selected"]

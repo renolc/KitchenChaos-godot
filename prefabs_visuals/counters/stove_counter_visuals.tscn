@@ -1,33 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bh53cwhs3pjtb"]
+[gd_scene load_steps=3 format=3 uid="uid://frbw3plsomur"]
 
 [ext_resource type="Script" path="res://scripts/counters/stove_counter_visual.gd" id="1_mos0m"]
 [ext_resource type="PackedScene" uid="uid://b7dv56kjsbsj1" path="res://meshes/counters/StoveCounter_Visual.glb" id="2_bdej0"]
-[ext_resource type="Material" uid="uid://btppu55du1ymn" path="res://materials/counter_selected.tres" id="3_rpkvv"]
 
-[node name="StoveCounterVisuals" type="Node3D"]
+[node name="StoveCounterVisuals" type="Node3D" node_paths=PackedStringArray("mesh_array")]
 script = ExtResource("1_mos0m")
+mesh_array = [NodePath("StoveCounter_Visual/StoveCounter_Visual2/Counter"), NodePath("StoveCounter_Visual/StoveCounter_Visual2/Stove"), NodePath("StoveCounter_Visual/StoveCounter_Visual2/Frying Pan")]
 
 [node name="StoveCounter_Visual" parent="." instance=ExtResource("2_bdej0")]
 
 [node name="StoveOnVisual" parent="StoveCounter_Visual/StoveCounter_Visual2" index="3"]
 visible = false
 
-[node name="Selected" parent="." instance=ExtResource("2_bdej0")]
-transform = Transform3D(1.01, 0, 0, 0, 1.01, 0, 0, 0, 1.01, 0, 0, 0)
-visible = false
-
-[node name="Counter" parent="Selected/StoveCounter_Visual2" index="0"]
-material_override = ExtResource("3_rpkvv")
-
-[node name="Stove" parent="Selected/StoveCounter_Visual2" index="1"]
-material_override = ExtResource("3_rpkvv")
-
-[node name="Frying Pan" parent="Selected/StoveCounter_Visual2" index="2"]
-material_override = ExtResource("3_rpkvv")
-
-[node name="StoveOnVisual" parent="Selected/StoveCounter_Visual2" index="3"]
-visible = false
-material_override = ExtResource("3_rpkvv")
-
 [editable path="StoveCounter_Visual"]
-[editable path="Selected"]
