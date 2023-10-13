@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://5dvel05si6xs"]
 
 [ext_resource type="PackedScene" uid="uid://d1mw6nt0p34d7" path="res://prefabs/counters/_base_counter.tscn" id="1_cc8m4"]
-[ext_resource type="Script" path="res://scripts/counters/clear_counter.gd" id="2_046rp"]
+[ext_resource type="Script" path="res://scripts/counters/delivery_counter.gd" id="2_132ra"]
 [ext_resource type="PackedScene" uid="uid://xse052q073n6" path="res://prefabs_visuals/counters/delivery_counter_visuals.tscn" id="3_uxhss"]
 
 [node name="DeliveryCounter" instance=ExtResource("1_cc8m4")]
-script = ExtResource("2_046rp")
+script = ExtResource("2_132ra")
 
 [node name="DeliveryCounterVisuals" parent="." index="2" instance=ExtResource("3_uxhss")]
