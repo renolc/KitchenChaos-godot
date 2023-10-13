@@ -7,5 +7,6 @@
 [node name="Cheesecut" type="Node3D"]
 script = ExtResource("1_4fyll")
 sprite = ExtResource("2_53rlu")
+can_be_plated = true
 
 [node name="CheeseSlices_Visual" parent="." instance=ExtResource("3_ag64a")]

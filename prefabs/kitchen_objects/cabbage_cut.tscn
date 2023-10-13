@@ -7,5 +7,6 @@
 [node name="CabbageCut" type="Node3D"]
 script = ExtResource("1_wc16p")
 sprite = ExtResource("2_ft5ef")
+can_be_plated = true
 
 [node name="CabbageSliced_Visual" parent="." instance=ExtResource("3_3kp1q")]

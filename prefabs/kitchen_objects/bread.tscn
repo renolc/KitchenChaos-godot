@@ -1,11 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://dms8e775rak5s"]
 
-[ext_resource type="Script" path="res://scripts/kitchen_objects/kitchen_object.gd" id="1_xrc6c"]
+[ext_resource type="Script" path="res://scripts/kitchen_objects/kitchen_object.gd" id="1_b3hn5"]
 [ext_resource type="PackedScene" uid="uid://dif0ycslfos1l" path="res://meshes/kitchen_objects/Bread_Visual.glb" id="2_g1s3s"]
 [ext_resource type="Texture2D" uid="uid://djy02fsidresb" path="res://textures/icons/Bread.png" id="2_xhg5f"]
 
 [node name="Bread" type="Node3D"]
-script = ExtResource("1_xrc6c")
+script = ExtResource("1_b3hn5")
 sprite = ExtResource("2_xhg5f")
+can_be_plated = true
 
 [node name="Bread_Visual" parent="." instance=ExtResource("2_g1s3s")]

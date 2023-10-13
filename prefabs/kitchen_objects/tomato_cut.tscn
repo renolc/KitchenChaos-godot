@@ -7,5 +7,6 @@
 [node name="TomatoCut" type="Node3D"]
 script = ExtResource("1_ftvcw")
 sprite = ExtResource("2_vttba")
+can_be_plated = true
 
 [node name="TomatoSlices_Visual" parent="." instance=ExtResource("3_tvwas")]
