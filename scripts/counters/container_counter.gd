@@ -3,6 +3,8 @@ class_name ContainerCounter
 extends BaseCounter
 
 @export var scene: PackedScene:
+	# used to update the editor in realtime so we can
+	# see the counter type without having to run the game
 	set(v):
 		scene = v
 		if !Engine.is_editor_hint() || !visual: return
