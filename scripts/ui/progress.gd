@@ -3,7 +3,7 @@ extends Sprite3D
 @onready var viewport: SubViewport = $SubViewport
 @onready var bar: TextureProgressBar = $SubViewport/TextureProgressBar
 
-func _ready() -> void:
+func _ready():
 	visible = false
 
 	# there is currently a bug where viewport textures don't stick when

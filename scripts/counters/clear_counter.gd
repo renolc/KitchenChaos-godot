@@ -2,7 +2,7 @@ extends BaseCounter
 
 func interact():
 	if !ko:
-		if Player.Instance.has_kitchen_object():
+		if Player.Instance.ko:
 			Player.Instance.ko.holder = self
 	else:
 		ko.holder = Player.Instance

@@ -10,7 +10,7 @@ const MAX_PLATES = 4
 var plate_count := 0
 
 func interact():
-	if plate_count > 0 && !Player.Instance.has_kitchen_object():
+	if plate_count > 0 && !Player.Instance.ko:
 		plate_count -= 1
 		var plate := plate_scene.instantiate() as KitchenObject
 		plate.holder = Player.Instance

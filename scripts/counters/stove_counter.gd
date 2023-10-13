@@ -9,11 +9,11 @@ func _process(_delta):
 		cook_progress_update.emit(1 - (fry_timer.time_left / ko.cook_time))
 
 func interact():
-	if !has_kitchen_object():
-		if Player.Instance.has_kitchen_object() && Player.Instance.ko.cooks_into:
+	if !ko:
+		if Player.Instance.ko && Player.Instance.ko.cooks_into:
 			Player.Instance.ko.holder = self
 			start_cooking()
-	elif !Player.Instance.has_kitchen_object():
+	elif !Player.Instance.ko:
 		ko.holder = Player.Instance
 		cook_progress_update.emit(0)
 		if fry_timer && fry_timer.time_left > 0:

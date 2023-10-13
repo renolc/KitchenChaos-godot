@@ -13,11 +13,10 @@ var holder:
 		if !new_holder.has_method("set_kitchen_object"): return
 
 		var plated = false
-		if new_holder.has_kitchen_object():
+		if new_holder.ko:
 			if !new_holder.ko.is_plate(): return
-
 			if !(new_holder.ko as Plate).try_add_ingredient(self): return
-			else: plated = true
+			plated = true
 
 		if holder:
 			holder.remove_kitchen_object()

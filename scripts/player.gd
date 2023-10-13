@@ -55,6 +55,3 @@ func remove_kitchen_object():
 func set_kitchen_object(v: KitchenObject):
 	ko = v
 	hold_point.add_child(ko)
-
-func has_kitchen_object() -> bool:
-	return !!ko

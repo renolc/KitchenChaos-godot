@@ -1,5 +1,5 @@
 extends BaseCounter
 
 func interact():
-	if Player.Instance.has_kitchen_object():
+	if Player.Instance.ko:
 		Player.Instance.ko.queue_free()

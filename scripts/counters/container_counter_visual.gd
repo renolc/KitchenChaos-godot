@@ -5,7 +5,7 @@ extends CounterVisual
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite3D = %Sprite3D
 
-func _ready() -> void:
+func _ready():
 	if !Engine.is_editor_hint(): super()
 
 	var parent := get_parent() as ContainerCounter

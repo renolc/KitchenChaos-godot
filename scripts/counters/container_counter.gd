@@ -13,7 +13,7 @@ extends BaseCounter
 signal player_grabbed_object
 
 func interact():
-	if Player.Instance.has_kitchen_object(): return
+	if Player.Instance.ko: return
 
 	var new_ko := scene.instantiate() as KitchenObject
 	new_ko.holder = Player.Instance
