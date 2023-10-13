@@ -48,8 +48,9 @@ func handle_interact():
 	if Input.is_action_just_pressed("interact_alt") && selected_counter.has_method("interact_alt"):
 		selected_counter.interact_alt()
 
-func remove_kitchen_object():
+func remove_kitchen_object(del_ko: bool = false):
 	hold_point.remove_child(ko)
+	if del_ko: ko.queue_free()
 	ko = null
 
 func set_kitchen_object(v: KitchenObject):
