@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://cakx0ydsoyort"]
 
-[ext_resource type="Script" path="res://scripts/kitchen_object.gd" id="1_jmg0y"]
-[ext_resource type="Texture2D" uid="uid://b0h6ux84t07lg" path="res://textures/icons/CheeseBlock.png" id="2_i62io"]
+[ext_resource type="Script" path="res://scripts/kitchen_objects/kitchen_object.gd" id="1_4fyll"]
+[ext_resource type="Texture2D" uid="uid://cj4t7lsnwviks" path="res://textures/icons/CheeseSlice.png" id="2_53rlu"]
 [ext_resource type="PackedScene" uid="uid://ddx03i4n7igqv" path="res://meshes/kitchen_objects/CheeseSlices_Visual.glb" id="3_ag64a"]
 
 [node name="Cheesecut" type="Node3D"]
-script = ExtResource("1_jmg0y")
-sprite = ExtResource("2_i62io")
+script = ExtResource("1_4fyll")
+sprite = ExtResource("2_53rlu")
 
 [node name="CheeseSlices_Visual" parent="." instance=ExtResource("3_ag64a")]

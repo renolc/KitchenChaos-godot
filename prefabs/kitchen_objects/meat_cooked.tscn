@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cecoonwh7xyd5"]
 
-[ext_resource type="Script" path="res://scripts/kitchen_object.gd" id="1_njwgg"]
+[ext_resource type="Script" path="res://scripts/kitchen_objects/kitchen_object.gd" id="1_njwgg"]
 [ext_resource type="Texture2D" uid="uid://d4bqa5jodjatq" path="res://textures/icons/MeatPattyCooked.png" id="2_2csrs"]
 [ext_resource type="PackedScene" uid="uid://cjckcl8neeito" path="res://prefabs/kitchen_objects/meat_burned.tscn" id="3_ndidl"]
 [ext_resource type="PackedScene" uid="uid://c2i4e7jlhpb5g" path="res://meshes/kitchen_objects/MeatPattyCooked_Visual.glb" id="3_pq87p"]

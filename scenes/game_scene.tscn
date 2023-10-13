@@ -128,6 +128,3 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.5, 0
 
 [node name="PlatesCounter" parent="Counters" instance=ExtResource("13_mnk6k")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.5, 0, 0.5)
-
-[connection signal="plate_removed" from="Counters/PlatesCounter" to="Counters/PlatesCounter/PlatesCounterVisuals" method="plate_removed" flags=18]
-[connection signal="plate_spawned" from="Counters/PlatesCounter" to="Counters/PlatesCounter/PlatesCounterVisuals" method="plate_spawned" flags=18]

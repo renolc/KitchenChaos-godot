@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c2q0hnrchcbxs"]
 
 [ext_resource type="PackedScene" uid="uid://jjlsrtgvkhry" path="res://meshes/kitchen_objects/Tomato_Visual.glb" id="1_5u7s2"]
-[ext_resource type="Script" path="res://scripts/kitchen_object.gd" id="1_lf3kc"]
+[ext_resource type="Script" path="res://scripts/kitchen_objects/kitchen_object.gd" id="1_lf3kc"]
 [ext_resource type="Texture2D" uid="uid://cs06s67mr3rq7" path="res://textures/icons/Tomato.png" id="2_8tto2"]
 [ext_resource type="PackedScene" uid="uid://6mivindikk7i" path="res://prefabs/kitchen_objects/tomato_cut.tscn" id="3_j8etk"]
 

@@ -1,11 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c63ihihvs6gev"]
+[gd_scene load_steps=3 format=3 uid="uid://c63ihihvs6gev"]
 
-[ext_resource type="Script" path="res://scripts/kitchen_object.gd" id="1_dcidp"]
-[ext_resource type="Texture2D" uid="uid://d361g4e3ds31f" path="res://textures/icons/Plate.png" id="2_oefsu"]
+[ext_resource type="Script" path="res://scripts/kitchen_objects/plate_kitchen_object.gd" id="1_1q23g"]
 [ext_resource type="PackedScene" uid="uid://bcwums642t6y0" path="res://meshes/kitchen_objects/Plate_Visual.glb" id="3_5vlkb"]
 
 [node name="Plate" type="Node3D"]
-script = ExtResource("1_dcidp")
-sprite = ExtResource("2_oefsu")
+script = ExtResource("1_1q23g")
 
 [node name="Plate_Visual" parent="." instance=ExtResource("3_5vlkb")]

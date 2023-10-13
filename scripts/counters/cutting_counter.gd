@@ -7,7 +7,7 @@ signal cut_performed
 var cutting_progress := 0:
 	set(v):
 		cutting_progress = v
-		var progress = 0 if !ko else float(cutting_progress) / ko.cuts_required
+		var progress = 0.0 if !ko else float(cutting_progress) / ko.cuts_required
 		cut_progress_update.emit(progress)
 
 func interact():

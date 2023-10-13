@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://buap5yfna0b0"]
 
-[ext_resource type="Script" path="res://scripts/kitchen_object.gd" id="1_66bbf"]
+[ext_resource type="Script" path="res://scripts/kitchen_objects/kitchen_object.gd" id="1_66bbf"]
 [ext_resource type="PackedScene" uid="uid://8hwt1oedrmdy" path="res://meshes/kitchen_objects/Cabbage_Visual.glb" id="1_c2kgr"]
 [ext_resource type="Texture2D" uid="uid://dxjf6l2wv76ha" path="res://textures/icons/Cabbage.png" id="2_vbka2"]
 [ext_resource type="PackedScene" uid="uid://c5pbl5ysdtudd" path="res://prefabs/kitchen_objects/cabbage_cut.tscn" id="3_spvp7"]
