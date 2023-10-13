@@ -21,5 +21,4 @@ func _ready():
 		name_to_node[i].visible = false
 
 func ingredient_added(ko: KitchenObject):
-	print(ko.name)
 	name_to_node[ko.name].visible = true

@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://c63ihihvs6gev"]
+[gd_scene load_steps=10 format=3 uid="uid://c63ihihvs6gev"]
 
 [ext_resource type="Script" path="res://scripts/kitchen_objects/plate_kitchen_object.gd" id="1_1q23g"]
 [ext_resource type="PackedScene" uid="uid://bgsjhvolpo2ko" path="res://prefabs_visuals/kitchen_objects/plate_visual.tscn" id="2_7erjt"]
 [ext_resource type="PackedScene" uid="uid://bruyupk8mh3dh" path="res://prefabs_visuals/kitchen_objects/plate_complete_visual.tscn" id="3_6cl1y"]
+[ext_resource type="Script" path="res://scripts/ui/plate_icons_list.gd" id="4_sxskf"]
+[ext_resource type="Texture2D" uid="uid://cj4t7lsnwviks" path="res://textures/icons/CheeseSlice.png" id="5_ypmiv"]
+[ext_resource type="Texture2D" uid="uid://djy02fsidresb" path="res://textures/icons/Bread.png" id="6_h2nim"]
+[ext_resource type="Texture2D" uid="uid://dcrh1vxuq6akw" path="res://textures/icons/CabbageSlices.png" id="7_euax1"]
+[ext_resource type="Texture2D" uid="uid://d4bqa5jodjatq" path="res://textures/icons/MeatPattyCooked.png" id="8_7hxdl"]
+[ext_resource type="Texture2D" uid="uid://bt8urlvk4ory0" path="res://textures/icons/TomatoSlice.png" id="9_vo3ci"]
 
 [node name="Plate" type="Node3D"]
 script = ExtResource("1_1q23g")
@@ -11,4 +17,64 @@ script = ExtResource("1_1q23g")
 
 [node name="PlateCompleteVisual" parent="." instance=ExtResource("3_6cl1y")]
 
+[node name="IngredientsIcons" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+billboard = 1
+script = ExtResource("4_sxskf")
+
+[node name="SubViewport" type="SubViewport" parent="IngredientsIcons"]
+transparent_bg = true
+size = Vector2i(119, 75)
+
+[node name="GridContainer" type="GridContainer" parent="IngredientsIcons/SubViewport"]
+offset_right = 766.0
+offset_bottom = 432.0
+columns = 3
+
+[node name="TextureRect" type="TextureRect" parent="IngredientsIcons/SubViewport/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(37, 37)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_h2nim")
+expand_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="IngredientsIcons/SubViewport/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(37, 37)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_7hxdl")
+expand_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="IngredientsIcons/SubViewport/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(37, 37)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_ypmiv")
+expand_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="IngredientsIcons/SubViewport/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(37, 37)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_euax1")
+expand_mode = 5
+
+[node name="TextureRect5" type="TextureRect" parent="IngredientsIcons/SubViewport/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(37, 37)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("9_vo3ci")
+expand_mode = 5
+
 [connection signal="ingredient_added" from="." to="PlateCompleteVisual" method="ingredient_added"]
+[connection signal="ingredient_added" from="." to="IngredientsIcons" method="ingredient_added"]
