@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://1usu4t1qcauj"]
+
+[ext_resource type="Texture2D" uid="uid://c1mupdacpcef6" path="res://textures/White_Circle.png" id="1_s7nwk"]
+[ext_resource type="Script" path="res://scripts/ui/ingredient_icon.gd" id="2_agttw"]
+[ext_resource type="Texture2D" uid="uid://djy02fsidresb" path="res://textures/icons/Bread.png" id="2_gdit8"]
+
+[node name="IngredientIcon" type="TextureRect"]
+custom_minimum_size = Vector2(37, 37)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_s7nwk")
+expand_mode = 5
+script = ExtResource("2_agttw")
+
+[node name="IconRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_gdit8")
+expand_mode = 5
