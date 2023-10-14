@@ -10,15 +10,12 @@ extends Node3D
 
 var holder
 
-func is_plate() -> bool:
-	return name == "Plate"
-
 func try_set_holder(new_holder) -> bool:
 	if !new_holder.has_method("set_kitchen_object"): return false
 
 	var plated = false
 	if new_holder.ko:
-		if !new_holder.ko.is_plate(): return false
+		if !new_holder.ko is Plate: return false
 		if !(new_holder.ko as Plate).try_add_ingredient(self): return false
 		plated = true
 
