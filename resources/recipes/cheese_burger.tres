@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="RecipeResource" load_steps=2 format=3 uid="uid://cb8hv6wep0h73"]
-
-[ext_resource type="Script" path="res://resources/recipes/receipe_resource.gd" id="3_iy2t0"]
-
-[resource]
-script = ExtResource("3_iy2t0")
-name = "Cheese Burger"
-ingredients = Array[String](["Bread", "MeatCooked", "CheeseCut"])

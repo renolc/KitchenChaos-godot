@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="RecipeResource" load_steps=2 format=3 uid="uid://cegws5dfp23ed"]
+[gd_resource type="Resource" script_class="RecipeResource" load_steps=4 format=3 uid="uid://cegws5dfp23ed"]
 
 [ext_resource type="Script" path="res://resources/recipes/receipe_resource.gd" id="1_mwi4d"]
+[ext_resource type="PackedScene" uid="uid://dms8e775rak5s" path="res://prefabs/kitchen_objects/bread.tscn" id="1_o222n"]
+[ext_resource type="PackedScene" uid="uid://cecoonwh7xyd5" path="res://prefabs/kitchen_objects/meat_cooked.tscn" id="2_3yed2"]
 
 [resource]
 script = ExtResource("1_mwi4d")
 name = "Burger"
-ingredients = Array[String](["Bread", "MeatCooked"])
+ingredients = Array[PackedScene]([ExtResource("1_o222n"), ExtResource("2_3yed2")])

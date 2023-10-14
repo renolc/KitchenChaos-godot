@@ -24,17 +24,15 @@ func deliver_recipe(plate: Plate):
 	for recipe in waiting_recipes:
 		if recipe.ingredients.size() != plate.added_ingredients.size(): continue
 		if recipe.ingredients.all(func(ingredient):
-			return plate.added_ingredients.any(func(i): return i.name == ingredient)
+			return plate.added_ingredients.any(
+				func(i): return typeof(i) == typeof(ingredient)
+			)
 		):
 			matching_recipe = recipe
 			break
-
 
 	if matching_recipe:
 		print("match: ", matching_recipe.name)
 		waiting_recipes.erase(matching_recipe)
 	else:
 		print("no match")
-
-
-
