@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RecipeResource" load_steps=7 format=3 uid="uid://ba1iqu1jqh5xy"]
+
+[ext_resource type="PackedScene" uid="uid://dms8e775rak5s" path="res://prefabs/kitchen_objects/bread.tscn" id="1_vi4bf"]
+[ext_resource type="PackedScene" uid="uid://cecoonwh7xyd5" path="res://prefabs/kitchen_objects/meat_cooked.tscn" id="2_1y3il"]
+[ext_resource type="PackedScene" uid="uid://cakx0ydsoyort" path="res://prefabs/kitchen_objects/cheese_cut.tscn" id="3_6yci2"]
+[ext_resource type="PackedScene" uid="uid://c5pbl5ysdtudd" path="res://prefabs/kitchen_objects/cabbage_cut.tscn" id="4_pu3n4"]
+[ext_resource type="Script" path="res://resources/recipes/receipe_resource.gd" id="4_ru4ep"]
+[ext_resource type="PackedScene" uid="uid://6mivindikk7i" path="res://prefabs/kitchen_objects/tomato_cut.tscn" id="5_dgk7o"]
+
+[resource]
+script = ExtResource("4_ru4ep")
+name = "Everything Burger"
+ingredients = Array[PackedScene]([ExtResource("1_vi4bf"), ExtResource("2_1y3il"), ExtResource("3_6yci2"), ExtResource("4_pu3n4"), ExtResource("5_dgk7o")])

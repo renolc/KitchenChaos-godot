@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c5pywpg28515m"]
+[gd_scene load_steps=23 format=3 uid="uid://c5pywpg28515m"]
 
 [ext_resource type="Material" uid="uid://sv4vq030f0j8" path="res://materials/floor.tres" id="1_51bdx"]
 [ext_resource type="PackedScene" uid="uid://cxcjdiex5bmyl" path="res://prefabs/player.tscn" id="2_kc4gf"]
@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://5dvel05si6xs" path="res://prefabs/counters/delivery_counter.tscn" id="14_exlrd"]
 [ext_resource type="Script" path="res://scripts/managers/delivery_manager.gd" id="15_xpbhf"]
 [ext_resource type="Resource" uid="uid://cegws5dfp23ed" path="res://resources/recipes/burger.tres" id="16_v1nak"]
+[ext_resource type="Resource" uid="uid://cuyxu8clbp16g" path="res://resources/recipes/cheese_burger.tres" id="17_a4lei"]
+[ext_resource type="Resource" uid="uid://dc1ol8eyf167d" path="res://resources/recipes/salad.tres" id="19_dopkd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_anjpy"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -163,7 +165,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.5, 0
 
 [node name="DeliveryManager" type="Node" parent="Managers"]
 script = ExtResource("15_xpbhf")
-recipes = Array[Resource("res://resources/recipes/receipe_resource.gd")]([ExtResource("16_v1nak")])
+recipes = Array[Resource("res://resources/recipes/receipe_resource.gd")]([ExtResource("16_v1nak"), ExtResource("17_a4lei"), ExtResource("19_dopkd"), null])
 
 [node name="NewOrderTimer" type="Timer" parent="Managers/DeliveryManager"]
 wait_time = 4.0

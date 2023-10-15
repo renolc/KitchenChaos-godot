@@ -25,7 +25,7 @@ func deliver_recipe(plate: Plate):
 		if recipe.ingredients.size() != plate.added_ingredients.size(): continue
 		if recipe.ingredients.all(func(ingredient):
 			return plate.added_ingredients.any(
-				func(i): return typeof(i) == typeof(ingredient)
+				func(i): return i.name == recipe.ingredient_name(ingredient)
 			)
 		):
 			matching_recipe = recipe

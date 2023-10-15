@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RecipeResource" load_steps=5 format=3 uid="uid://cuyxu8clbp16g"]
+
+[ext_resource type="PackedScene" uid="uid://dms8e775rak5s" path="res://prefabs/kitchen_objects/bread.tscn" id="1_qdrq2"]
+[ext_resource type="PackedScene" uid="uid://cecoonwh7xyd5" path="res://prefabs/kitchen_objects/meat_cooked.tscn" id="2_oflo3"]
+[ext_resource type="Script" path="res://resources/recipes/receipe_resource.gd" id="3_ahf4w"]
+[ext_resource type="PackedScene" uid="uid://cakx0ydsoyort" path="res://prefabs/kitchen_objects/cheese_cut.tscn" id="3_uhdr6"]
+
+[resource]
+script = ExtResource("3_ahf4w")
+name = "Cheese Burger"
+ingredients = Array[PackedScene]([ExtResource("1_qdrq2"), ExtResource("2_oflo3"), ExtResource("3_uhdr6")])
