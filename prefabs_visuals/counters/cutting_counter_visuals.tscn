@@ -1,8 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://cs8s7vh7r077i"]
+[gd_scene load_steps=9 format=3 uid="uid://cs8s7vh7r077i"]
 
 [ext_resource type="Script" path="res://scripts/counters/cutting_counter_visual.gd" id="1_dp1x5"]
 [ext_resource type="PackedScene" uid="uid://bjcyy7e5fbw3t" path="res://meshes/counters/CuttingCounter_Visual.glb" id="2_rnwxx"]
+[ext_resource type="Shader" path="res://shaders/knife_trail.gdshader" id="3_e5mup"]
 [ext_resource type="Texture2D" uid="uid://gvwancfadsio" path="res://textures/white_triangle.png" id="3_s1gf5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bynpn"]
+render_priority = 0
+shader = ExtResource("3_e5mup")
+shader_parameter/Texture = ExtResource("3_s1gf5")
 
 [sub_resource type="Animation" id="Animation_mfkl6"]
 length = 0.001
@@ -150,6 +156,7 @@ transform = Transform3D(-7.09518e-06, 0, -1.96, 0, 1.96, 0, 1.96, 0, -7.09518e-0
 [node name="Sprite3D" type="Sprite3D" parent="CuttingCounter_Visual/CuttingCounter_Visual2/Knife/Trail" index="0"]
 transform = Transform3D(0, 1.79383e-07, 8.57589e-07, 0, -1.188, -1.25172e-07, 0, 1.50206e-07, -0.99, -0.001, 0.063, -0.003)
 visible = false
+material_override = SubResource("ShaderMaterial_bynpn")
 cast_shadow = 0
 pixel_size = 0.004
 texture = ExtResource("3_s1gf5")
