@@ -15,6 +15,10 @@ run/main_scene="res://scenes/game_scene.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [importer_defaults]
 
 scene={
