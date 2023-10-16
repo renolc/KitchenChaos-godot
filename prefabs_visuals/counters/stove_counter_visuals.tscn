@@ -1,7 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://frbw3plsomur"]
+[gd_scene load_steps=6 format=3 uid="uid://frbw3plsomur"]
 
 [ext_resource type="Script" path="res://scripts/counters/stove_counter_visual.gd" id="1_mos0m"]
 [ext_resource type="PackedScene" uid="uid://b7dv56kjsbsj1" path="res://meshes/counters/StoveCounter_Visual.glb" id="2_bdej0"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_en12b"]
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, -15, 0)
+initial_velocity_min = 4.0
+initial_velocity_max = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8u2g0"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.141176)
+
+[sub_resource type="SphereMesh" id="SphereMesh_jk56j"]
+material = SubResource("StandardMaterial3D_8u2g0")
+radius = 0.05
+height = 0.1
+radial_segments = 4
+rings = 1
 
 [node name="StoveCounterVisuals" type="Node3D" node_paths=PackedStringArray("mesh_array")]
 script = ExtResource("1_mos0m")
@@ -11,5 +28,13 @@ mesh_array = [NodePath("StoveCounter_Visual/StoveCounter_Visual2/Counter"), Node
 
 [node name="StoveOnVisual" parent="StoveCounter_Visual/StoveCounter_Visual2" index="3"]
 visible = false
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="StoveCounter_Visual"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0611021, 1.26816, 0)
+emitting = false
+amount = 10
+lifetime = 0.35
+process_material = SubResource("ParticleProcessMaterial_en12b")
+draw_pass_1 = SubResource("SphereMesh_jk56j")
 
 [editable path="StoveCounter_Visual"]
