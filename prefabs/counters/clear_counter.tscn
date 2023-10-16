@@ -1,10 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3iaod6id1ifx"]
+[gd_scene load_steps=8 format=3 uid="uid://c3iaod6id1ifx"]
 
 [ext_resource type="PackedScene" uid="uid://d1mw6nt0p34d7" path="res://prefabs/counters/_base_counter.tscn" id="1_3ces7"]
 [ext_resource type="Script" path="res://scripts/counters/clear_counter.gd" id="1_bj85s"]
 [ext_resource type="PackedScene" uid="uid://tbdbdglyfad4" path="res://prefabs_visuals/counters/clear_counter_visuals.tscn" id="2_peudi"]
+[ext_resource type="PackedScene" uid="uid://wm4gbjtmydi5" path="res://prefabs/managers/sfx_manager.tscn" id="4_13elo"]
+[ext_resource type="AudioStream" uid="uid://c5plyaph2ikp0" path="res://sounds/sfx/SFX_object_drop01.wav" id="5_rxu1i"]
+[ext_resource type="AudioStream" uid="uid://boa1chv8sggs1" path="res://sounds/sfx/SFX_object_drop02.wav" id="6_vw6ru"]
+[ext_resource type="AudioStream" uid="uid://cmltt7p658mun" path="res://sounds/sfx/SFX_object_drop03.wav" id="7_gdk5i"]
 
 [node name="ClearCounter" instance=ExtResource("1_3ces7")]
 script = ExtResource("1_bj85s")
 
 [node name="ClearCounterVisuals" parent="." index="2" instance=ExtResource("2_peudi")]
+
+[node name="DropSfxManager" parent="." index="3" instance=ExtResource("4_13elo")]
+sfxs = Array[AudioStream]([ExtResource("5_rxu1i"), ExtResource("6_vw6ru"), ExtResource("7_gdk5i")])
+
+[connection signal="item_dropped" from="." to="DropSfxManager" method="play_random"]

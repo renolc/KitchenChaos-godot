@@ -2,6 +2,10 @@ class_name DeliveryManager
 extends Node
 
 @export var recipes: Array[RecipeResource]
+@export var test: Dictionary
+
+@onready var fail_sfx: SfxManager = $FailSfxManager
+@onready var success_sfx: SfxManager = $SuccessSfxManager
 
 signal new_order_added(recipe)
 signal order_delivered(recipe)
@@ -38,5 +42,6 @@ func deliver_recipe(plate: Plate):
 	if matching_recipe:
 		waiting_recipes.erase(matching_recipe)
 		order_delivered.emit(matching_recipe)
+		success_sfx.play_random()
 	else:
-		print("no match")
+		fail_sfx.play_random()

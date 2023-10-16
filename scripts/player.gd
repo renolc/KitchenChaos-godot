@@ -8,6 +8,7 @@ extends CharacterBody3D
 @onready var hold_point := $HoldPoint
 
 signal selected_counter_changed(counter)
+signal item_picked_up
 
 static var Instance: Player
 
@@ -56,3 +57,4 @@ func remove_kitchen_object(del_ko: bool = false):
 func set_kitchen_object(v: KitchenObject):
 	ko = v
 	hold_point.add_child(ko)
+	item_picked_up.emit()

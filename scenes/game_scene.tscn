@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://c5pywpg28515m"]
+[gd_scene load_steps=34 format=3 uid="uid://c5pywpg28515m"]
 
 [ext_resource type="Material" uid="uid://sv4vq030f0j8" path="res://materials/floor.tres" id="1_51bdx"]
 [ext_resource type="PackedScene" uid="uid://cxcjdiex5bmyl" path="res://prefabs/player.tscn" id="2_kc4gf"]
@@ -21,7 +21,12 @@
 [ext_resource type="Resource" uid="uid://cuyxu8clbp16g" path="res://resources/recipes/cheese_burger.tres" id="17_a4lei"]
 [ext_resource type="Resource" uid="uid://dc1ol8eyf167d" path="res://resources/recipes/salad.tres" id="19_dopkd"]
 [ext_resource type="Resource" uid="uid://ba1iqu1jqh5xy" path="res://resources/recipes/everything_burger.tres" id="19_m81wa"]
+[ext_resource type="PackedScene" uid="uid://wm4gbjtmydi5" path="res://prefabs/managers/sfx_manager.tscn" id="22_awtfp"]
 [ext_resource type="AudioStream" uid="uid://c5r2lf7bb6csw" path="res://sounds/music/Music.wav" id="22_d22mu"]
+[ext_resource type="AudioStream" uid="uid://dliil8pxs8h4h" path="res://sounds/sfx/SFX_delivery_fail01.wav" id="23_p6155"]
+[ext_resource type="AudioStream" uid="uid://bceescgjfggnf" path="res://sounds/sfx/SFX_delivery_fail02.wav" id="24_cnlu8"]
+[ext_resource type="AudioStream" uid="uid://ckikt8lhwve76" path="res://sounds/sfx/SFX_delivery_success01.wav" id="25_gscs2"]
+[ext_resource type="AudioStream" uid="uid://dlvq3qybvrmcl" path="res://sounds/sfx/SFX_delivery_success02.wav" id="26_qixg7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_anjpy"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -214,11 +219,21 @@ recipes = Array[Resource("res://resources/recipes/receipe_resource.gd")]([ExtRes
 wait_time = 4.0
 autostart = true
 
+[node name="FailSfxManager" parent="Managers/DeliveryManager" instance=ExtResource("22_awtfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -2.5)
+sfxs = Array[AudioStream]([ExtResource("23_p6155"), ExtResource("24_cnlu8")])
+
+[node name="SuccessSfxManager" parent="Managers/DeliveryManager" instance=ExtResource("22_awtfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -2.5)
+sfxs = Array[AudioStream]([ExtResource("25_gscs2"), ExtResource("26_qixg7")])
+
 [node name="MusicManager" type="AudioStreamPlayer" parent="Managers"]
 stream = ExtResource("22_d22mu")
 volume_db = -5.0
 autoplay = true
 
+[connection signal="cut_performed" from="Counters/CuttingCounter" to="Counters/CuttingCounter/CuttingCounterVisuals" method="cut_performed" flags=18]
+[connection signal="cut_performed" from="Counters/CuttingCounter2" to="Counters/CuttingCounter2/CuttingCounterVisuals" method="cut_performed" flags=18]
 [connection signal="new_order_added" from="Managers/DeliveryManager" to="CanvasLayer/DeliveryManagerUI" method="new_order_added"]
 [connection signal="order_delivered" from="Managers/DeliveryManager" to="CanvasLayer/DeliveryManagerUI" method="order_delivered"]
 [connection signal="timeout" from="Managers/DeliveryManager/NewOrderTimer" to="Managers/DeliveryManager" method="add_new_order"]

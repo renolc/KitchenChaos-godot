@@ -1,5 +1,7 @@
 extends BaseCounter
 
+signal item_dropped
+
 func interact():
 	if !ko:
 		if Player.Instance.ko:
@@ -10,3 +12,7 @@ func interact():
 				Player.Instance.remove_kitchen_object()
 		else:
 			ko.try_set_holder(Player.Instance)
+
+func set_kitchen_object(v: KitchenObject):
+	super(v)
+	item_dropped.emit()
