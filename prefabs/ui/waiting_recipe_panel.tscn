@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://con1lltlfkfsy"]
+
+[ext_resource type="Script" path="res://scripts/ui/waiting_recipe_panel.gd" id="1_q4la0"]
+[ext_resource type="PackedScene" uid="uid://hlykm45ba710" path="res://prefabs/ui/recipe_icon.tscn" id="2_3dt62"]
+
+[node name="WaitingRecipePanel" type="Panel"]
+custom_minimum_size = Vector2(125, 50)
+script = ExtResource("1_q4la0")
+recipe_icon = ExtResource("2_3dt62")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 1
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 44.0
+offset_bottom = 23.0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 12
+text = "Recipe"
+
+[node name="IconsList" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+offset_left = 10.0
+offset_top = 24.0
+offset_right = 114.0
+offset_bottom = 44.0
+theme_override_constants/separation = 1

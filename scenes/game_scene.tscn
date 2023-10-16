@@ -1,8 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://c5pywpg28515m"]
+[gd_scene load_steps=28 format=3 uid="uid://c5pywpg28515m"]
 
 [ext_resource type="Material" uid="uid://sv4vq030f0j8" path="res://materials/floor.tres" id="1_51bdx"]
 [ext_resource type="PackedScene" uid="uid://cxcjdiex5bmyl" path="res://prefabs/player.tscn" id="2_kc4gf"]
+[ext_resource type="Script" path="res://scripts/ui/delivery_manager_ui.gd" id="3_1vpsk"]
 [ext_resource type="PackedScene" uid="uid://c3iaod6id1ifx" path="res://prefabs/counters/clear_counter.tscn" id="3_rvysv"]
+[ext_resource type="PackedScene" uid="uid://con1lltlfkfsy" path="res://prefabs/ui/waiting_recipe_panel.tscn" id="4_0t0ya"]
 [ext_resource type="PackedScene" uid="uid://d2fheokudfngf" path="res://prefabs/kitchen_objects/cheese.tscn" id="5_6da6e"]
 [ext_resource type="PackedScene" uid="uid://dms8e775rak5s" path="res://prefabs/kitchen_objects/bread.tscn" id="5_074ul"]
 [ext_resource type="PackedScene" uid="uid://ckiytt65f7a3j" path="res://prefabs/counters/container_counter.tscn" id="6_5jfhd"]
@@ -18,6 +20,7 @@
 [ext_resource type="Resource" uid="uid://cegws5dfp23ed" path="res://resources/recipes/burger.tres" id="16_v1nak"]
 [ext_resource type="Resource" uid="uid://cuyxu8clbp16g" path="res://resources/recipes/cheese_burger.tres" id="17_a4lei"]
 [ext_resource type="Resource" uid="uid://dc1ol8eyf167d" path="res://resources/recipes/salad.tres" id="19_dopkd"]
+[ext_resource type="Resource" uid="uid://ba1iqu1jqh5xy" path="res://resources/recipes/everything_burger.tres" id="19_m81wa"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_anjpy"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -45,6 +48,16 @@ lightmap_size_hint = Vector2i(127, 127)
 material = ExtResource("1_51bdx")
 size = Vector2(25, 25)
 
+[sub_resource type="FontVariation" id="FontVariation_7etkn"]
+variation_embolden = 0.3
+
+[sub_resource type="LabelSettings" id="LabelSettings_7mrcb"]
+font = SubResource("FontVariation_7etkn")
+font_size = 20
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.560784)
+shadow_offset = Vector2(0.5, 1)
+
 [node name="GameScene" type="Node"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -63,6 +76,35 @@ transform = Transform3D(1, 0, 0, 0, 0.694658, 0.71934, 0, -0.71934, 0.694658, 0.
 fov = 20.0
 
 [node name="Player" parent="." instance=ExtResource("2_kc4gf")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DeliveryManagerUI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_1vpsk")
+recipe_panel_scene = ExtResource("4_0t0ya")
+
+[node name="Label" type="Label" parent="CanvasLayer/DeliveryManagerUI"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 169.0
+offset_bottom = 42.0
+text = "RECIPIES WAITING..."
+label_settings = SubResource("LabelSettings_7mrcb")
+
+[node name="WaitingRecipesList" type="VBoxContainer" parent="CanvasLayer/DeliveryManagerUI"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 58.0
+offset_right = 144.0
+offset_bottom = 418.0
+theme_override_constants/separation = 20
 
 [node name="Counters" type="Node" parent="."]
 
@@ -165,10 +207,12 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.5, 0
 
 [node name="DeliveryManager" type="Node" parent="Managers"]
 script = ExtResource("15_xpbhf")
-recipes = Array[Resource("res://resources/recipes/receipe_resource.gd")]([ExtResource("16_v1nak"), ExtResource("17_a4lei"), ExtResource("19_dopkd"), null])
+recipes = Array[Resource("res://resources/recipes/receipe_resource.gd")]([ExtResource("16_v1nak"), ExtResource("17_a4lei"), ExtResource("19_dopkd"), ExtResource("19_m81wa")])
 
 [node name="NewOrderTimer" type="Timer" parent="Managers/DeliveryManager"]
 wait_time = 4.0
 autostart = true
 
+[connection signal="new_order_added" from="Managers/DeliveryManager" to="CanvasLayer/DeliveryManagerUI" method="new_order_added"]
+[connection signal="order_delivered" from="Managers/DeliveryManager" to="CanvasLayer/DeliveryManagerUI" method="order_delivered"]
 [connection signal="timeout" from="Managers/DeliveryManager/NewOrderTimer" to="Managers/DeliveryManager" method="add_new_order"]

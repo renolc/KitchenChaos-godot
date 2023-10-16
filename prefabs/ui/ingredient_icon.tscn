@@ -18,6 +18,7 @@ expand_mode = 5
 script = ExtResource("2_agttw")
 
 [node name="IconRect" type="TextureRect" parent="."]
+texture_filter = 4
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,3 +29,4 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("2_gdit8")
 expand_mode = 5
+stretch_mode = 5

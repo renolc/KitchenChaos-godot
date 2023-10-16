@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://hlykm45ba710"]
+
+[ext_resource type="Texture2D" uid="uid://djy02fsidresb" path="res://textures/icons/Bread.png" id="1_b0sem"]
+
+[node name="RecipeIcon" type="TextureRect"]
+texture_filter = 4
+texture = ExtResource("1_b0sem")
+expand_mode = 2
+stretch_mode = 5

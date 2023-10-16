@@ -3,6 +3,9 @@ extends Node
 
 @export var recipes: Array[RecipeResource]
 
+signal new_order_added(recipe)
+signal order_delivered(recipe)
+
 static var Instance: DeliveryManager
 
 const MAX_ORDERS = 4
@@ -15,8 +18,9 @@ func _init():
 
 func add_new_order():
 	if waiting_recipes.size() < MAX_ORDERS:
-		waiting_recipes.push_back(recipes.pick_random())
-		print(waiting_recipes.back().name)
+		var order_recipe: RecipeResource = recipes.pick_random()
+		waiting_recipes.push_back(order_recipe)
+		new_order_added.emit(order_recipe)
 
 func deliver_recipe(plate: Plate):
 	var matching_recipe: RecipeResource
@@ -32,7 +36,7 @@ func deliver_recipe(plate: Plate):
 			break
 
 	if matching_recipe:
-		print("match: ", matching_recipe.name)
 		waiting_recipes.erase(matching_recipe)
+		order_delivered.emit(matching_recipe)
 	else:
 		print("no match")
