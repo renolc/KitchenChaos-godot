@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c5pywpg28515m"]
+[gd_scene load_steps=29 format=3 uid="uid://c5pywpg28515m"]
 
 [ext_resource type="Material" uid="uid://sv4vq030f0j8" path="res://materials/floor.tres" id="1_51bdx"]
 [ext_resource type="PackedScene" uid="uid://cxcjdiex5bmyl" path="res://prefabs/player.tscn" id="2_kc4gf"]
@@ -21,6 +21,7 @@
 [ext_resource type="Resource" uid="uid://cuyxu8clbp16g" path="res://resources/recipes/cheese_burger.tres" id="17_a4lei"]
 [ext_resource type="Resource" uid="uid://dc1ol8eyf167d" path="res://resources/recipes/salad.tres" id="19_dopkd"]
 [ext_resource type="Resource" uid="uid://ba1iqu1jqh5xy" path="res://resources/recipes/everything_burger.tres" id="19_m81wa"]
+[ext_resource type="AudioStream" uid="uid://c5r2lf7bb6csw" path="res://sounds/music/Music.wav" id="22_d22mu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_anjpy"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -212,6 +213,11 @@ recipes = Array[Resource("res://resources/recipes/receipe_resource.gd")]([ExtRes
 [node name="NewOrderTimer" type="Timer" parent="Managers/DeliveryManager"]
 wait_time = 4.0
 autostart = true
+
+[node name="MusicManager" type="AudioStreamPlayer" parent="Managers"]
+stream = ExtResource("22_d22mu")
+volume_db = -5.0
+autoplay = true
 
 [connection signal="new_order_added" from="Managers/DeliveryManager" to="CanvasLayer/DeliveryManagerUI" method="new_order_added"]
 [connection signal="order_delivered" from="Managers/DeliveryManager" to="CanvasLayer/DeliveryManagerUI" method="order_delivered"]

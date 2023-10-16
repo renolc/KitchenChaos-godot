@@ -1,7 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://frbw3plsomur"]
+[gd_scene load_steps=7 format=3 uid="uid://frbw3plsomur"]
 
 [ext_resource type="Script" path="res://scripts/counters/stove_counter_visual.gd" id="1_mos0m"]
 [ext_resource type="PackedScene" uid="uid://b7dv56kjsbsj1" path="res://meshes/counters/StoveCounter_Visual.glb" id="2_bdej0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6putf"]
+albedo_color = Color(100, 0, 0, 1)
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 16.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_en12b"]
 direction = Vector3(0, 1, 0)
@@ -28,6 +33,7 @@ mesh_array = [NodePath("StoveCounter_Visual/StoveCounter_Visual2/Counter"), Node
 
 [node name="StoveOnVisual" parent="StoveCounter_Visual/StoveCounter_Visual2" index="3"]
 visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_6putf")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="StoveCounter_Visual"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0611021, 1.26816, 0)
