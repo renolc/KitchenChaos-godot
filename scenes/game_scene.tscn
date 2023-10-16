@@ -197,17 +197,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 2.5)
 [node name="StoveCounter" parent="Counters" instance=ExtResource("12_sso8r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, -3.5)
 
-[node name="CuttingCounter" parent="Counters" instance=ExtResource("10_rsvae")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3.5)
-
-[node name="CuttingCounter2" parent="Counters" instance=ExtResource("10_rsvae")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.5, 0, 5.5)
-
 [node name="PlatesCounter" parent="Counters" instance=ExtResource("13_mnk6k")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.5, 0, -0.5)
 
 [node name="DeliveryCounter" parent="Counters" instance=ExtResource("14_exlrd")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.5, 0, -2)
+
+[node name="CuttingCounter" parent="Counters" instance=ExtResource("10_rsvae")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3.5)
+
+[node name="CuttingCounter2" parent="Counters" instance=ExtResource("10_rsvae")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.5, 0, 5.5)
 
 [node name="Managers" type="Node" parent="."]
 
