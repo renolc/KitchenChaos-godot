@@ -1,10 +1,11 @@
-[gd_scene load_steps=35 format=3 uid="uid://c5pywpg28515m"]
+[gd_scene load_steps=38 format=3 uid="uid://c5pywpg28515m"]
 
 [ext_resource type="Material" uid="uid://sv4vq030f0j8" path="res://materials/floor.tres" id="1_51bdx"]
 [ext_resource type="PackedScene" uid="uid://cxcjdiex5bmyl" path="res://prefabs/player.tscn" id="2_kc4gf"]
 [ext_resource type="Script" path="res://scripts/ui/delivery_manager_ui.gd" id="3_1vpsk"]
 [ext_resource type="PackedScene" uid="uid://c3iaod6id1ifx" path="res://prefabs/counters/clear_counter.tscn" id="3_rvysv"]
 [ext_resource type="PackedScene" uid="uid://con1lltlfkfsy" path="res://prefabs/ui/waiting_recipe_panel.tscn" id="4_0t0ya"]
+[ext_resource type="Script" path="res://scripts/ui/countdown_ui.gd" id="5_0vfoh"]
 [ext_resource type="PackedScene" uid="uid://d2fheokudfngf" path="res://prefabs/kitchen_objects/cheese.tscn" id="5_6da6e"]
 [ext_resource type="PackedScene" uid="uid://dms8e775rak5s" path="res://prefabs/kitchen_objects/bread.tscn" id="5_074ul"]
 [ext_resource type="PackedScene" uid="uid://ckiytt65f7a3j" path="res://prefabs/counters/container_counter.tscn" id="6_5jfhd"]
@@ -65,6 +66,16 @@ shadow_size = 5
 shadow_color = Color(0, 0, 0, 0.560784)
 shadow_offset = Vector2(0.5, 1)
 
+[sub_resource type="FontVariation" id="FontVariation_xox8n"]
+variation_embolden = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_aw3ab"]
+line_spacing = 0.0
+font = SubResource("FontVariation_xox8n")
+font_size = 100
+outline_size = 25
+outline_color = Color(0, 0.443137, 1, 1)
+
 [node name="GameScene" type="Node"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -112,6 +123,36 @@ offset_top = 58.0
 offset_right = 144.0
 offset_bottom = 418.0
 theme_override_constants/separation = 20
+
+[node name="CountdownUI" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_0vfoh")
+
+[node name="Label" type="Label" parent="CanvasLayer/CountdownUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "3"
+label_settings = SubResource("LabelSettings_aw3ab")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Counters" type="Node" parent="."]
 
@@ -239,3 +280,4 @@ script = ExtResource("28_wdf1x")
 [connection signal="new_order_added" from="Managers/DeliveryManager" to="CanvasLayer/DeliveryManagerUI" method="new_order_added"]
 [connection signal="order_delivered" from="Managers/DeliveryManager" to="CanvasLayer/DeliveryManagerUI" method="order_delivered"]
 [connection signal="timeout" from="Managers/DeliveryManager/NewOrderTimer" to="Managers/DeliveryManager" method="add_new_order"]
+[connection signal="state_changed" from="Managers/GameManager" to="CanvasLayer/CountdownUI" method="state_changed"]

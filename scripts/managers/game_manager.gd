@@ -7,6 +7,8 @@ const PLAYING_TIME = 10
 
 static var Instance: GameManager
 
+signal state_changed(state)
+
 enum State {
 	WaitingToStart,
 	Countdown,
@@ -14,10 +16,12 @@ enum State {
 	GameOver
 }
 
+var timer: SceneTreeTimer
 var state: State:
 	set(s):
 		state = s
 		print(State.keys()[state])
+		state_changed.emit(state)
 		call(State.keys()[state])
 
 func _init():
@@ -27,19 +31,19 @@ func _ready():
 	state = State.WaitingToStart
 
 func WaitingToStart():
-	await get_tree().create_timer(WAIT_TO_START_TIME).timeout
+	timer = get_tree().create_timer(WAIT_TO_START_TIME)
+	await timer.timeout
 	state = State.Countdown
 
 func Countdown():
-	await get_tree().create_timer(COUNTDOWN_TIME).timeout
+	timer = get_tree().create_timer(COUNTDOWN_TIME)
+	await timer.timeout
 	state = State.Playing
 
 func Playing():
-	await get_tree().create_timer(PLAYING_TIME).timeout
+	timer = get_tree().create_timer(PLAYING_TIME)
+	await timer.timeout
 	state = State.GameOver
 
 func GameOver():
 	pass
-
-func is_game_playing() -> bool:
-	return state == State.Playing
