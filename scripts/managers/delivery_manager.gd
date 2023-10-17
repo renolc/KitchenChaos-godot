@@ -15,6 +15,7 @@ static var Instance: DeliveryManager
 const MAX_ORDERS = 4
 
 var waiting_recipes: Array[RecipeResource]
+var orders_delivered = 0
 
 func _init():
 	randomize()
@@ -40,6 +41,7 @@ func deliver_recipe(plate: Plate):
 			break
 
 	if matching_recipe:
+		orders_delivered += 1
 		waiting_recipes.erase(matching_recipe)
 		order_delivered.emit(matching_recipe)
 		success_sfx.play_random()

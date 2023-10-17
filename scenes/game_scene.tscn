@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://c5pywpg28515m"]
+[gd_scene load_steps=43 format=3 uid="uid://c5pywpg28515m"]
 
 [ext_resource type="Material" uid="uid://sv4vq030f0j8" path="res://materials/floor.tres" id="1_51bdx"]
 [ext_resource type="PackedScene" uid="uid://cxcjdiex5bmyl" path="res://prefabs/player.tscn" id="2_kc4gf"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d2fheokudfngf" path="res://prefabs/kitchen_objects/cheese.tscn" id="5_6da6e"]
 [ext_resource type="PackedScene" uid="uid://dms8e775rak5s" path="res://prefabs/kitchen_objects/bread.tscn" id="5_074ul"]
 [ext_resource type="PackedScene" uid="uid://ckiytt65f7a3j" path="res://prefabs/counters/container_counter.tscn" id="6_5jfhd"]
+[ext_resource type="Script" path="res://scripts/ui/game_over_ui.gd" id="6_h6p7x"]
 [ext_resource type="PackedScene" uid="uid://xt3olg06k3uh" path="res://prefabs/kitchen_objects/meat.tscn" id="7_dhkvg"]
 [ext_resource type="PackedScene" uid="uid://buap5yfna0b0" path="res://prefabs/kitchen_objects/cabbage.tscn" id="8_62pwg"]
 [ext_resource type="PackedScene" uid="uid://c2q0hnrchcbxs" path="res://prefabs/kitchen_objects/tomato.tscn" id="9_225ck"]
@@ -72,9 +73,24 @@ variation_embolden = 1.0
 [sub_resource type="LabelSettings" id="LabelSettings_aw3ab"]
 line_spacing = 0.0
 font = SubResource("FontVariation_xox8n")
-font_size = 100
+font_size = 140
 outline_size = 25
 outline_color = Color(0, 0.443137, 1, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_vty6s"]
+variation_embolden = 0.8
+
+[sub_resource type="LabelSettings" id="LabelSettings_p8277"]
+font = SubResource("FontVariation_vty6s")
+font_size = 80
+font_color = Color(1, 0.870588, 0.00784314, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_oj3bh"]
+variation_embolden = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_a8ar6"]
+font = SubResource("FontVariation_oj3bh")
+font_size = 85
 
 [node name="GameScene" type="Node"]
 
@@ -153,6 +169,84 @@ text = "3"
 label_settings = SubResource("LabelSettings_aw3ab")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="GameOverUI" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_h6p7x")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/GameOverUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.588235)
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer/GameOverUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.0
+offset_top = -250.0
+offset_right = 235.0
+offset_bottom = -137.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "Game Over"
+label_settings = SubResource("LabelSettings_p8277")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="RecipiesDeliveredLabel" type="Label" parent="CanvasLayer/GameOverUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -138.0
+offset_right = 230.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "recipies delivered"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="RecipiesDeliveredValueLabel" type="Label" parent="CanvasLayer/GameOverUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -71.0
+offset_right = 58.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "5"
+label_settings = SubResource("LabelSettings_a8ar6")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
 
 [node name="Counters" type="Node" parent="."]
 
@@ -281,3 +375,4 @@ script = ExtResource("28_wdf1x")
 [connection signal="order_delivered" from="Managers/DeliveryManager" to="CanvasLayer/DeliveryManagerUI" method="order_delivered"]
 [connection signal="timeout" from="Managers/DeliveryManager/NewOrderTimer" to="Managers/DeliveryManager" method="add_new_order"]
 [connection signal="state_changed" from="Managers/GameManager" to="CanvasLayer/CountdownUI" method="state_changed"]
+[connection signal="state_changed" from="Managers/GameManager" to="CanvasLayer/GameOverUI" method="state_changed"]
