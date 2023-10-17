@@ -41,7 +41,7 @@ func update_selected_counter():
 	selected_counter = ray_cast.get_collider()
 
 func handle_interact():
-	if selected_counter == null: return
+	if !GameManager.Instance.is_game_playing() || !selected_counter: return
 
 	if Input.is_action_just_pressed("interact") && selected_counter.has_method("interact"):
 		selected_counter.interact()

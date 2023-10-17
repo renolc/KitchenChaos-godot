@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://c5pywpg28515m"]
+[gd_scene load_steps=35 format=3 uid="uid://c5pywpg28515m"]
 
 [ext_resource type="Material" uid="uid://sv4vq030f0j8" path="res://materials/floor.tres" id="1_51bdx"]
 [ext_resource type="PackedScene" uid="uid://cxcjdiex5bmyl" path="res://prefabs/player.tscn" id="2_kc4gf"]
@@ -27,6 +27,7 @@
 [ext_resource type="AudioStream" uid="uid://bceescgjfggnf" path="res://sounds/sfx/SFX_delivery_fail02.wav" id="24_cnlu8"]
 [ext_resource type="AudioStream" uid="uid://ckikt8lhwve76" path="res://sounds/sfx/SFX_delivery_success01.wav" id="25_gscs2"]
 [ext_resource type="AudioStream" uid="uid://dlvq3qybvrmcl" path="res://sounds/sfx/SFX_delivery_success02.wav" id="26_qixg7"]
+[ext_resource type="Script" path="res://scripts/managers/game_manager.gd" id="28_wdf1x"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_anjpy"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -231,6 +232,9 @@ sfxs = Array[AudioStream]([ExtResource("25_gscs2"), ExtResource("26_qixg7")])
 stream = ExtResource("22_d22mu")
 volume_db = -5.0
 autoplay = true
+
+[node name="GameManager" type="Node" parent="Managers"]
+script = ExtResource("28_wdf1x")
 
 [connection signal="new_order_added" from="Managers/DeliveryManager" to="CanvasLayer/DeliveryManagerUI" method="new_order_added"]
 [connection signal="order_delivered" from="Managers/DeliveryManager" to="CanvasLayer/DeliveryManagerUI" method="order_delivered"]
