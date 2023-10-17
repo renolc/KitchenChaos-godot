@@ -207,7 +207,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.5, 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -3.5)
 
 [node name="CuttingCounter2" parent="Counters" instance=ExtResource("10_rsvae")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.5, 0, 5.5)
+transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 4.5, 0, 5.5)
 
 [node name="Managers" type="Node" parent="."]
 
@@ -232,8 +232,6 @@ stream = ExtResource("22_d22mu")
 volume_db = -5.0
 autoplay = true
 
-[connection signal="cut_performed" from="Counters/CuttingCounter" to="Counters/CuttingCounter/CuttingCounterVisuals" method="cut_performed" flags=18]
-[connection signal="cut_performed" from="Counters/CuttingCounter2" to="Counters/CuttingCounter2/CuttingCounterVisuals" method="cut_performed" flags=18]
 [connection signal="new_order_added" from="Managers/DeliveryManager" to="CanvasLayer/DeliveryManagerUI" method="new_order_added"]
 [connection signal="order_delivered" from="Managers/DeliveryManager" to="CanvasLayer/DeliveryManagerUI" method="order_delivered"]
 [connection signal="timeout" from="Managers/DeliveryManager/NewOrderTimer" to="Managers/DeliveryManager" method="add_new_order"]
