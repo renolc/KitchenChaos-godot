@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://c5pywpg28515m"]
+[gd_scene load_steps=45 format=3 uid="uid://c5pywpg28515m"]
 
 [ext_resource type="Material" uid="uid://sv4vq030f0j8" path="res://materials/floor.tres" id="1_51bdx"]
 [ext_resource type="PackedScene" uid="uid://cxcjdiex5bmyl" path="res://prefabs/player.tscn" id="2_kc4gf"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dms8e775rak5s" path="res://prefabs/kitchen_objects/bread.tscn" id="5_074ul"]
 [ext_resource type="PackedScene" uid="uid://ckiytt65f7a3j" path="res://prefabs/counters/container_counter.tscn" id="6_5jfhd"]
 [ext_resource type="Script" path="res://scripts/ui/game_over_ui.gd" id="6_h6p7x"]
+[ext_resource type="Texture2D" uid="uid://c1mupdacpcef6" path="res://textures/White_Circle.png" id="6_hangc"]
+[ext_resource type="Script" path="res://scripts/ui/round_clock.gd" id="6_yv8ku"]
 [ext_resource type="PackedScene" uid="uid://xt3olg06k3uh" path="res://prefabs/kitchen_objects/meat.tscn" id="7_dhkvg"]
 [ext_resource type="PackedScene" uid="uid://buap5yfna0b0" path="res://prefabs/kitchen_objects/cabbage.tscn" id="8_62pwg"]
 [ext_resource type="PackedScene" uid="uid://c2q0hnrchcbxs" path="res://prefabs/kitchen_objects/tomato.tscn" id="9_225ck"]
@@ -169,6 +171,71 @@ text = "3"
 label_settings = SubResource("LabelSettings_aw3ab")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="RoundClock" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -101.0
+offset_top = 28.0
+offset_right = -101.0
+offset_bottom = 28.0
+grow_horizontal = 0
+script = ExtResource("6_yv8ku")
+
+[node name="Shadow" type="TextureRect" parent="CanvasLayer/RoundClock"]
+modulate = Color(0, 0, 0, 0.427451)
+texture_filter = 6
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 241.0
+offset_bottom = 242.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.27, 0.27)
+texture = ExtResource("6_hangc")
+
+[node name="Border" type="TextureRect" parent="CanvasLayer/RoundClock"]
+modulate = Color(0, 0, 0, 1)
+texture_filter = 6
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 239.0
+offset_bottom = 239.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.273, 0.273)
+texture = ExtResource("6_hangc")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="CanvasLayer/RoundClock"]
+texture_filter = 6
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 242.0
+offset_bottom = 242.0
+scale = Vector2(0.25, 0.25)
+max_value = 1.0
+step = 0.001
+value = 1.0
+fill_mode = 4
+texture_under = ExtResource("6_hangc")
+texture_progress = ExtResource("6_hangc")
+tint_under = Color(0.298039, 0.298039, 0.298039, 1)
+tint_progress = Color(0, 0.533333, 1, 1)
 
 [node name="GameOverUI" type="Control" parent="CanvasLayer"]
 visible = false

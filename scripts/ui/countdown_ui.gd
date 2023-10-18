@@ -2,7 +2,7 @@ extends Control
 
 @onready var label: Label = $Label
 
-func _process(delta):
+func _process(_delta):
 	if visible:
 		label.text = str(ceil(GameManager.Instance.timer.time_left))
 
