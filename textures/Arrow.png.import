@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c4o78b531ti38"
-path.s3tc="res://.godot/imported/Arrow.png-b16d10177d7d5cf7124e6fca9e22051a.s3tc.ctex"
+path="res://.godot/imported/Arrow.png-b16d10177d7d5cf7124e6fca9e22051a.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/Arrow.png"
-dest_files=["res://.godot/imported/Arrow.png-b16d10177d7d5cf7124e6fca9e22051a.s3tc.ctex"]
+dest_files=["res://.godot/imported/Arrow.png-b16d10177d7d5cf7124e6fca9e22051a.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
