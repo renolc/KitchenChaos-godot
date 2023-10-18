@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://y2wix2rhtmti"]
+[gd_scene load_steps=5 format=3 uid="uid://y2wix2rhtmti"]
 
 [ext_resource type="Script" path="res://scripts/ui/main_menu_ui.gd" id="1_gbbff"]
 
@@ -7,6 +7,9 @@ variation_embolden = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i50nh"]
 bg_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_pe6ic"]
+variation_embolden = 0.8
 
 [node name="MainMenuScene" type="Node"]
 
@@ -20,6 +23,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gbbff")
+game_scene_path = "res://scenes/game_scene.tscn"
 
 [node name="PlayButton" type="Button" parent="CanvasLayer/MainMenuUI"]
 layout_mode = 1
@@ -110,6 +114,30 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0.254902)
+
+[node name="LoadingScreen" type="ColorRect" parent="CanvasLayer/MainMenuUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="LoadingLabel" type="Label" parent="CanvasLayer/MainMenuUI/LoadingScreen"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -53.0
+offset_right = 131.0
+offset_bottom = -27.0
+grow_vertical = 0
+theme_override_fonts/font = SubResource("FontVariation_pe6ic")
+theme_override_font_sizes/font_size = 30
+text = "LOADING..."
 
 [connection signal="pressed" from="CanvasLayer/MainMenuUI/PlayButton" to="CanvasLayer/MainMenuUI" method="play_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenuUI/QuitButton" to="CanvasLayer/MainMenuUI" method="quit_pressed"]
