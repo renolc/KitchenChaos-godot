@@ -20,7 +20,6 @@ var timer: SceneTreeTimer
 var state: State:
 	set(s):
 		state = s
-		print(State.keys()[state])
 		state_changed.emit(state)
 		call(State.keys()[state])
 

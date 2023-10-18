@@ -11,7 +11,7 @@ func _ready():
 	animation_tree.active = true
 
 func _process(_delta):
-	if player.is_walking:
+	if player && player.is_walking:
 		animation_tree[IS_IDLE] = false
 		animation_tree[IS_WALKING] = true
 	else:

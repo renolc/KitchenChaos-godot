@@ -1,6 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://y2wix2rhtmti"]
+[gd_scene load_steps=17 format=3 uid="uid://y2wix2rhtmti"]
 
 [ext_resource type="Script" path="res://scripts/ui/main_menu_ui.gd" id="1_gbbff"]
+[ext_resource type="Texture2D" uid="uid://cseaixyxnfh0s" path="res://textures/floor.png" id="2_wly6v"]
+[ext_resource type="PackedScene" uid="uid://dnd0rryp53332" path="res://prefabs_visuals/player_visuals.tscn" id="3_0syo4"]
+[ext_resource type="Script" path="res://scripts/ui/main_menu_camera.gd" id="3_3ygw1"]
+[ext_resource type="Texture2D" uid="uid://cecn1uat6oyv8" path="res://textures/KitchenChaosLogo.png" id="5_8yfrf"]
 
 [sub_resource type="FontVariation" id="FontVariation_i4gb3"]
 variation_embolden = 1.0
@@ -10,6 +14,48 @@ bg_color = Color(0.2, 0.2, 0.2, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_pe6ic"]
 variation_embolden = 0.8
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ufq1c"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_qdujw"]
+sky_material = SubResource("ProceduralSkyMaterial_ufq1c")
+
+[sub_resource type="Environment" id="Environment_3m2pe"]
+background_mode = 2
+sky = SubResource("Sky_qdujw")
+tonemap_mode = 2
+ssao_radius = 0.3
+ssao_intensity = 4.0
+ssao_light_affect = 1.0
+glow_enabled = true
+glow_intensity = 1.0
+glow_strength = 0.95
+glow_bloom = 0.04
+glow_blend_mode = 1
+glow_hdr_threshold = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wmj02"]
+albedo_texture = ExtResource("2_wly6v")
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_28mns"]
+lightmap_size_hint = Vector2i(127, 127)
+material = SubResource("StandardMaterial3D_wmj02")
+size = Vector2(25, 25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_olsc6"]
+albedo_color = Color(0, 0.85098, 0.282353, 1)
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_favry"]
+albedo_color = Color(1, 0.14902, 0.14902, 1)
+roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hpg8r"]
+albedo_color = Color(0, 0.501961, 1, 1)
+roughness = 0.5
 
 [node name="MainMenuScene" type="Node"]
 
@@ -30,13 +76,13 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 47.0
-offset_top = -220.0
-offset_right = 272.0
-offset_bottom = -145.0
+offset_left = 55.0
+offset_top = -244.0
+offset_right = 305.0
+offset_bottom = -164.0
 grow_vertical = 0
 theme_override_fonts/font = SubResource("FontVariation_i4gb3")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_i50nh")
 text = "PLAY"
 
@@ -75,13 +121,13 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 47.0
-offset_top = -110.0
-offset_right = 272.0
-offset_bottom = -53.0
+offset_left = 55.0
+offset_top = -118.0
+offset_right = 305.0
+offset_bottom = -58.0
 grow_vertical = 0
 theme_override_fonts/font = SubResource("FontVariation_i4gb3")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 37
 theme_override_styles/normal = SubResource("StyleBoxFlat_i50nh")
 text = "QUIT"
 
@@ -139,5 +185,67 @@ theme_override_fonts/font = SubResource("FontVariation_pe6ic")
 theme_override_font_sizes/font_size = 30
 text = "LOADING..."
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.790276, -0.589971, -0.165521, 0.297372, -0.605454, 0.738238, -0.535755, 0.534191, 0.653917, -1.95866, 4.71214, 1.76132)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3m2pe")
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_28mns")
+metadata/_edit_lock_ = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.999624, -0.00787209, -0.0262673, 0.00171392, 0.973971, -0.226667, 0.0273679, 0.226537, 0.973618, 0.326942, 0.52656, 5.79725)
+fov = 50.0
+script = ExtResource("3_3ygw1")
+
+[node name="player_visuals" parent="." instance=ExtResource("3_0syo4")]
+transform = Transform3D(0.91895, 0, -0.394375, 0, 1, 0, 0.394375, 0, 0.91895, 1.00167, 4.76837e-07, 2.10255)
+
+[node name="player_visuals2" parent="." instance=ExtResource("3_0syo4")]
+transform = Transform3D(0.979544, 0, -0.201232, 0, 1, 0, 0.201232, 0, 0.979544, 0.117369, 7.15256e-07, 0.916133)
+
+[node name="Head" parent="player_visuals2/PlayerVisual/PlayerVisual2" index="0"]
+material_override = SubResource("StandardMaterial3D_olsc6")
+
+[node name="Body" parent="player_visuals2/PlayerVisual/PlayerVisual2" index="1"]
+material_override = SubResource("StandardMaterial3D_olsc6")
+
+[node name="player_visuals3" parent="." instance=ExtResource("3_0syo4")]
+transform = Transform3D(0.821189, 0, -0.570656, 0, 1, 0, 0.570656, 0, 0.821189, 2.35809, 4.76837e-07, 0.759312)
+
+[node name="Head" parent="player_visuals3/PlayerVisual/PlayerVisual2" index="0"]
+material_override = SubResource("StandardMaterial3D_favry")
+
+[node name="Body" parent="player_visuals3/PlayerVisual/PlayerVisual2" index="1"]
+transform = Transform3D(1.3, 0, -2.98023e-08, 0, 1.3, 0, 2.98023e-08, 0, 1.3, 0, 0.65, 0)
+material_override = SubResource("StandardMaterial3D_favry")
+
+[node name="player_visuals4" parent="." instance=ExtResource("3_0syo4")]
+transform = Transform3D(0.676568, 0, -0.736381, 0, 1, 0, 0.736381, 0, 0.676568, 2.82228, 4.76837e-07, 1.81414)
+
+[node name="Head" parent="player_visuals4/PlayerVisual/PlayerVisual2" index="0"]
+material_override = SubResource("StandardMaterial3D_hpg8r")
+
+[node name="Body" parent="player_visuals4/PlayerVisual/PlayerVisual2" index="1"]
+material_override = SubResource("StandardMaterial3D_hpg8r")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 4
+offset_right = 487.0
+offset_bottom = 288.0
+texture = ExtResource("5_8yfrf")
+expand_mode = 2
+stretch_mode = 4
+
 [connection signal="pressed" from="CanvasLayer/MainMenuUI/PlayButton" to="CanvasLayer/MainMenuUI" method="play_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenuUI/QuitButton" to="CanvasLayer/MainMenuUI" method="quit_pressed"]
+
+[editable path="player_visuals2"]
+[editable path="player_visuals2/PlayerVisual"]
+[editable path="player_visuals3"]
+[editable path="player_visuals3/PlayerVisual"]
+[editable path="player_visuals4"]
+[editable path="player_visuals4/PlayerVisual"]
