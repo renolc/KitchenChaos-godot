@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://c5pywpg28515m"]
+[gd_scene load_steps=46 format=3 uid="uid://c5pywpg28515m"]
 
 [ext_resource type="Material" uid="uid://sv4vq030f0j8" path="res://materials/floor.tres" id="1_51bdx"]
 [ext_resource type="PackedScene" uid="uid://cxcjdiex5bmyl" path="res://prefabs/player.tscn" id="2_kc4gf"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://xt3olg06k3uh" path="res://prefabs/kitchen_objects/meat.tscn" id="7_dhkvg"]
 [ext_resource type="PackedScene" uid="uid://buap5yfna0b0" path="res://prefabs/kitchen_objects/cabbage.tscn" id="8_62pwg"]
 [ext_resource type="PackedScene" uid="uid://c2q0hnrchcbxs" path="res://prefabs/kitchen_objects/tomato.tscn" id="9_225ck"]
+[ext_resource type="Script" path="res://scripts/ui/game_paused_ui.gd" id="9_a38uv"]
 [ext_resource type="PackedScene" uid="uid://dpjphlkv8dqex" path="res://prefabs/counters/cutting_counter.tscn" id="10_rsvae"]
 [ext_resource type="PackedScene" uid="uid://d1688ycced2kg" path="res://prefabs/counters/trash_counter.tscn" id="11_2wqg4"]
 [ext_resource type="PackedScene" uid="uid://bfam0o0byw1w5" path="res://prefabs/counters/stove_counter.tscn" id="12_sso8r"]
@@ -84,8 +85,8 @@ variation_embolden = 0.8
 
 [sub_resource type="LabelSettings" id="LabelSettings_p8277"]
 font = SubResource("FontVariation_vty6s")
-font_size = 80
-font_color = Color(1, 0.870588, 0.00784314, 1)
+font_size = 90
+font_color = Color(1, 0.721569, 0.00784314, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_oj3bh"]
 variation_embolden = 1.0
@@ -247,7 +248,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_h6p7x")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/GameOverUI"]
+[node name="Background" type="ColorRect" parent="CanvasLayer/GameOverUI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -311,6 +312,45 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 100
 text = "5"
 label_settings = SubResource("LabelSettings_a8ar6")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="GamePausedUI" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_a38uv")
+
+[node name="Background" type="ColorRect" parent="CanvasLayer/GamePausedUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.588235)
+
+[node name="PausedLabel" type="Label" parent="CanvasLayer/GamePausedUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.0
+offset_top = -185.0
+offset_right = 235.0
+offset_bottom = -58.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "PAUSED"
+label_settings = SubResource("LabelSettings_p8277")
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
@@ -442,5 +482,6 @@ script = ExtResource("28_wdf1x")
 [connection signal="new_order_added" from="Managers/DeliveryManager" to="CanvasLayer/DeliveryManagerUI" method="new_order_added"]
 [connection signal="order_delivered" from="Managers/DeliveryManager" to="CanvasLayer/DeliveryManagerUI" method="order_delivered"]
 [connection signal="timeout" from="Managers/DeliveryManager/NewOrderTimer" to="Managers/DeliveryManager" method="add_new_order"]
+[connection signal="paused_changed" from="Managers/GameManager" to="CanvasLayer/GamePausedUI" method="paused_changed"]
 [connection signal="state_changed" from="Managers/GameManager" to="CanvasLayer/CountdownUI" method="state_changed"]
 [connection signal="state_changed" from="Managers/GameManager" to="CanvasLayer/GameOverUI" method="state_changed"]

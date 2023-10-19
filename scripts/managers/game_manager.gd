@@ -8,6 +8,7 @@ const PLAYING_TIME = 10
 static var Instance: GameManager
 
 signal state_changed(state)
+signal paused_changed(is_paused)
 
 enum State {
 	WaitingToStart,
@@ -32,7 +33,9 @@ func _ready():
 
 func _unhandled_input(_event):
 	if Input.is_action_just_pressed("pause"):
-		get_tree().paused = !get_tree().paused
+		var paused = !get_tree().paused
+		get_tree().paused = paused
+		paused_changed.emit(paused)
 
 func WaitingToStart():
 	timer = get_tree().create_timer(WAIT_TO_START_TIME, false)
