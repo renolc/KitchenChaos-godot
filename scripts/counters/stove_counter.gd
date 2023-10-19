@@ -27,7 +27,7 @@ func interact():
 func start_cooking():
 	if ko.cooks_into:
 		audio_player.play()
-		fry_timer = get_tree().create_timer(ko.cook_time)
+		fry_timer = get_tree().create_timer(ko.cook_time, false)
 		fry_timer.timeout.connect(finished_cooking)
 
 func finished_cooking():

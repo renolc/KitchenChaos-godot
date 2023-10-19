@@ -436,6 +436,7 @@ volume_db = -5.0
 autoplay = true
 
 [node name="GameManager" type="Node" parent="Managers"]
+process_mode = 3
 script = ExtResource("28_wdf1x")
 
 [connection signal="new_order_added" from="Managers/DeliveryManager" to="CanvasLayer/DeliveryManagerUI" method="new_order_added"]
