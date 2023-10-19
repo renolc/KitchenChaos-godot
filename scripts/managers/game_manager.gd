@@ -33,9 +33,12 @@ func _ready():
 
 func _unhandled_input(_event):
 	if Input.is_action_just_pressed("pause"):
-		var paused = !get_tree().paused
-		get_tree().paused = paused
-		paused_changed.emit(paused)
+		toggle_pause()
+
+func toggle_pause():
+	var new_paused = !get_tree().paused
+	get_tree().paused = new_paused
+	paused_changed.emit(new_paused)
 
 func WaitingToStart():
 	timer = get_tree().create_timer(WAIT_TO_START_TIME, false)

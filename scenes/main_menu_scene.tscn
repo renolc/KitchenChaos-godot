@@ -161,6 +161,15 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0.254902)
 
+[node name="Logo" type="TextureRect" parent="CanvasLayer/MainMenuUI"]
+texture_filter = 4
+layout_mode = 0
+offset_right = 487.0
+offset_bottom = 288.0
+texture = ExtResource("5_8yfrf")
+expand_mode = 2
+stretch_mode = 4
+
 [node name="LoadingScreen" type="ColorRect" parent="CanvasLayer/MainMenuUI"]
 visible = false
 layout_mode = 1
@@ -231,14 +240,6 @@ material_override = SubResource("StandardMaterial3D_hpg8r")
 
 [node name="Body" parent="player_visuals4/PlayerVisual/PlayerVisual2" index="1"]
 material_override = SubResource("StandardMaterial3D_hpg8r")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-texture_filter = 4
-offset_right = 487.0
-offset_bottom = 288.0
-texture = ExtResource("5_8yfrf")
-expand_mode = 2
-stretch_mode = 4
 
 [connection signal="pressed" from="CanvasLayer/MainMenuUI/PlayButton" to="CanvasLayer/MainMenuUI" method="play_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenuUI/QuitButton" to="CanvasLayer/MainMenuUI" method="quit_pressed"]

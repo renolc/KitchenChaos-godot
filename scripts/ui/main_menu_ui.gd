@@ -5,6 +5,7 @@ extends Control
 @onready var loading_screen: ColorRect = $LoadingScreen
 
 func _ready():
+	get_tree().paused = false
 	ResourceLoader.load_threaded_request(game_scene_path)
 
 func play_pressed():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://c5pywpg28515m"]
+[gd_scene load_steps=48 format=3 uid="uid://c5pywpg28515m"]
 
 [ext_resource type="Material" uid="uid://sv4vq030f0j8" path="res://materials/floor.tres" id="1_51bdx"]
 [ext_resource type="PackedScene" uid="uid://cxcjdiex5bmyl" path="res://prefabs/player.tscn" id="2_kc4gf"]
@@ -94,6 +94,12 @@ variation_embolden = 1.0
 [sub_resource type="LabelSettings" id="LabelSettings_a8ar6"]
 font = SubResource("FontVariation_oj3bh")
 font_size = 85
+
+[sub_resource type="FontVariation" id="FontVariation_7tk8h"]
+variation_embolden = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xxow"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
 
 [node name="GameScene" type="Node"]
 
@@ -317,6 +323,7 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="GamePausedUI" type="Control" parent="CanvasLayer"]
+process_mode = 3
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -354,6 +361,102 @@ label_settings = SubResource("LabelSettings_p8277")
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+
+[node name="ResumeButton" type="Button" parent="CanvasLayer/GamePausedUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -6.0
+offset_right = 125.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("FontVariation_7tk8h")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_8xxow")
+text = "RESUME"
+
+[node name="Outline" type="ColorRect" parent="CanvasLayer/GamePausedUI/ResumeButton"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Shadow" type="ColorRect" parent="CanvasLayer/GamePausedUI/ResumeButton"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 9.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.254902)
+
+[node name="MenuButton" type="Button" parent="CanvasLayer/GamePausedUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = 170.0
+offset_right = 125.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("FontVariation_7tk8h")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_8xxow")
+text = "MAIN MENU"
+
+[node name="Outline" type="ColorRect" parent="CanvasLayer/GamePausedUI/MenuButton"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Shadow" type="ColorRect" parent="CanvasLayer/GamePausedUI/MenuButton"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 9.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.254902)
 
 [node name="Counters" type="Node" parent="."]
 
@@ -479,6 +582,8 @@ autoplay = true
 process_mode = 3
 script = ExtResource("28_wdf1x")
 
+[connection signal="pressed" from="CanvasLayer/GamePausedUI/ResumeButton" to="CanvasLayer/GamePausedUI" method="resume_pressed"]
+[connection signal="pressed" from="CanvasLayer/GamePausedUI/MenuButton" to="CanvasLayer/GamePausedUI" method="menu_pressed"]
 [connection signal="new_order_added" from="Managers/DeliveryManager" to="CanvasLayer/DeliveryManagerUI" method="new_order_added"]
 [connection signal="order_delivered" from="Managers/DeliveryManager" to="CanvasLayer/DeliveryManagerUI" method="order_delivered"]
 [connection signal="timeout" from="Managers/DeliveryManager/NewOrderTimer" to="Managers/DeliveryManager" method="add_new_order"]
