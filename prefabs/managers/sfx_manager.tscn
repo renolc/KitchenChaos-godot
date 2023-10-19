@@ -3,4 +3,5 @@
 [ext_resource type="Script" path="res://scripts/managers/sfx_manager.gd" id="1_pbori"]
 
 [node name="SfxManager" type="AudioStreamPlayer3D"]
+bus = &"SFX"
 script = ExtResource("1_pbori")
