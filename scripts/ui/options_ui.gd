@@ -4,8 +4,15 @@ extends Control
 @onready var sfx_progress: ProgressBar = $HBoxContainer/Volume/SFX/ProgressBar
 @onready var music_progress: ProgressBar = $HBoxContainer/Volume/Music/ProgressBar
 @onready var key_prompt: Panel = $KeyPrompt
-
-signal bindings_reset
+@onready var buttons: Array[KeymapButton] = [
+	$HBoxContainer/KeyMap/Up/Button,
+	$HBoxContainer/KeyMap/Down/Button,
+	$HBoxContainer/KeyMap/Left/Button,
+	$HBoxContainer/KeyMap/Right/Button,
+	$HBoxContainer/KeyMap/Interact/Button,
+	$HBoxContainer/KeyMap/InteractAlt/Button,
+	$HBoxContainer/KeyMap/Pause/Button
+]
 
 const CONFIG_PATH = "user://settings.cfg"
 const VOL_SECTION = "Volume"
@@ -28,9 +35,8 @@ func _ready():
 	music_progress.value = db_to_linear(AudioServer.get_bus_volume_db(music_bus_idx))
 	sfx_progress.value = db_to_linear(AudioServer.get_bus_volume_db(sfx_bus_idx))
 
-func _unhandled_input(event):
+func _unhandled_key_input(event):
 	if binding_btn && event is InputEventKey:
-		get_viewport().set_input_as_handled()
 		InputMap.action_erase_events(binding_btn.action)
 		InputMap.action_add_event(binding_btn.action, event)
 		binding_btn.update_text()
@@ -59,4 +65,4 @@ func bind_pressed(btn: KeymapButton):
 
 func reset_bindings_pressed():
 	InputMap.load_from_project_settings()
-	bindings_reset.emit()
+	buttons.map(func(i): i.update_text())

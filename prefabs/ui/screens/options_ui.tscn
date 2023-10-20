@@ -319,13 +319,6 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Press a key"
 
-[connection signal="bindings_reset" from="." to="HBoxContainer/KeyMap/Up/Button" method="update_text"]
-[connection signal="bindings_reset" from="." to="HBoxContainer/KeyMap/Down/Button" method="update_text"]
-[connection signal="bindings_reset" from="." to="HBoxContainer/KeyMap/Left/Button" method="update_text"]
-[connection signal="bindings_reset" from="." to="HBoxContainer/KeyMap/Right/Button" method="update_text"]
-[connection signal="bindings_reset" from="." to="HBoxContainer/KeyMap/Interact/Button" method="update_text"]
-[connection signal="bindings_reset" from="." to="HBoxContainer/KeyMap/InteractAlt/Button" method="update_text"]
-[connection signal="bindings_reset" from="." to="HBoxContainer/KeyMap/Pause/Button" method="update_text"]
 [connection signal="pressed" from="CloseButton" to="." method="close"]
 [connection signal="value_changed" from="HBoxContainer/Volume/SFX/ProgressBar" to="." method="sfx_value_changed"]
 [connection signal="value_changed" from="HBoxContainer/Volume/Music/ProgressBar" to="." method="music_value_changed"]
