@@ -5,6 +5,8 @@ extends Control
 @onready var music_progress: ProgressBar = $HBoxContainer/Volume/Music/ProgressBar
 @onready var key_prompt: Panel = $KeyPrompt
 
+signal bindings_reset
+
 const CONFIG_PATH = "user://settings.cfg"
 const VOL_SECTION = "Volume"
 const MUSIC_KEY = "Music"
@@ -54,3 +56,7 @@ func close():
 func bind_pressed(btn: KeymapButton):
 	binding_btn = btn
 	key_prompt.visible = true
+
+func reset_bindings_pressed():
+	InputMap.load_from_project_settings()
+	bindings_reset.emit()
