@@ -29,9 +29,6 @@ func music_value_changed(value):
 func sfx_value_changed(value):
 	AudioServer.set_bus_volume_db(sfx_bus_idx, linear_to_db(value))
 
-func close_pressed():
-	close()
-
 func paused_changed(is_paused):
 	if !is_paused:
 		close()

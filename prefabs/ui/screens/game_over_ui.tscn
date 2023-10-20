@@ -1,0 +1,95 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5uhlgkm4jn36"]
+
+[ext_resource type="Script" path="res://scripts/ui/game_over_ui.gd" id="1_13jlo"]
+
+[sub_resource type="FontVariation" id="FontVariation_t3bch"]
+variation_embolden = 0.8
+
+[sub_resource type="LabelSettings" id="LabelSettings_p8277"]
+font = SubResource("FontVariation_t3bch")
+font_size = 90
+font_color = Color(1, 0.721569, 0.00784314, 1)
+
+[sub_resource type="FontVariation" id="FontVariation_oj3bh"]
+variation_embolden = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_a8ar6"]
+font = SubResource("FontVariation_oj3bh")
+font_size = 85
+
+[node name="GameOverUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_13jlo")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.784314)
+
+[node name="GameOverLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.0
+offset_top = -250.0
+offset_right = 235.0
+offset_bottom = -137.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+text = "Game Over"
+label_settings = SubResource("LabelSettings_p8277")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="RecipiesDeliveredLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -138.0
+offset_right = 230.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "recipies delivered"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="RecipiesDeliveredValueLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -58.0
+offset_top = -71.0
+offset_right = 58.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "5"
+label_settings = SubResource("LabelSettings_a8ar6")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
