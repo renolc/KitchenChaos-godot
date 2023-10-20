@@ -24,5 +24,21 @@ static func set_volumes(music: float, sfx: float):
 	config.set_value(VOL_SECTION, MUSIC_KEY, music)
 	config.set_value(VOL_SECTION, SFX_KEY, sfx)
 
+static func set_buttons(buttons: Array[KeymapButton]):
+	buttons.map(func(btn: KeymapButton):
+		config.set_value(KEYMAP_SECTION, btn.action, btn.text)
+	)
+
+static func load_buttons(buttons: Array[KeymapButton]):
+	buttons.map(func(btn: KeymapButton):
+		var key_txt = config.get_value(KEYMAP_SECTION, btn.action)
+		if !key_txt: return
+		var event := InputEventKey.new()
+		event.set_keycode(OS.find_keycode_from_string(key_txt))
+		InputMap.action_erase_events(btn.action)
+		InputMap.action_add_event(btn.action, event)
+		btn.update_text()
+	)
+
 static func save():
 	config.save(CONFIG_PATH)

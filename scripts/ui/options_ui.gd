@@ -29,6 +29,8 @@ func _ready():
 	music_progress.value = db_to_linear(AudioServer.get_bus_volume_db(music_bus_idx))
 	sfx_progress.value = db_to_linear(AudioServer.get_bus_volume_db(sfx_bus_idx))
 
+	SettingsManager.load_buttons(buttons)
+
 func _unhandled_key_input(event):
 	if binding_btn && event is InputEventKey:
 		InputMap.action_erase_events(binding_btn.action)
@@ -50,6 +52,7 @@ func paused_changed(is_paused):
 func close():
 	visible = false
 	SettingsManager.set_volumes(music_progress.value, sfx_progress.value)
+	SettingsManager.set_buttons(buttons)
 	SettingsManager.save()
 
 func bind_pressed(btn: KeymapButton):
