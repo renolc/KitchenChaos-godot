@@ -1,16 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://y2wix2rhtmti"]
+[gd_scene load_steps=16 format=3 uid="uid://y2wix2rhtmti"]
 
 [ext_resource type="Script" path="res://scripts/ui/main_menu_ui.gd" id="1_gbbff"]
+[ext_resource type="PackedScene" uid="uid://beja488yd6jya" path="res://prefabs/ui/button.tscn" id="2_rv0dg"]
 [ext_resource type="Texture2D" uid="uid://cseaixyxnfh0s" path="res://textures/floor.png" id="2_wly6v"]
 [ext_resource type="PackedScene" uid="uid://dnd0rryp53332" path="res://prefabs_visuals/player_visuals.tscn" id="3_0syo4"]
 [ext_resource type="Script" path="res://scripts/ui/main_menu_camera.gd" id="3_3ygw1"]
 [ext_resource type="Texture2D" uid="uid://cecn1uat6oyv8" path="res://textures/KitchenChaosLogo.png" id="5_8yfrf"]
-
-[sub_resource type="FontVariation" id="FontVariation_i4gb3"]
-variation_embolden = 1.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i50nh"]
-bg_color = Color(0.2, 0.2, 0.2, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_pe6ic"]
 variation_embolden = 0.8
@@ -71,95 +66,37 @@ grow_vertical = 2
 script = ExtResource("1_gbbff")
 game_scene_path = "res://scenes/game_scene.tscn"
 
-[node name="PlayButton" type="Button" parent="CanvasLayer/MainMenuUI"]
+[node name="PlayButton" parent="CanvasLayer/MainMenuUI" instance=ExtResource("2_rv0dg")]
 layout_mode = 1
 anchors_preset = 2
+anchor_left = 0.0
 anchor_top = 1.0
+anchor_right = 0.0
 anchor_bottom = 1.0
 offset_left = 55.0
 offset_top = -244.0
 offset_right = 305.0
 offset_bottom = -164.0
+grow_horizontal = 1
 grow_vertical = 0
-theme_override_fonts/font = SubResource("FontVariation_i4gb3")
 theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = SubResource("StyleBoxFlat_i50nh")
 text = "PLAY"
 
-[node name="Outline" type="ColorRect" parent="CanvasLayer/MainMenuUI/PlayButton"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-
-[node name="Shadow" type="ColorRect" parent="CanvasLayer/MainMenuUI/PlayButton"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = -1.0
-offset_right = 9.0
-offset_bottom = 9.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 0.254902)
-
-[node name="QuitButton" type="Button" parent="CanvasLayer/MainMenuUI"]
+[node name="QuitButton" parent="CanvasLayer/MainMenuUI" instance=ExtResource("2_rv0dg")]
 layout_mode = 1
 anchors_preset = 2
+anchor_left = 0.0
 anchor_top = 1.0
+anchor_right = 0.0
 anchor_bottom = 1.0
-offset_left = 55.0
+offset_left = 54.0
 offset_top = -118.0
-offset_right = 305.0
+offset_right = 304.0
 offset_bottom = -58.0
+grow_horizontal = 1
 grow_vertical = 0
-theme_override_fonts/font = SubResource("FontVariation_i4gb3")
-theme_override_font_sizes/font_size = 37
-theme_override_styles/normal = SubResource("StyleBoxFlat_i50nh")
+theme_override_font_sizes/font_size = 35
 text = "QUIT"
-
-[node name="Outline" type="ColorRect" parent="CanvasLayer/MainMenuUI/QuitButton"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-
-[node name="Shadow" type="ColorRect" parent="CanvasLayer/MainMenuUI/QuitButton"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = -1.0
-offset_right = 9.0
-offset_bottom = 9.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 0.254902)
 
 [node name="Logo" type="TextureRect" parent="CanvasLayer/MainMenuUI"]
 texture_filter = 4
