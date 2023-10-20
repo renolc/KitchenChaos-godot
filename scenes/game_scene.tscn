@@ -355,9 +355,10 @@ stream = ExtResource("22_d22mu")
 autoplay = true
 bus = &"Music"
 
-[node name="GameManager" type="Node" parent="Managers"]
+[node name="GameManager" type="Node" parent="Managers" node_paths=PackedStringArray("options_menu")]
 process_mode = 3
 script = ExtResource("28_wdf1x")
+options_menu = NodePath("../../CanvasLayer/OptionsUI")
 
 [connection signal="new_order_added" from="Managers/DeliveryManager" to="CanvasLayer/DeliveryManagerUI" method="new_order_added"]
 [connection signal="order_delivered" from="Managers/DeliveryManager" to="CanvasLayer/DeliveryManagerUI" method="order_delivered"]

@@ -1,6 +1,8 @@
 class_name GameManager
 extends Node
 
+@export var options_menu: OptionsUI
+
 const WAIT_TO_START_TIME = 1
 const COUNTDOWN_TIME = 3
 const PLAYING_TIME = 10
@@ -22,7 +24,6 @@ var state: State:
 	set(s):
 		state = s
 		state_changed.emit(state)
-		print(State.keys()[state])
 		call(State.keys()[state])
 
 func _init():
@@ -32,6 +33,8 @@ func _ready():
 	state = State.WaitingToStart
 
 func _unhandled_input(_event):
+	if options_menu.key_prompt.visible: return
+
 	if Input.is_action_just_pressed("pause"):
 		toggle_pause()
 
