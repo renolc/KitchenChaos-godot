@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c64mw1xxrl7v"]
+[gd_scene load_steps=7 format=3 uid="uid://c64mw1xxrl7v"]
 
 [ext_resource type="Script" path="res://scripts/ui/options_ui.gd" id="1_ejufj"]
 [ext_resource type="Script" path="res://scripts/ui/options_progress_bar.gd" id="2_263rh"]
@@ -17,15 +17,6 @@ corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
-
-[sub_resource type="LabelSettings" id="LabelSettings_m5net"]
-font_size = 25
-
-[sub_resource type="FontVariation" id="FontVariation_7tk8h"]
-variation_embolden = 1.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xxow"]
-bg_color = Color(0.2, 0.2, 0.2, 1)
 
 [node name="OptionsUI" type="Control"]
 process_mode = 3
@@ -64,32 +55,42 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="Volume" type="Control" parent="."]
+[node name="CloseButton" parent="." instance=ExtResource("3_2nhnt")]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -226.0
-offset_top = 274.0
-offset_right = -186.0
-offset_bottom = 314.0
-grow_horizontal = 2
+anchors_preset = 7
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -87.0
+offset_right = 125.0
+offset_bottom = -17.0
+grow_vertical = 0
+text = "CLOSE"
 
-[node name="SFX" type="Control" parent="Volume"]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 6.0
-offset_top = 39.0
-offset_right = 46.0
-offset_bottom = 79.0
+offset_left = -196.0
+offset_top = -187.0
+offset_right = 196.0
+offset_bottom = 187.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 200
 
-[node name="Label" type="Label" parent="Volume/SFX"]
+[node name="Volume" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 80
+alignment = 1
+
+[node name="SFX" type="Control" parent="HBoxContainer/Volume"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/Volume/SFX"]
 layout_mode = 0
 offset_left = -31.0
 offset_top = -29.0
@@ -97,7 +98,7 @@ offset_right = 74.0
 offset_bottom = -3.0
 text = "Sound Effects"
 
-[node name="ProgressBar" type="ProgressBar" parent="Volume/SFX"]
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/Volume/SFX"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 0
 offset_left = -75.0
@@ -111,20 +112,10 @@ max_value = 1.0
 value = 1.0
 script = ExtResource("2_263rh")
 
-[node name="Music" type="Control" parent="Volume"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 5.0
-offset_top = -40.0
-offset_right = 45.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Music" type="Control" parent="HBoxContainer/Volume"]
+layout_mode = 2
 
-[node name="Label" type="Label" parent="Volume/Music"]
+[node name="Label" type="Label" parent="HBoxContainer/Volume/Music"]
 layout_mode = 0
 offset_left = -31.0
 offset_top = -29.0
@@ -133,7 +124,7 @@ offset_bottom = -3.0
 text = "Music"
 horizontal_alignment = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="Volume/Music"]
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/Volume/Music"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 0
 offset_left = -76.0
@@ -147,535 +138,122 @@ max_value = 1.0
 value = 1.0
 script = ExtResource("2_263rh")
 
-[node name="KeyMapping" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 186.0
-offset_top = -80.0
-offset_right = 186.0
-offset_bottom = -80.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="KeyMap" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 7
 
-[node name="MoveUp" type="Control" parent="KeyMapping"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = -91.0
-offset_right = 40.0
-offset_bottom = -51.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Up" type="HBoxContainer" parent="HBoxContainer/KeyMap"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 50
 
-[node name="Label" type="Label" parent="KeyMapping/MoveUp"]
-layout_mode = 0
-offset_left = -159.0
-offset_top = -20.0
-offset_right = -9.0
-offset_bottom = 18.0
+[node name="Label" type="Label" parent="HBoxContainer/KeyMap/Up"]
+layout_mode = 2
 text = "Move Up"
-label_settings = SubResource("LabelSettings_m5net")
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="KeyMapping/MoveUp"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 17.0
-offset_top = -67.0
-offset_right = 67.0
-offset_bottom = -17.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_fonts/font = SubResource("FontVariation_7tk8h")
+[node name="Button" parent="HBoxContainer/KeyMap/Up" instance=ExtResource("3_2nhnt")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
 theme_override_font_sizes/font_size = 23
-theme_override_styles/normal = SubResource("StyleBoxFlat_8xxow")
 text = "W"
-clip_text = true
 
-[node name="Outline" type="ColorRect" parent="KeyMapping/MoveUp/Button"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
+[node name="Down" type="HBoxContainer" parent="HBoxContainer/KeyMap"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 50
 
-[node name="Shadow" type="ColorRect" parent="KeyMapping/MoveUp/Button"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = -1.0
-offset_right = 9.0
-offset_bottom = 9.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 0.254902)
-
-[node name="MoveDown" type="Control" parent="KeyMapping"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = -31.0
-offset_right = 40.0
-offset_bottom = 9.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="KeyMapping/MoveDown"]
-layout_mode = 0
-offset_left = -159.0
-offset_top = -20.0
-offset_right = -9.0
-offset_bottom = 18.0
+[node name="Label" type="Label" parent="HBoxContainer/KeyMap/Down"]
+layout_mode = 2
 text = "Move Down"
-label_settings = SubResource("LabelSettings_m5net")
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="KeyMapping/MoveDown"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 17.0
-offset_top = -67.0
-offset_right = 67.0
-offset_bottom = -17.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_fonts/font = SubResource("FontVariation_7tk8h")
+[node name="Button" parent="HBoxContainer/KeyMap/Down" instance=ExtResource("3_2nhnt")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
 theme_override_font_sizes/font_size = 23
-theme_override_styles/normal = SubResource("StyleBoxFlat_8xxow")
 text = "S"
-clip_text = true
 
-[node name="Outline" type="ColorRect" parent="KeyMapping/MoveDown/Button"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
+[node name="Left" type="HBoxContainer" parent="HBoxContainer/KeyMap"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 50
 
-[node name="Shadow" type="ColorRect" parent="KeyMapping/MoveDown/Button"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = -1.0
-offset_right = 9.0
-offset_bottom = 9.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 0.254902)
-
-[node name="MoveLeft" type="Control" parent="KeyMapping"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = 31.0
-offset_right = 40.0
-offset_bottom = 71.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="KeyMapping/MoveLeft"]
-layout_mode = 0
-offset_left = -159.0
-offset_top = -20.0
-offset_right = -9.0
-offset_bottom = 18.0
+[node name="Label" type="Label" parent="HBoxContainer/KeyMap/Left"]
+layout_mode = 2
 text = "Move Left"
-label_settings = SubResource("LabelSettings_m5net")
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="KeyMapping/MoveLeft"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 17.0
-offset_top = -67.0
-offset_right = 67.0
-offset_bottom = -17.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_fonts/font = SubResource("FontVariation_7tk8h")
+[node name="Button" parent="HBoxContainer/KeyMap/Left" instance=ExtResource("3_2nhnt")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
 theme_override_font_sizes/font_size = 23
-theme_override_styles/normal = SubResource("StyleBoxFlat_8xxow")
 text = "A"
-clip_text = true
 
-[node name="Outline" type="ColorRect" parent="KeyMapping/MoveLeft/Button"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
+[node name="Right" type="HBoxContainer" parent="HBoxContainer/KeyMap"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 50
 
-[node name="Shadow" type="ColorRect" parent="KeyMapping/MoveLeft/Button"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = -1.0
-offset_right = 9.0
-offset_bottom = 9.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 0.254902)
-
-[node name="MoveRight" type="Control" parent="KeyMapping"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = 93.0
-offset_right = 40.0
-offset_bottom = 133.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="KeyMapping/MoveRight"]
-layout_mode = 0
-offset_left = -159.0
-offset_top = -20.0
-offset_right = -9.0
-offset_bottom = 18.0
+[node name="Label" type="Label" parent="HBoxContainer/KeyMap/Right"]
+layout_mode = 2
 text = "Move Right"
-label_settings = SubResource("LabelSettings_m5net")
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="KeyMapping/MoveRight"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 17.0
-offset_top = -67.0
-offset_right = 67.0
-offset_bottom = -17.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_fonts/font = SubResource("FontVariation_7tk8h")
+[node name="Button" parent="HBoxContainer/KeyMap/Right" instance=ExtResource("3_2nhnt")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
 theme_override_font_sizes/font_size = 23
-theme_override_styles/normal = SubResource("StyleBoxFlat_8xxow")
 text = "D"
-clip_text = true
 
-[node name="Outline" type="ColorRect" parent="KeyMapping/MoveRight/Button"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
+[node name="Interact" type="HBoxContainer" parent="HBoxContainer/KeyMap"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 50
 
-[node name="Shadow" type="ColorRect" parent="KeyMapping/MoveRight/Button"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = -1.0
-offset_right = 9.0
-offset_bottom = 9.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 0.254902)
-
-[node name="Interact" type="Control" parent="KeyMapping"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = 154.0
-offset_right = 40.0
-offset_bottom = 194.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="KeyMapping/Interact"]
-layout_mode = 0
-offset_left = -159.0
-offset_top = -20.0
-offset_right = -9.0
-offset_bottom = 18.0
+[node name="Label" type="Label" parent="HBoxContainer/KeyMap/Interact"]
+layout_mode = 2
 text = "Interact"
-label_settings = SubResource("LabelSettings_m5net")
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="KeyMapping/Interact"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 17.0
-offset_top = -67.0
-offset_right = 67.0
-offset_bottom = -17.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_fonts/font = SubResource("FontVariation_7tk8h")
+[node name="Button" parent="HBoxContainer/KeyMap/Interact" instance=ExtResource("3_2nhnt")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
 theme_override_font_sizes/font_size = 23
-theme_override_styles/normal = SubResource("StyleBoxFlat_8xxow")
 text = "E"
-clip_text = true
 
-[node name="Outline" type="ColorRect" parent="KeyMapping/Interact/Button"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
+[node name="InteractAlt" type="HBoxContainer" parent="HBoxContainer/KeyMap"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 50
 
-[node name="Shadow" type="ColorRect" parent="KeyMapping/Interact/Button"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = -1.0
-offset_right = 9.0
-offset_bottom = 9.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 0.254902)
-
-[node name="InteractAlt" type="Control" parent="KeyMapping"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = 213.0
-offset_right = 40.0
-offset_bottom = 253.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="KeyMapping/InteractAlt"]
-layout_mode = 0
-offset_left = -159.0
-offset_top = -20.0
-offset_right = -9.0
-offset_bottom = 18.0
+[node name="Label" type="Label" parent="HBoxContainer/KeyMap/InteractAlt"]
+layout_mode = 2
 text = "Interact Alt"
-label_settings = SubResource("LabelSettings_m5net")
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="KeyMapping/InteractAlt"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 17.0
-offset_top = -67.0
-offset_right = 67.0
-offset_bottom = -17.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_fonts/font = SubResource("FontVariation_7tk8h")
+[node name="Button" parent="HBoxContainer/KeyMap/InteractAlt" instance=ExtResource("3_2nhnt")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
 theme_override_font_sizes/font_size = 23
-theme_override_styles/normal = SubResource("StyleBoxFlat_8xxow")
 text = "F"
-clip_text = true
 
-[node name="Outline" type="ColorRect" parent="KeyMapping/InteractAlt/Button"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
+[node name="Pause" type="HBoxContainer" parent="HBoxContainer/KeyMap"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 50
 
-[node name="Shadow" type="ColorRect" parent="KeyMapping/InteractAlt/Button"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = -1.0
-offset_right = 9.0
-offset_bottom = 9.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 0.254902)
-
-[node name="Pause" type="Control" parent="KeyMapping"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_top = 272.0
-offset_right = 40.0
-offset_bottom = 312.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="KeyMapping/Pause"]
-layout_mode = 0
-offset_left = -159.0
-offset_top = -20.0
-offset_right = -9.0
-offset_bottom = 18.0
+[node name="Label" type="Label" parent="HBoxContainer/KeyMap/Pause"]
+layout_mode = 2
 text = "Pause"
-label_settings = SubResource("LabelSettings_m5net")
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="KeyMapping/Pause"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 17.0
-offset_top = -67.0
-offset_right = 67.0
-offset_bottom = -17.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_fonts/font = SubResource("FontVariation_7tk8h")
+[node name="Button" parent="HBoxContainer/KeyMap/Pause" instance=ExtResource("3_2nhnt")]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
 theme_override_font_sizes/font_size = 23
-theme_override_styles/normal = SubResource("StyleBoxFlat_8xxow")
 text = "ESC"
-clip_text = true
 
-[node name="Outline" type="ColorRect" parent="KeyMapping/Pause/Button"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-
-[node name="Shadow" type="ColorRect" parent="KeyMapping/Pause/Button"]
-show_behind_parent = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = -1.0
-offset_right = 9.0
-offset_bottom = 9.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 0.254902)
-
-[node name="CloseButton" parent="." instance=ExtResource("3_2nhnt")]
-layout_mode = 1
-anchors_preset = 7
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = -125.0
-offset_top = -87.0
-offset_right = 125.0
-offset_bottom = -17.0
-grow_vertical = 0
-
-[connection signal="value_changed" from="Volume/SFX/ProgressBar" to="." method="sfx_value_changed"]
-[connection signal="value_changed" from="Volume/Music/ProgressBar" to="." method="music_value_changed"]
 [connection signal="pressed" from="CloseButton" to="." method="close"]
+[connection signal="value_changed" from="HBoxContainer/Volume/SFX/ProgressBar" to="." method="sfx_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/Volume/Music/ProgressBar" to="." method="music_value_changed"]
