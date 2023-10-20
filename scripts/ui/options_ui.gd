@@ -1,7 +1,7 @@
 extends Control
 
-@onready var sfx_progress: ProgressBar = $SFX/ProgressBar
-@onready var music_progress: ProgressBar = $Music/ProgressBar
+@onready var sfx_progress: ProgressBar = $Volume/SFX/ProgressBar
+@onready var music_progress: ProgressBar = $Volume/Music/ProgressBar
 
 const CONFIG_PATH = "user://settings.cfg"
 const VOL_SECTION = "Volume"

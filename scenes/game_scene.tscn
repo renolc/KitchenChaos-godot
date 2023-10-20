@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://c5pywpg28515m"]
+[gd_scene load_steps=54 format=3 uid="uid://c5pywpg28515m"]
 
 [ext_resource type="Material" uid="uid://sv4vq030f0j8" path="res://materials/floor.tres" id="1_51bdx"]
 [ext_resource type="PackedScene" uid="uid://cxcjdiex5bmyl" path="res://prefabs/player.tscn" id="2_kc4gf"]
@@ -116,6 +116,9 @@ corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
+
+[sub_resource type="LabelSettings" id="LabelSettings_m5net"]
+font_size = 25
 
 [node name="GameScene" type="Node"]
 
@@ -525,7 +528,6 @@ color = Color(0, 0, 0, 0.254902)
 
 [node name="OptionsUI" type="Control" parent="CanvasLayer"]
 process_mode = 3
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -547,17 +549,13 @@ color = Color(0, 0, 0, 0.862745)
 
 [node name="OptionsLabel" type="Label" parent="CanvasLayer/OptionsUI"]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -234.0
-offset_top = -244.0
-offset_right = 235.0
-offset_bottom = -117.0
+offset_left = -234.5
+offset_right = 234.5
+offset_bottom = 127.0
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_font_sizes/font_size = 80
 text = "OPTIONS"
 label_settings = SubResource("LabelSettings_wfr0v")
@@ -565,21 +563,32 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="SFX" type="Control" parent="CanvasLayer/OptionsUI"]
+[node name="Volume" type="Control" parent="CanvasLayer/OptionsUI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -226.0
+offset_top = 274.0
+offset_right = -186.0
+offset_bottom = 314.0
+grow_horizontal = 2
+
+[node name="SFX" type="Control" parent="CanvasLayer/OptionsUI/Volume"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -36.0
-offset_right = 20.0
-offset_bottom = 4.0
+offset_left = 6.0
+offset_top = 39.0
+offset_right = 46.0
+offset_bottom = 79.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/OptionsUI/SFX"]
+[node name="Label" type="Label" parent="CanvasLayer/OptionsUI/Volume/SFX"]
 layout_mode = 0
 offset_left = -31.0
 offset_top = -29.0
@@ -587,7 +596,7 @@ offset_right = 74.0
 offset_bottom = -3.0
 text = "Sound Effects"
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/OptionsUI/SFX"]
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/OptionsUI/Volume/SFX"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 0
 offset_left = -75.0
@@ -601,21 +610,20 @@ max_value = 1.0
 value = 1.0
 script = ExtResource("11_ludw5")
 
-[node name="Music" type="Control" parent="CanvasLayer/OptionsUI"]
+[node name="Music" type="Control" parent="CanvasLayer/OptionsUI/Volume"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = 44.0
-offset_right = 20.0
-offset_bottom = 84.0
+offset_left = 5.0
+offset_top = -40.0
+offset_right = 45.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/OptionsUI/Music"]
+[node name="Label" type="Label" parent="CanvasLayer/OptionsUI/Volume/Music"]
 layout_mode = 0
 offset_left = -31.0
 offset_top = -29.0
@@ -624,7 +632,7 @@ offset_bottom = -3.0
 text = "Music"
 horizontal_alignment = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/OptionsUI/Music"]
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/OptionsUI/Volume/Music"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 0
 offset_left = -76.0
@@ -638,19 +646,537 @@ max_value = 1.0
 value = 1.0
 script = ExtResource("11_ludw5")
 
-[node name="CloseButton" type="Button" parent="CanvasLayer/OptionsUI"]
+[node name="KeyMapping" type="Control" parent="CanvasLayer/OptionsUI"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = 214.0
-offset_right = 125.0
-offset_bottom = 284.0
+offset_left = 186.0
+offset_top = -80.0
+offset_right = 186.0
+offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MoveUp" type="Control" parent="CanvasLayer/OptionsUI/KeyMapping"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -91.0
+offset_right = 40.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/OptionsUI/KeyMapping/MoveUp"]
+layout_mode = 0
+offset_left = -159.0
+offset_top = -20.0
+offset_right = -9.0
+offset_bottom = 18.0
+text = "Move Up"
+label_settings = SubResource("LabelSettings_m5net")
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/OptionsUI/KeyMapping/MoveUp"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = -67.0
+offset_right = 67.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = SubResource("FontVariation_7tk8h")
+theme_override_font_sizes/font_size = 23
+theme_override_styles/normal = SubResource("StyleBoxFlat_8xxow")
+text = "W"
+clip_text = true
+
+[node name="Outline" type="ColorRect" parent="CanvasLayer/OptionsUI/KeyMapping/MoveUp/Button"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Shadow" type="ColorRect" parent="CanvasLayer/OptionsUI/KeyMapping/MoveUp/Button"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 9.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.254902)
+
+[node name="MoveDown" type="Control" parent="CanvasLayer/OptionsUI/KeyMapping"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -31.0
+offset_right = 40.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/OptionsUI/KeyMapping/MoveDown"]
+layout_mode = 0
+offset_left = -159.0
+offset_top = -20.0
+offset_right = -9.0
+offset_bottom = 18.0
+text = "Move Down"
+label_settings = SubResource("LabelSettings_m5net")
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/OptionsUI/KeyMapping/MoveDown"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = -67.0
+offset_right = 67.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = SubResource("FontVariation_7tk8h")
+theme_override_font_sizes/font_size = 23
+theme_override_styles/normal = SubResource("StyleBoxFlat_8xxow")
+text = "S"
+clip_text = true
+
+[node name="Outline" type="ColorRect" parent="CanvasLayer/OptionsUI/KeyMapping/MoveDown/Button"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Shadow" type="ColorRect" parent="CanvasLayer/OptionsUI/KeyMapping/MoveDown/Button"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 9.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.254902)
+
+[node name="MoveLeft" type="Control" parent="CanvasLayer/OptionsUI/KeyMapping"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 31.0
+offset_right = 40.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/OptionsUI/KeyMapping/MoveLeft"]
+layout_mode = 0
+offset_left = -159.0
+offset_top = -20.0
+offset_right = -9.0
+offset_bottom = 18.0
+text = "Move Left"
+label_settings = SubResource("LabelSettings_m5net")
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/OptionsUI/KeyMapping/MoveLeft"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = -67.0
+offset_right = 67.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = SubResource("FontVariation_7tk8h")
+theme_override_font_sizes/font_size = 23
+theme_override_styles/normal = SubResource("StyleBoxFlat_8xxow")
+text = "A"
+clip_text = true
+
+[node name="Outline" type="ColorRect" parent="CanvasLayer/OptionsUI/KeyMapping/MoveLeft/Button"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Shadow" type="ColorRect" parent="CanvasLayer/OptionsUI/KeyMapping/MoveLeft/Button"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 9.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.254902)
+
+[node name="MoveRight" type="Control" parent="CanvasLayer/OptionsUI/KeyMapping"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 93.0
+offset_right = 40.0
+offset_bottom = 133.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/OptionsUI/KeyMapping/MoveRight"]
+layout_mode = 0
+offset_left = -159.0
+offset_top = -20.0
+offset_right = -9.0
+offset_bottom = 18.0
+text = "Move Right"
+label_settings = SubResource("LabelSettings_m5net")
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/OptionsUI/KeyMapping/MoveRight"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = -67.0
+offset_right = 67.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = SubResource("FontVariation_7tk8h")
+theme_override_font_sizes/font_size = 23
+theme_override_styles/normal = SubResource("StyleBoxFlat_8xxow")
+text = "D"
+clip_text = true
+
+[node name="Outline" type="ColorRect" parent="CanvasLayer/OptionsUI/KeyMapping/MoveRight/Button"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Shadow" type="ColorRect" parent="CanvasLayer/OptionsUI/KeyMapping/MoveRight/Button"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 9.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.254902)
+
+[node name="Interact" type="Control" parent="CanvasLayer/OptionsUI/KeyMapping"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 154.0
+offset_right = 40.0
+offset_bottom = 194.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/OptionsUI/KeyMapping/Interact"]
+layout_mode = 0
+offset_left = -159.0
+offset_top = -20.0
+offset_right = -9.0
+offset_bottom = 18.0
+text = "Interact"
+label_settings = SubResource("LabelSettings_m5net")
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/OptionsUI/KeyMapping/Interact"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = -67.0
+offset_right = 67.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = SubResource("FontVariation_7tk8h")
+theme_override_font_sizes/font_size = 23
+theme_override_styles/normal = SubResource("StyleBoxFlat_8xxow")
+text = "E"
+clip_text = true
+
+[node name="Outline" type="ColorRect" parent="CanvasLayer/OptionsUI/KeyMapping/Interact/Button"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Shadow" type="ColorRect" parent="CanvasLayer/OptionsUI/KeyMapping/Interact/Button"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 9.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.254902)
+
+[node name="InteractAlt" type="Control" parent="CanvasLayer/OptionsUI/KeyMapping"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 213.0
+offset_right = 40.0
+offset_bottom = 253.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/OptionsUI/KeyMapping/InteractAlt"]
+layout_mode = 0
+offset_left = -159.0
+offset_top = -20.0
+offset_right = -9.0
+offset_bottom = 18.0
+text = "Interact Alt"
+label_settings = SubResource("LabelSettings_m5net")
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/OptionsUI/KeyMapping/InteractAlt"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = -67.0
+offset_right = 67.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = SubResource("FontVariation_7tk8h")
+theme_override_font_sizes/font_size = 23
+theme_override_styles/normal = SubResource("StyleBoxFlat_8xxow")
+text = "F"
+clip_text = true
+
+[node name="Outline" type="ColorRect" parent="CanvasLayer/OptionsUI/KeyMapping/InteractAlt/Button"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Shadow" type="ColorRect" parent="CanvasLayer/OptionsUI/KeyMapping/InteractAlt/Button"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 9.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.254902)
+
+[node name="Pause" type="Control" parent="CanvasLayer/OptionsUI/KeyMapping"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 272.0
+offset_right = 40.0
+offset_bottom = 312.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/OptionsUI/KeyMapping/Pause"]
+layout_mode = 0
+offset_left = -159.0
+offset_top = -20.0
+offset_right = -9.0
+offset_bottom = 18.0
+text = "Pause"
+label_settings = SubResource("LabelSettings_m5net")
+horizontal_alignment = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/OptionsUI/KeyMapping/Pause"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = -67.0
+offset_right = 67.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = SubResource("FontVariation_7tk8h")
+theme_override_font_sizes/font_size = 23
+theme_override_styles/normal = SubResource("StyleBoxFlat_8xxow")
+text = "ESC"
+clip_text = true
+
+[node name="Outline" type="ColorRect" parent="CanvasLayer/OptionsUI/KeyMapping/Pause/Button"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Shadow" type="ColorRect" parent="CanvasLayer/OptionsUI/KeyMapping/Pause/Button"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 9.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.254902)
+
+[node name="CloseButton" type="Button" parent="CanvasLayer/OptionsUI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -85.0
+offset_right = 125.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_fonts/font = SubResource("FontVariation_7tk8h")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_8xxow")
@@ -814,8 +1340,8 @@ script = ExtResource("28_wdf1x")
 [connection signal="pressed" from="CanvasLayer/GamePausedUI/ResumeButton" to="CanvasLayer/GamePausedUI" method="resume_pressed"]
 [connection signal="pressed" from="CanvasLayer/GamePausedUI/OptionsButton" to="CanvasLayer/GamePausedUI" method="options_pressed"]
 [connection signal="pressed" from="CanvasLayer/GamePausedUI/MenuButton" to="CanvasLayer/GamePausedUI" method="menu_pressed"]
-[connection signal="value_changed" from="CanvasLayer/OptionsUI/SFX/ProgressBar" to="CanvasLayer/OptionsUI" method="sfx_value_changed"]
-[connection signal="value_changed" from="CanvasLayer/OptionsUI/Music/ProgressBar" to="CanvasLayer/OptionsUI" method="music_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/OptionsUI/Volume/SFX/ProgressBar" to="CanvasLayer/OptionsUI" method="sfx_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/OptionsUI/Volume/Music/ProgressBar" to="CanvasLayer/OptionsUI" method="music_value_changed"]
 [connection signal="pressed" from="CanvasLayer/OptionsUI/CloseButton" to="CanvasLayer/OptionsUI" method="close_pressed"]
 [connection signal="new_order_added" from="Managers/DeliveryManager" to="CanvasLayer/DeliveryManagerUI" method="new_order_added"]
 [connection signal="order_delivered" from="Managers/DeliveryManager" to="CanvasLayer/DeliveryManagerUI" method="order_delivered"]
