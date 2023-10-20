@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://dnd0rryp53332"]
 
 [ext_resource type="PackedScene" uid="uid://dbht1ti3g3act" path="res://meshes/PlayerVisual.glb" id="1_ecmeu"]
-[ext_resource type="Script" path="res://scripts/player_visuals.gd" id="1_keuv7"]
+[ext_resource type="Script" path="res://scripts/player/player_visuals.gd" id="1_keuv7"]
 
 [sub_resource type="Animation" id="Animation_bby8c"]
 length = 0.001

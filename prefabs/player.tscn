@@ -1,12 +1,12 @@
 [gd_scene load_steps=13 format=3 uid="uid://cxcjdiex5bmyl"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_sgjaw"]
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_t2x6g"]
 [ext_resource type="PackedScene" uid="uid://dnd0rryp53332" path="res://prefabs_visuals/player_visuals.tscn" id="2_xvlbv"]
 [ext_resource type="PackedScene" uid="uid://wm4gbjtmydi5" path="res://prefabs/managers/sfx_manager.tscn" id="3_thivv"]
 [ext_resource type="AudioStream" uid="uid://dyopstkkcecv" path="res://sounds/sfx/SFX_object_pickup01.wav" id="4_dibma"]
 [ext_resource type="AudioStream" uid="uid://beldohj6dr3ol" path="res://sounds/sfx/SFX_object_pickup02.wav" id="5_11e8v"]
 [ext_resource type="AudioStream" uid="uid://cu5jieo32u7iv" path="res://sounds/sfx/SFX_object_pickup03.wav" id="6_cxx02"]
-[ext_resource type="Script" path="res://scripts/player_sounds.gd" id="7_if7yx"]
+[ext_resource type="Script" path="res://scripts/player/player_sounds.gd" id="7_i3hfq"]
 [ext_resource type="AudioStream" uid="uid://bq3a4gf3v8gfw" path="res://sounds/sfx/SFX_footstep01_01.wav" id="7_us0d2"]
 [ext_resource type="AudioStream" uid="uid://bnadgc2cbb5sa" path="res://sounds/sfx/SFX_footstep01_02.wav" id="8_4rlbo"]
 [ext_resource type="AudioStream" uid="uid://b2jrur8v6ldo7" path="res://sounds/sfx/SFX_footstep02_01.wav" id="9_hxgui"]
@@ -17,7 +17,7 @@ radius = 0.65
 
 [node name="Player" type="CharacterBody3D"]
 collision_mask = 2
-script = ExtResource("1_sgjaw")
+script = ExtResource("1_t2x6g")
 
 [node name="player_visuals" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_xvlbv")]
 player = NodePath("..")
@@ -38,7 +38,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 1)
 sfxs = Array[AudioStream]([ExtResource("4_dibma"), ExtResource("5_11e8v"), ExtResource("6_cxx02")])
 
 [node name="PlayerSounds" type="Node3D" parent="."]
-script = ExtResource("7_if7yx")
+script = ExtResource("7_i3hfq")
 
 [node name="StepTimer" type="Timer" parent="PlayerSounds"]
 wait_time = 0.1
