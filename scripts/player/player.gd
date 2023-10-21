@@ -29,8 +29,23 @@ func _process(_delta):
 func _unhandled_input(_event):
 	handle_interact()
 
+func get_movement_vector() -> Vector2:
+	var keyboard_vector := Input.get_vector("left", "right", "up", "down")
+	var gamepad_vector := Input.get_vector("gamepad_left", "gamepad_right", "gamepad_up", "gamepad_down")
+
+	if keyboard_vector.length() > gamepad_vector.length():
+		return keyboard_vector
+
+	return gamepad_vector
+
+func interact_just_pressed() -> bool:
+	return Input.is_action_just_pressed("interact") || Input.is_action_just_pressed("gamepad_interact")
+
+func interact_alt_just_pressed() -> bool:
+	return Input.is_action_just_pressed("interact_alt") || Input.is_action_just_pressed("gamepad_interact_alt")
+
 func handle_movement():
-	var input_vector := Input.get_vector("left", "right", "up", "down")
+	var input_vector := get_movement_vector()
 	velocity = Vector3(input_vector.x, 0, input_vector.y) * move_speed
 	is_walking = !velocity.is_equal_approx(Vector3.ZERO)
 	if is_walking:
@@ -44,10 +59,10 @@ func handle_interact():
 	if GameManager.Instance.state != GameManager.State.Playing: return
 	if !selected_counter: return
 
-	if Input.is_action_just_pressed("interact") && selected_counter.has_method("interact"):
+	if interact_just_pressed() && selected_counter.has_method("interact"):
 		selected_counter.interact()
 
-	if Input.is_action_just_pressed("interact_alt") && selected_counter.has_method("interact_alt"):
+	if interact_alt_just_pressed() && selected_counter.has_method("interact_alt"):
 		selected_counter.interact_alt()
 
 func remove_kitchen_object(del_ko: bool = false):
