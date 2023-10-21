@@ -5,13 +5,13 @@ extends Control
 @onready var music_progress: ProgressBar = $HBoxContainer/Volume/Music/ProgressBar
 @onready var key_prompt: Panel = $KeyPrompt
 @onready var buttons: Array[KeymapButton] = [
-	$HBoxContainer/KeyMap/Up/Button,
-	$HBoxContainer/KeyMap/Down/Button,
-	$HBoxContainer/KeyMap/Left/Button,
-	$HBoxContainer/KeyMap/Right/Button,
-	$HBoxContainer/KeyMap/Interact/Button,
-	$HBoxContainer/KeyMap/InteractAlt/Button,
-	$HBoxContainer/KeyMap/Pause/Button
+	$HBoxContainer/Keymap/KeymapOptions/KeyboardButtons/Up,
+	$HBoxContainer/Keymap/KeymapOptions/KeyboardButtons/Down,
+	$HBoxContainer/Keymap/KeymapOptions/KeyboardButtons/Left,
+	$HBoxContainer/Keymap/KeymapOptions/KeyboardButtons/Right,
+	$HBoxContainer/Keymap/KeymapOptions/KeyboardButtons/Int,
+	$HBoxContainer/Keymap/KeymapOptions/KeyboardButtons/IntAlt,
+	$HBoxContainer/Keymap/KeymapOptions/KeyboardButtons/Pause
 ]
 
 var music_bus_idx: int
