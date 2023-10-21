@@ -139,6 +139,7 @@ shadow_enabled = true
 environment = SubResource("Environment_3m2pe")
 
 [node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.862928, 0, -0.505326, 0, 1, 0, 0.505326, 0, 0.862928, 0, 0, 0)
 mesh = SubResource("PlaneMesh_28mns")
 metadata/_edit_lock_ = true
 
