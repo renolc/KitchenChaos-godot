@@ -37,7 +37,7 @@ func _unhandled_key_input(event):
 		InputMap.action_add_event(binding_btn.action, event)
 		binding_btn.update_text()
 		binding_btn = null
-		key_prompt.visible = false
+		key_prompt.hide()
 
 func music_value_changed(value):
 	AudioServer.set_bus_volume_db(music_bus_idx, linear_to_db(value))
@@ -50,14 +50,14 @@ func paused_changed(is_paused):
 		close()
 
 func close():
-	visible = false
+	hide()
 	SettingsManager.set_volumes(music_progress.value, sfx_progress.value)
 	SettingsManager.set_buttons(buttons)
 	SettingsManager.save()
 
 func bind_pressed(btn: KeymapButton):
 	binding_btn = btn
-	key_prompt.visible = true
+	key_prompt.show()
 
 func reset_bindings_pressed():
 	InputMap.load_from_project_settings()

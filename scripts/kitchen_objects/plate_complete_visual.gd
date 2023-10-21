@@ -18,7 +18,7 @@ func _ready():
 	}
 
 	for i in name_to_node:
-		name_to_node[i].visible = false
+		name_to_node[i].hide()
 
 func ingredient_added(ko: KitchenObject):
-	name_to_node[ko.name].visible = true
+	name_to_node[ko.name].show()

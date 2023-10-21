@@ -9,7 +9,7 @@ func _ready():
 	ResourceLoader.load_threaded_request(game_scene_path)
 
 func play_pressed():
-	loading_screen.visible = true
+	loading_screen.show()
 	await get_tree().create_timer(0.1).timeout
 	get_tree().change_scene_to_packed(ResourceLoader.load_threaded_get(game_scene_path))
 

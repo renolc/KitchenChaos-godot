@@ -4,7 +4,7 @@ extends Sprite3D
 @onready var bar: TextureProgressBar = $SubViewport/TextureProgressBar
 
 func _ready():
-	visible = false
+	hide()
 
 	# there is currently a bug where viewport textures don't stick when
 	# set in the editor:

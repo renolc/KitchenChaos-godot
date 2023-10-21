@@ -5,4 +5,4 @@ extends Control
 func state_changed(state: GameManager.State):
 	if state == GameManager.State.GameOver:
 		delivered_count.text = str(DeliveryManager.Instance.orders_delivered)
-		visible = true
+		show()
