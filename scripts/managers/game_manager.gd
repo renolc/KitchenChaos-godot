@@ -35,11 +35,8 @@ func _ready():
 func _unhandled_input(_event):
 	if options_menu.key_prompt.visible: return
 
-	if paused_just_pressed():
+	if InputManager.paused_just_pressed():
 		toggle_pause()
-
-func paused_just_pressed() -> bool:
-	return Input.is_action_just_pressed("pause") || Input.is_action_just_pressed("gamepad_pause")
 
 func toggle_pause():
 	var new_paused = !get_tree().paused

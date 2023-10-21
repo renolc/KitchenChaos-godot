@@ -15,6 +15,10 @@ run/main_scene="res://scenes/main_menu_scene.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+InputManager="*res://scripts/managers/input_manager.gd"
+
 [filesystem]
 
 import/blender/enabled=false
