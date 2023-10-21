@@ -2,6 +2,19 @@ extends Control
 
 @export var options_menu: Control
 
+@onready var resume_btn: Button = $ResumeButton
+
+func _ready():
+	visibility_changed.connect(func():
+		if visible: focus()
+	)
+	options_menu.visibility_changed.connect(func():
+		if !options_menu.visible: focus()
+	)
+
+func focus():
+	resume_btn.grab_focus()
+
 func paused_changed(paused: bool):
 	visible = paused
 

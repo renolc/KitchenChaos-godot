@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c64mw1xxrl7v"]
+[gd_scene load_steps=10 format=3 uid="uid://c64mw1xxrl7v"]
 
 [ext_resource type="Script" path="res://scripts/ui/options_ui.gd" id="1_ejufj"]
 [ext_resource type="Script" path="res://scripts/ui/options_progress_bar.gd" id="2_263rh"]
@@ -11,6 +11,13 @@ variation_embolden = 0.8
 [sub_resource type="LabelSettings" id="LabelSettings_wfr0v"]
 font = SubResource("FontVariation_j8tek")
 font_size = 75
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8odsq"]
+bg_color = Color(0.211765, 0.211765, 0.211765, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j87h7"]
 bg_color = Color(0.211765, 0.211765, 0.211765, 1)
@@ -118,9 +125,10 @@ offset_left = -75.0
 offset_top = -2.0
 offset_right = 125.0
 offset_bottom = 25.0
-focus_mode = 1
+focus_neighbor_right = NodePath("../../../KeyMap/Right/Button")
+focus_mode = 2
 mouse_default_cursor_shape = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_j87h7")
+theme_override_styles/background = SubResource("StyleBoxFlat_8odsq")
 max_value = 1.0
 value = 1.0
 script = ExtResource("2_263rh")
@@ -144,7 +152,8 @@ offset_left = -76.0
 offset_top = -2.0
 offset_right = 124.0
 offset_bottom = 25.0
-focus_mode = 1
+focus_neighbor_right = NodePath("../../../KeyMap/Interact/Button")
+focus_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_j87h7")
 max_value = 1.0
@@ -168,6 +177,7 @@ horizontal_alignment = 2
 [node name="Button" parent="HBoxContainer/KeyMap/Up" instance=ExtResource("3_2nhnt")]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+focus_neighbor_left = NodePath("../../../Volume/SFX/ProgressBar")
 theme_override_font_sizes/font_size = 22
 text_overrun_behavior = 1
 script = ExtResource("4_voowf")
@@ -186,6 +196,7 @@ horizontal_alignment = 2
 [node name="Button" parent="HBoxContainer/KeyMap/Down" instance=ExtResource("3_2nhnt")]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+focus_neighbor_left = NodePath("../../../Volume/SFX/ProgressBar")
 theme_override_font_sizes/font_size = 22
 text_overrun_behavior = 1
 script = ExtResource("4_voowf")
@@ -204,6 +215,7 @@ horizontal_alignment = 2
 [node name="Button" parent="HBoxContainer/KeyMap/Left" instance=ExtResource("3_2nhnt")]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+focus_neighbor_left = NodePath("../../../Volume/SFX/ProgressBar")
 theme_override_font_sizes/font_size = 22
 text_overrun_behavior = 1
 script = ExtResource("4_voowf")
@@ -222,6 +234,7 @@ horizontal_alignment = 2
 [node name="Button" parent="HBoxContainer/KeyMap/Right" instance=ExtResource("3_2nhnt")]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+focus_neighbor_left = NodePath("../../../Volume/SFX/ProgressBar")
 theme_override_font_sizes/font_size = 22
 text_overrun_behavior = 1
 script = ExtResource("4_voowf")
@@ -240,6 +253,7 @@ horizontal_alignment = 2
 [node name="Button" parent="HBoxContainer/KeyMap/Interact" instance=ExtResource("3_2nhnt")]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+focus_neighbor_left = NodePath("../../../Volume/Music/ProgressBar")
 theme_override_font_sizes/font_size = 22
 text_overrun_behavior = 1
 script = ExtResource("4_voowf")
@@ -258,6 +272,7 @@ horizontal_alignment = 2
 [node name="Button" parent="HBoxContainer/KeyMap/InteractAlt" instance=ExtResource("3_2nhnt")]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+focus_neighbor_left = NodePath("../../../Volume/Music/ProgressBar")
 theme_override_font_sizes/font_size = 22
 text_overrun_behavior = 1
 script = ExtResource("4_voowf")
@@ -276,6 +291,7 @@ horizontal_alignment = 2
 [node name="Button" parent="HBoxContainer/KeyMap/Pause" instance=ExtResource("3_2nhnt")]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
+focus_neighbor_left = NodePath("../../../Volume/Music/ProgressBar")
 theme_override_font_sizes/font_size = 22
 text_overrun_behavior = 1
 script = ExtResource("4_voowf")
@@ -285,6 +301,7 @@ action = "pause"
 custom_minimum_size = Vector2(100, 35)
 layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_left = NodePath("../../Volume/Music/ProgressBar")
 theme_override_font_sizes/font_size = 20
 text = "reset"
 

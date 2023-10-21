@@ -31,6 +31,10 @@ func _ready():
 
 	SettingsManager.load_buttons(buttons)
 
+	visibility_changed.connect(func():
+		if visible: sfx_progress.grab_focus()
+	)
+
 func _unhandled_key_input(event):
 	if binding_btn && event is InputEventKey:
 		InputMap.action_erase_events(binding_btn.action)

@@ -3,10 +3,12 @@ extends Control
 @export_file("*.tscn") var game_scene_path
 
 @onready var loading_screen: ColorRect = $LoadingScreen
+@onready var play_btn: Button = $PlayButton
 
 func _ready():
 	get_tree().paused = false
 	ResourceLoader.load_threaded_request(game_scene_path)
+	play_btn.grab_focus()
 
 func play_pressed():
 	loading_screen.show()

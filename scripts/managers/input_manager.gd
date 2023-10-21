@@ -9,6 +9,9 @@ func get_movement_vector() -> Vector2:
 
 	return gamepad_vector
 
+func get_right_stick_x_axis() -> float:
+	return Input.get_axis("ui_focus_left", "ui_focus_right")
+
 func interact_just_pressed() -> bool:
 	return Input.is_action_just_pressed("interact") || Input.is_action_just_pressed("gamepad_interact")
 
