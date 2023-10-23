@@ -213,7 +213,7 @@ layout_mode = 2
 theme_override_constants/separation = 7
 alignment = 1
 
-[node name="Up" parent="HBoxContainer/Keymap/KeymapOptions/KeyboardButtons" instance=ExtResource("3_2nhnt")]
+[node name="Up" parent="HBoxContainer/Keymap/KeymapOptions/KeyboardButtons" node_paths=PackedStringArray("options_ui") instance=ExtResource("3_2nhnt")]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 focus_neighbor_left = NodePath("../../../../Volume/SFX/ProgressBar")
@@ -221,8 +221,9 @@ theme_override_font_sizes/font_size = 22
 text_overrun_behavior = 1
 script = ExtResource("4_voowf")
 action = "up"
+options_ui = NodePath("../../../../..")
 
-[node name="Down" parent="HBoxContainer/Keymap/KeymapOptions/KeyboardButtons" instance=ExtResource("3_2nhnt")]
+[node name="Down" parent="HBoxContainer/Keymap/KeymapOptions/KeyboardButtons" node_paths=PackedStringArray("options_ui") instance=ExtResource("3_2nhnt")]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 focus_neighbor_left = NodePath("../../../../Volume/SFX/ProgressBar")
@@ -230,8 +231,9 @@ theme_override_font_sizes/font_size = 22
 text_overrun_behavior = 1
 script = ExtResource("4_voowf")
 action = "down"
+options_ui = NodePath("../../../../..")
 
-[node name="Left" parent="HBoxContainer/Keymap/KeymapOptions/KeyboardButtons" instance=ExtResource("3_2nhnt")]
+[node name="Left" parent="HBoxContainer/Keymap/KeymapOptions/KeyboardButtons" node_paths=PackedStringArray("options_ui") instance=ExtResource("3_2nhnt")]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 focus_neighbor_left = NodePath("../../../../Volume/SFX/ProgressBar")
@@ -239,8 +241,9 @@ theme_override_font_sizes/font_size = 22
 text_overrun_behavior = 1
 script = ExtResource("4_voowf")
 action = "left"
+options_ui = NodePath("../../../../..")
 
-[node name="Right" parent="HBoxContainer/Keymap/KeymapOptions/KeyboardButtons" instance=ExtResource("3_2nhnt")]
+[node name="Right" parent="HBoxContainer/Keymap/KeymapOptions/KeyboardButtons" node_paths=PackedStringArray("options_ui") instance=ExtResource("3_2nhnt")]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 focus_neighbor_left = NodePath("../../../../Volume/SFX/ProgressBar")
@@ -248,8 +251,9 @@ theme_override_font_sizes/font_size = 22
 text_overrun_behavior = 1
 script = ExtResource("4_voowf")
 action = "right"
+options_ui = NodePath("../../../../..")
 
-[node name="Int" parent="HBoxContainer/Keymap/KeymapOptions/KeyboardButtons" instance=ExtResource("3_2nhnt")]
+[node name="Int" parent="HBoxContainer/Keymap/KeymapOptions/KeyboardButtons" node_paths=PackedStringArray("options_ui") instance=ExtResource("3_2nhnt")]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 focus_neighbor_left = NodePath("../../../../Volume/Music/ProgressBar")
@@ -257,8 +261,9 @@ theme_override_font_sizes/font_size = 22
 text_overrun_behavior = 1
 script = ExtResource("4_voowf")
 action = "interact"
+options_ui = NodePath("../../../../..")
 
-[node name="IntAlt" parent="HBoxContainer/Keymap/KeymapOptions/KeyboardButtons" instance=ExtResource("3_2nhnt")]
+[node name="IntAlt" parent="HBoxContainer/Keymap/KeymapOptions/KeyboardButtons" node_paths=PackedStringArray("options_ui") instance=ExtResource("3_2nhnt")]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 focus_neighbor_left = NodePath("../../../../Volume/Music/ProgressBar")
@@ -266,8 +271,9 @@ theme_override_font_sizes/font_size = 22
 text_overrun_behavior = 1
 script = ExtResource("4_voowf")
 action = "interact_alt"
+options_ui = NodePath("../../../../..")
 
-[node name="Pause" parent="HBoxContainer/Keymap/KeymapOptions/KeyboardButtons" instance=ExtResource("3_2nhnt")]
+[node name="Pause" parent="HBoxContainer/Keymap/KeymapOptions/KeyboardButtons" node_paths=PackedStringArray("options_ui") instance=ExtResource("3_2nhnt")]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 focus_neighbor_left = NodePath("../../../../Volume/Music/ProgressBar")
@@ -275,36 +281,52 @@ theme_override_font_sizes/font_size = 22
 text_overrun_behavior = 1
 script = ExtResource("4_voowf")
 action = "pause"
+options_ui = NodePath("../../../../..")
 
 [node name="JoypadButtons" type="VBoxContainer" parent="HBoxContainer/Keymap/KeymapOptions"]
 layout_mode = 2
 theme_override_constants/separation = 7
 alignment = 2
 
-[node name="Int" parent="HBoxContainer/Keymap/KeymapOptions/JoypadButtons" instance=ExtResource("3_2nhnt")]
+[node name="Int" parent="HBoxContainer/Keymap/KeymapOptions/JoypadButtons" node_paths=PackedStringArray("options_ui") instance=ExtResource("3_2nhnt")]
+texture_filter = 4
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text_overrun_behavior = 1
+icon_alignment = 1
+expand_icon = true
 script = ExtResource("4_voowf")
 action = "gamepad_interact"
+is_joypad = true
+options_ui = NodePath("../../../../..")
 
-[node name="IntAlt" parent="HBoxContainer/Keymap/KeymapOptions/JoypadButtons" instance=ExtResource("3_2nhnt")]
+[node name="IntAlt" parent="HBoxContainer/Keymap/KeymapOptions/JoypadButtons" node_paths=PackedStringArray("options_ui") instance=ExtResource("3_2nhnt")]
+texture_filter = 4
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text_overrun_behavior = 1
+icon_alignment = 1
+expand_icon = true
 script = ExtResource("4_voowf")
 action = "gamepad_interact_alt"
+is_joypad = true
+options_ui = NodePath("../../../../..")
 
-[node name="Pause" parent="HBoxContainer/Keymap/KeymapOptions/JoypadButtons" instance=ExtResource("3_2nhnt")]
+[node name="Pause" parent="HBoxContainer/Keymap/KeymapOptions/JoypadButtons" node_paths=PackedStringArray("options_ui") instance=ExtResource("3_2nhnt")]
+texture_filter = 4
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 focus_neighbor_left = NodePath("../../KeyboardButtons/Pause")
 theme_override_font_sizes/font_size = 22
 text_overrun_behavior = 1
+icon_alignment = 1
+expand_icon = true
 script = ExtResource("4_voowf")
 action = "gamepad_pause"
+is_joypad = true
+options_ui = NodePath("../../../../..")
 
 [node name="ResetBindingsButton" parent="HBoxContainer/Keymap" instance=ExtResource("3_2nhnt")]
 custom_minimum_size = Vector2(100, 35)

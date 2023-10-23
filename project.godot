@@ -28,6 +28,10 @@ import/blender/enabled=false
 scene={
 "gltf/embedded_image_handling": 2
 }
+texture={
+"detect_3d/compress_to": 0,
+"mipmaps/generate": true
+}
 
 [input]
 

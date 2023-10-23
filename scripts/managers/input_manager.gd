@@ -1,5 +1,25 @@
 extends Node
 
+@onready var joypad_icons = {
+	"unknown": preload("res://textures/joypad/unknown.png"),
+	"face": {
+		"up": preload("res://textures/joypad/face_top.png"),
+		"down": preload("res://textures/joypad/face_bottom.png"),
+		"left": preload("res://textures/joypad/face_left.png"),
+		"right": preload("res://textures/joypad/face_right.png"),
+		"start": preload("res://textures/joypad/start.png"),
+		"select": preload("res://textures/joypad/select.png")
+	},
+	"shoulders": {
+		"l1": preload("res://textures/joypad/l1.png"),
+		"r1": preload("res://textures/joypad/r1.png")
+	},
+	"sticks":{
+		"l3": preload("res://textures/joypad/l3.png"),
+		"r3": preload("res://textures/joypad/r3.png")
+	}
+}
+
 func get_movement_vector() -> Vector2:
 	var keyboard_vector := Input.get_vector("left", "right", "up", "down")
 	var gamepad_vector := Input.get_vector("gamepad_left", "gamepad_right", "gamepad_up", "gamepad_down")
@@ -21,68 +41,64 @@ func interact_alt_just_pressed() -> bool:
 func paused_just_pressed() -> bool:
 	return Input.is_action_just_pressed("pause") || Input.is_action_just_pressed("gamepad_pause")
 
-func get_key_text_from_action(action: String) -> String:
-	var action_name = InputMap.action_get_events(action)[0].as_text()
+func update_button(btn: KeymapButton):
+	var action_name = InputMap.action_get_events(btn.action)[0].as_text()
 
 	if action_name.match("Joypad*"):
-		return get_joypad_button_text(action_name)
+		btn.icon = get_joypad_icon(action_name)
+		return
 
-	return get_keyboard_key_text(action_name)
-
-const JOYPAD_BUTTONS = {
-	"Xbox": {
-		"top": "Y",
-		"right": "B",
-		"bottom": "A",
-		"left": "X",
-		"start": "Menu",
-		"select": "Back"
-	},
-	"PlayStation": {
-		"top": "△",
-		"right": "o",
-		"bottom": "x",
-		"left": "□",
-		"start": "▶",
-		"select": "▬"
-	},
-	"Nintendo": {
-		"top": "X",
-		"right": "A",
-		"bottom": "B",
-		"left": "Y",
-		"start": "+",
-		"select": "-"
-	}
-}
+	btn.text = get_keyboard_key_text(action_name)
 
 func get_keyboard_key_text(action_name) -> String:
 	return action_name.split(" ")[0].to_upper()
 
-func get_joypad_button_text(action_name) -> String:
-	if Input.get_connected_joypads().size() < 1: return "-"
-
-	var action_position
-
+func get_joypad_icon(action_name) -> Texture:
 	if action_name.match("*Bottom Action*"):
-		action_position = "bottom"
-	elif action_name.match("*Top Action*"):
-		action_position = "top"
-	elif action_name.match("*Left Action*"):
-		action_position = "left"
-	elif action_name.match("*Right Action*"):
-		action_position = "right"
-	elif action_name.match("*Start*"):
-		action_position = "start"
-	elif action_name.match("*Sony Select*"):
-		action_position = "select"
+		return joypad_icons.face.down
 
-	var joypad_name = Input.get_joy_name(0)
+	if action_name.match("*Top Action*"):
+		return joypad_icons.face.up
 
-	if joypad_name.match("*PlayStation*") || joypad_name.match("*PS3*") || joypad_name.match("*PS4*") || joypad_name.match("*PS5*"):
-		return JOYPAD_BUTTONS["PlayStation"][action_position]
+	if action_name.match("*Left Action*"):
+		return joypad_icons.face.left
 
-	if joypad_name.match("*Nintendo*"):
-		return JOYPAD_BUTTONS["Nintendo"][action_position]
+	if action_name.match("*Right Action*"):
+		return joypad_icons.face.right
 
-	return JOYPAD_BUTTONS["Xbox"][action_position]
+	if action_name.match("*Start*"):
+		return joypad_icons.face.start
+
+	if action_name.match("*Sony Select*"):
+		return joypad_icons.face.select
+
+	if action_name.match("*Sony L3*"):
+		return joypad_icons.sticks.l3
+
+	if action_name.match("*Sony R3*"):
+		return joypad_icons.sticks.r3
+
+	if action_name.match("*Sony L1*"):
+		return joypad_icons.shoulders.l1
+
+	if action_name.match("*Sony R1*"):
+		return joypad_icons.shoulders.r1
+
+	return joypad_icons.unknown
+
+func is_valid_joypad_event(event: InputEvent) -> bool:
+	if not event is InputEventJoypadButton: return false
+
+	var action = event.as_text()
+	if !action.match("*Joypad*"): return false
+
+	return action.match("*Bottom Action*") || \
+		action.match("*Top Action*") || \
+		action.match("*Left Action*") || \
+		action.match("*Right Action*") || \
+		action.match("*Start*") || \
+		action.match("*Sony Select*") || \
+		action.match("*Sony L3*") || \
+		action.match("*Sony R3*") || \
+		action.match("*Sony L1*") || \
+		action.match("*Sony R1*")

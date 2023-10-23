@@ -35,11 +35,15 @@ func _ready():
 		if visible: sfx_progress.grab_focus()
 	)
 
-func _unhandled_key_input(event):
-	if binding_btn && event is InputEventKey:
+func _unhandled_input(event):
+	if event.is_released() || !binding_btn: return
+
+	if (binding_btn.is_joypad && InputManager.is_valid_joypad_event(event)) || \
+			(!binding_btn.is_joypad && event is InputEventKey):
 		InputMap.action_erase_events(binding_btn.action)
 		InputMap.action_add_event(binding_btn.action, event)
 		binding_btn.update_text()
+		binding_btn.grab_focus()
 		binding_btn = null
 		key_prompt.hide()
 
@@ -61,6 +65,7 @@ func close():
 
 func bind_pressed(btn: KeymapButton):
 	binding_btn = btn
+	binding_btn.release_focus()
 	key_prompt.show()
 
 func reset_bindings_pressed():
