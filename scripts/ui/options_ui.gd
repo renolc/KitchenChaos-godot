@@ -79,5 +79,5 @@ func bind_pressed(btn: KeymapButton):
 	key_prompt.show()
 
 func reset_bindings_pressed():
-	InputMap.load_from_project_settings()
+	InputManager.reset_all_bindings()
 	buttons.map(func(i): i.update_text())

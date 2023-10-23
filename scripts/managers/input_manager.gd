@@ -11,11 +11,13 @@ extends Node
 	JOY_BUTTON_RIGHT_SHOULDER: preload("res://textures/joypad/r1.png")
 }
 
-var joypad_bindings = {
+const DEFAULT_JOYPAD_BINDINGS = {
 	"gamepad_interact": JOY_BUTTON_A,
 	"gamepad_interact_alt": JOY_BUTTON_X,
 	"gamepad_pause": JOY_BUTTON_START
 }
+
+var joypad_bindings = DEFAULT_JOYPAD_BINDINGS.duplicate()
 
 func get_movement_vector() -> Vector2:
 	var keyboard_vector := Input.get_vector("left", "right", "up", "down")
@@ -67,3 +69,7 @@ func is_valid_joypad_event(event: InputEvent) -> bool:
 
 func get_joypad_button_text(btn: KeymapButton) -> String:
 	return str(joypad_bindings[btn.action])
+
+func reset_all_bindings():
+	InputMap.load_from_project_settings()
+	joypad_bindings = DEFAULT_JOYPAD_BINDINGS.duplicate()
