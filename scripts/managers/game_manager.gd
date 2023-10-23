@@ -5,7 +5,7 @@ extends Node
 
 const WAIT_TO_START_TIME = 1
 const COUNTDOWN_TIME = 3
-const PLAYING_TIME = 10
+const PLAYING_TIME = 60
 
 static var Instance: GameManager
 
