@@ -25,8 +25,6 @@ func _init():
 func _process(_delta):
 	update_selected_counter()
 	handle_movement()
-
-func _unhandled_input(_event):
 	handle_interact()
 
 func handle_movement():

@@ -32,7 +32,7 @@ func _init():
 func _ready():
 	state = State.WaitingToStart
 
-func _unhandled_input(_event):
+func _process(_delta):
 	if options_menu.key_prompt.visible: return
 
 	if InputManager.paused_just_pressed():
