@@ -11,7 +11,11 @@ extends Control
 	$HBoxContainer/Keymap/KeymapOptions/KeyboardButtons/Right,
 	$HBoxContainer/Keymap/KeymapOptions/KeyboardButtons/Int,
 	$HBoxContainer/Keymap/KeymapOptions/KeyboardButtons/IntAlt,
-	$HBoxContainer/Keymap/KeymapOptions/KeyboardButtons/Pause
+	$HBoxContainer/Keymap/KeymapOptions/KeyboardButtons/Pause,
+
+	$HBoxContainer/Keymap/KeymapOptions/JoypadButtons/Int,
+	$HBoxContainer/Keymap/KeymapOptions/JoypadButtons/IntAlt,
+	$HBoxContainer/Keymap/KeymapOptions/JoypadButtons/Pause
 ]
 
 var music_bus_idx: int
@@ -38,14 +42,20 @@ func _ready():
 func _unhandled_input(event):
 	if event.is_released() || !binding_btn: return
 
-	if (binding_btn.is_joypad && InputManager.is_valid_joypad_event(event)) || \
-			(!binding_btn.is_joypad && event is InputEventKey):
+	if binding_btn.is_joypad && InputManager.is_valid_joypad_event(event):
+		var joy_event := event as InputEventJoypadButton
+		InputManager.joypad_bindings[binding_btn.action] = joy_event.button_index
+		finish_binding()
+	elif !binding_btn.is_joypad && event is InputEventKey:
 		InputMap.action_erase_events(binding_btn.action)
 		InputMap.action_add_event(binding_btn.action, event)
-		binding_btn.update_text()
-		binding_btn.grab_focus()
-		binding_btn = null
-		key_prompt.hide()
+		finish_binding()
+
+func finish_binding():
+	binding_btn.update_text()
+	binding_btn.grab_focus()
+	binding_btn = null
+	key_prompt.hide()
 
 func music_value_changed(value):
 	AudioServer.set_bus_volume_db(music_bus_idx, linear_to_db(value))

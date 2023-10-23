@@ -26,17 +26,25 @@ static func set_volumes(music: float, sfx: float):
 
 static func set_buttons(buttons: Array[KeymapButton]):
 	buttons.map(func(btn: KeymapButton):
-		config.set_value(KEYMAP_SECTION, btn.action, btn.text)
+		if btn.is_joypad:
+			config.set_value(KEYMAP_SECTION, btn.action, InputManager.get_joypad_button_text(btn))
+		else:
+			config.set_value(KEYMAP_SECTION, btn.action, btn.text)
 	)
 
 static func load_buttons(buttons: Array[KeymapButton]):
 	buttons.map(func(btn: KeymapButton):
-		var key_txt = config.get_value(KEYMAP_SECTION, btn.action)
-		if !key_txt: return
-		var event := InputEventKey.new()
-		event.set_keycode(OS.find_keycode_from_string(key_txt))
-		InputMap.action_erase_events(btn.action)
-		InputMap.action_add_event(btn.action, event)
+		var key_txt = config.get_value(KEYMAP_SECTION, btn.action, -1)
+		if !key_txt || key_txt == "-1": return
+
+		if btn.is_joypad:
+			InputManager.joypad_bindings[btn.action] = int(key_txt)
+		else:
+			var event := InputEventKey.new()
+			event.set_keycode(OS.find_keycode_from_string(key_txt))
+			InputMap.action_erase_events(btn.action)
+			InputMap.action_add_event(btn.action, event)
+
 		btn.update_text()
 	)
 
