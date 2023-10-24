@@ -3,7 +3,6 @@ extends Node
 
 @export var options_menu: OptionsUI
 
-const WAIT_TO_START_TIME = 1
 const COUNTDOWN_TIME = 3
 const PLAYING_TIME = 60
 
@@ -38,15 +37,18 @@ func _process(_delta):
 	if InputManager.paused_just_pressed():
 		toggle_pause()
 
+func _unhandled_input(_event):
+	if InputManager.interact_just_pressed():
+		if state == State.WaitingToStart:
+			state = State.Countdown
+
 func toggle_pause():
 	var new_paused = !get_tree().paused
 	get_tree().paused = new_paused
 	paused_changed.emit(new_paused)
 
 func WaitingToStart():
-	timer = get_tree().create_timer(WAIT_TO_START_TIME, false)
-	await timer.timeout
-	state = State.Countdown
+	pass
 
 func Countdown():
 	timer = get_tree().create_timer(COUNTDOWN_TIME, false)

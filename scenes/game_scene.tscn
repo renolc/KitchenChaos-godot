@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://c5pywpg28515m"]
+[gd_scene load_steps=50 format=3 uid="uid://c5pywpg28515m"]
 
 [ext_resource type="Material" uid="uid://sv4vq030f0j8" path="res://materials/floor.tres" id="1_51bdx"]
 [ext_resource type="PackedScene" uid="uid://cxcjdiex5bmyl" path="res://prefabs/player.tscn" id="2_kc4gf"]
@@ -12,10 +12,14 @@
 [ext_resource type="Texture2D" uid="uid://c1mupdacpcef6" path="res://textures/White_Circle.png" id="6_hangc"]
 [ext_resource type="Script" path="res://scripts/ui/round_clock.gd" id="6_yv8ku"]
 [ext_resource type="PackedScene" uid="uid://xt3olg06k3uh" path="res://prefabs/kitchen_objects/meat.tscn" id="7_dhkvg"]
+[ext_resource type="Texture2D" uid="uid://divdpnetb3yt6" path="res://textures/Tutorial.png" id="7_k1cqh"]
+[ext_resource type="Script" path="res://scripts/ui/tutorial_ui.gd" id="7_uhrfw"]
 [ext_resource type="PackedScene" uid="uid://c5uhlgkm4jn36" path="res://prefabs/ui/screens/game_over_ui.tscn" id="8_35l8j"]
 [ext_resource type="PackedScene" uid="uid://buap5yfna0b0" path="res://prefabs/kitchen_objects/cabbage.tscn" id="8_62pwg"]
+[ext_resource type="PackedScene" uid="uid://brmqyi0r18lo3" path="res://prefabs/ui/tutorial_key.tscn" id="8_l3bqx"]
 [ext_resource type="PackedScene" uid="uid://cedb431vijeb3" path="res://prefabs/ui/screens/game_paused_ui.tscn" id="9_70pwo"]
 [ext_resource type="PackedScene" uid="uid://c2q0hnrchcbxs" path="res://prefabs/kitchen_objects/tomato.tscn" id="9_225ck"]
+[ext_resource type="Texture2D" uid="uid://bq7u3j7fq21wm" path="res://textures/joypad/left_stick.png" id="9_re6se"]
 [ext_resource type="PackedScene" uid="uid://c64mw1xxrl7v" path="res://prefabs/ui/screens/options_ui.tscn" id="10_cjqq5"]
 [ext_resource type="PackedScene" uid="uid://dpjphlkv8dqex" path="res://prefabs/counters/cutting_counter.tscn" id="10_rsvae"]
 [ext_resource type="PackedScene" uid="uid://d1688ycced2kg" path="res://prefabs/counters/trash_counter.tscn" id="11_2wqg4"]
@@ -205,6 +209,135 @@ texture_progress = ExtResource("6_hangc")
 tint_under = Color(0.298039, 0.298039, 0.298039, 1)
 tint_progress = Color(0, 0.533333, 1, 1)
 
+[node name="TutorialUI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_uhrfw")
+
+[node name="Background" type="ColorRect" parent="CanvasLayer/TutorialUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.666667)
+
+[node name="TutorialImage" type="TextureRect" parent="CanvasLayer/TutorialUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -371.0
+offset_top = -232.5
+offset_right = 371.0
+offset_bottom = 232.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_k1cqh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="KeyRight" parent="CanvasLayer/TutorialUI/TutorialImage" instance=ExtResource("8_l3bqx")]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 293.5
+offset_right = 601.0
+offset_bottom = 318.5
+action = "right"
+
+[node name="KeyLeft" parent="CanvasLayer/TutorialUI/TutorialImage" instance=ExtResource("8_l3bqx")]
+layout_mode = 0
+offset_left = 547.0
+offset_top = 293.5
+offset_right = 572.0
+offset_bottom = 318.5
+action = "left"
+
+[node name="KeyDown" parent="CanvasLayer/TutorialUI/TutorialImage" instance=ExtResource("8_l3bqx")]
+layout_mode = 0
+offset_left = 518.0
+offset_top = 293.5
+offset_right = 543.0
+offset_bottom = 318.5
+action = "down"
+
+[node name="KeyUp" parent="CanvasLayer/TutorialUI/TutorialImage" instance=ExtResource("8_l3bqx")]
+layout_mode = 0
+offset_left = 489.0
+offset_top = 293.5
+offset_right = 514.0
+offset_bottom = 318.5
+action = "up"
+
+[node name="KeyInteract" parent="CanvasLayer/TutorialUI/TutorialImage" instance=ExtResource("8_l3bqx")]
+layout_mode = 0
+offset_left = 531.0
+offset_top = 323.5
+offset_right = 556.0
+offset_bottom = 348.5
+action = "interact"
+
+[node name="KeyInteractAlt" parent="CanvasLayer/TutorialUI/TutorialImage" instance=ExtResource("8_l3bqx")]
+layout_mode = 0
+offset_left = 531.0
+offset_top = 354.5
+offset_right = 556.0
+offset_bottom = 379.5
+action = "interact_alt"
+
+[node name="KeyPause" parent="CanvasLayer/TutorialUI/TutorialImage" instance=ExtResource("8_l3bqx")]
+layout_mode = 0
+offset_left = 531.0
+offset_top = 384.5
+offset_right = 556.0
+offset_bottom = 409.5
+action = "pause"
+
+[node name="GamepadInteract" parent="CanvasLayer/TutorialUI/TutorialImage" instance=ExtResource("8_l3bqx")]
+layout_mode = 0
+offset_left = 687.0
+offset_top = 323.5
+offset_right = 712.0
+offset_bottom = 348.5
+action = "gamepad_interact"
+is_gamepad = true
+
+[node name="GamepadInteractAlt" parent="CanvasLayer/TutorialUI/TutorialImage" instance=ExtResource("8_l3bqx")]
+layout_mode = 0
+offset_left = 687.0
+offset_top = 354.5
+offset_right = 712.0
+offset_bottom = 379.5
+action = "gamepad_interact_alt"
+is_gamepad = true
+
+[node name="GamepadPause" parent="CanvasLayer/TutorialUI/TutorialImage" instance=ExtResource("8_l3bqx")]
+layout_mode = 0
+offset_left = 687.0
+offset_top = 384.5
+offset_right = 712.0
+offset_bottom = 409.5
+action = "gamepad_pause"
+is_gamepad = true
+
+[node name="GamepadMove" parent="CanvasLayer/TutorialUI/TutorialImage" instance=ExtResource("8_l3bqx")]
+layout_mode = 0
+offset_left = 687.0
+offset_top = 294.5
+offset_right = 712.0
+offset_bottom = 319.5
+is_gamepad = true
+
+[node name="Icon" parent="CanvasLayer/TutorialUI/TutorialImage/GamepadMove" index="3"]
+texture = ExtResource("9_re6se")
+
 [node name="CountdownUI" type="Control" parent="CanvasLayer"]
 visible = false
 layout_mode = 3
@@ -390,5 +523,8 @@ mesh = SubResource("BoxMesh_q1yx7")
 [connection signal="timeout" from="Managers/DeliveryManager/NewOrderTimer" to="Managers/DeliveryManager" method="add_new_order"]
 [connection signal="paused_changed" from="Managers/GameManager" to="CanvasLayer/GamePausedUI" method="paused_changed"]
 [connection signal="paused_changed" from="Managers/GameManager" to="CanvasLayer/OptionsUI" method="paused_changed"]
+[connection signal="state_changed" from="Managers/GameManager" to="CanvasLayer/TutorialUI" method="state_changed"]
 [connection signal="state_changed" from="Managers/GameManager" to="CanvasLayer/CountdownUI" method="state_changed"]
 [connection signal="state_changed" from="Managers/GameManager" to="CanvasLayer/GameOverUI" method="state_changed"]
+
+[editable path="CanvasLayer/TutorialUI/TutorialImage/GamepadMove"]

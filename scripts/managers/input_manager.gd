@@ -11,6 +11,8 @@ extends Node
 	JOY_BUTTON_RIGHT_SHOULDER: preload("res://textures/joypad/r1.png")
 }
 
+signal action_updated(btn)
+
 const DEFAULT_JOYPAD_BINDINGS = {
 	"gamepad_interact": JOY_BUTTON_A,
 	"gamepad_interact_alt": JOY_BUTTON_X,
@@ -44,8 +46,8 @@ func update_button(btn: KeymapButton):
 	if btn.is_joypad:
 		btn.icon = get_joypad_icon(btn.action)
 	else:
-		var action_name = InputMap.action_get_events(btn.action)[0].as_text()
-		btn.text = action_name.split(" ")[0].to_upper()
+		btn.text = get_action_button_text(btn.action)
+	action_updated.emit(btn.action)
 
 func get_joypad_icon(joy_action: String) -> Texture:
 	var joy_buton = joypad_bindings[joy_action]
@@ -55,6 +57,10 @@ func get_joypad_icon(joy_action: String) -> Texture:
 			return valid_joypad_keys[i]
 
 	return
+
+func get_action_button_text(action: String) -> String:
+	var action_name = InputMap.action_get_events(action)[0].as_text()
+	return action_name.split(" ")[0].to_upper()
 
 func is_valid_joypad_event(event: InputEvent) -> bool:
 	if not event is InputEventJoypadButton: return false
