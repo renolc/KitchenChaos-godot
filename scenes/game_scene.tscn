@@ -46,7 +46,7 @@ sky_material = SubResource("ProceduralSkyMaterial_anjpy")
 [sub_resource type="Environment" id="Environment_gf11u"]
 background_mode = 2
 sky = SubResource("Sky_qdujw")
-tonemap_mode = 2
+tonemap_mode = 3
 ssao_radius = 0.3
 ssao_intensity = 4.0
 ssao_light_affect = 1.0
@@ -85,7 +85,7 @@ outline_color = Color(0, 0.443137, 1, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_udvyl"]
 render_priority = 0
 shader = ExtResource("35_o67yi")
-shader_parameter/top_color = Color(0.129412, 0.486275, 0.72549, 1)
+shader_parameter/top_color = Color(0.223529, 0.596078, 0.764706, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_q1yx7"]
 material = SubResource("ShaderMaterial_udvyl")
@@ -103,9 +103,10 @@ environment = SubResource("Environment_gf11u")
 [node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.763403, 0, 0)
 mesh = SubResource("PlaneMesh_r5tf6")
+metadata/_edit_lock_ = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.694658, 0.71934, 0, -0.71934, 0.694658, 0.75, 21.5, 21.3)
+transform = Transform3D(1, 0, 0, 0, 0.694658, 0.71934, 0, -0.71934, 0.694658, 0.75, 21.5, 20.79)
 fov = 20.0
 
 [node name="Player" parent="." instance=ExtResource("2_kc4gf")]
@@ -373,7 +374,7 @@ options_menu = NodePath("../../CanvasLayer/OptionsUI")
 [node name="Walls" type="Node" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Walls"]
-transform = Transform3D(-1, 0, -1.08598e-06, 0, 1, 0, 8.74228e-08, 0, -12.4222, -6.8148, 1.5, 1.6663)
+transform = Transform3D(-1, 0, -1.08598e-06, 0, 1, 0, 8.74228e-08, 0, -12.4222, -6.8148, 1.5, 1.97198)
 mesh = SubResource("BoxMesh_q1yx7")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Walls"]
@@ -381,7 +382,7 @@ transform = Transform3D(-1, 0, -1.13655e-06, 0, 1, 0, 8.74228e-08, 0, -13.0006, 
 mesh = SubResource("BoxMesh_q1yx7")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Walls"]
-transform = Transform3D(-4.37114e-08, 0, 15.4591, 0, 1, 0, -1, 0, -6.75739e-07, 0.725973, 1.50687, -4.2958)
+transform = Transform3D(-4.37114e-08, 0, 15.4591, 0, 1, 0, -1, 0, -6.75739e-07, 0.778323, 1.50687, -4.2958)
 mesh = SubResource("BoxMesh_q1yx7")
 
 [connection signal="new_order_added" from="Managers/DeliveryManager" to="CanvasLayer/DeliveryManagerUI" method="new_order_added"]
