@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cxcjdiex5bmyl"]
+[gd_scene load_steps=14 format=3 uid="uid://cxcjdiex5bmyl"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_t2x6g"]
 [ext_resource type="PackedScene" uid="uid://dnd0rryp53332" path="res://prefabs_visuals/player_visuals.tscn" id="2_xvlbv"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bnadgc2cbb5sa" path="res://sounds/sfx/SFX_footstep01_02.wav" id="8_4rlbo"]
 [ext_resource type="AudioStream" uid="uid://b2jrur8v6ldo7" path="res://sounds/sfx/SFX_footstep02_01.wav" id="9_hxgui"]
 [ext_resource type="AudioStream" uid="uid://bwkoe7w0iashy" path="res://sounds/sfx/SFX_footstep02_02.wav" id="10_0lo3x"]
+[ext_resource type="PackedScene" uid="uid://d1cuxr6n7kyoa" path="res://prefabs/particles/walk_particle.tscn" id="12_caegk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2opjm"]
 radius = 0.65
@@ -46,6 +47,8 @@ autostart = true
 
 [node name="StepSfxManager" parent="PlayerSounds" instance=ExtResource("3_thivv")]
 sfxs = Array[AudioStream]([ExtResource("7_us0d2"), ExtResource("8_4rlbo"), ExtResource("9_hxgui"), ExtResource("10_0lo3x")])
+
+[node name="WalkParticle" parent="." instance=ExtResource("12_caegk")]
 
 [connection signal="item_picked_up" from="." to="PickupSfxManager" method="play_random"]
 [connection signal="timeout" from="PlayerSounds/StepTimer" to="PlayerSounds" method="timer_timeout"]
