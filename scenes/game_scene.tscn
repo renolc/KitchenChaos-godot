@@ -89,7 +89,7 @@ outline_color = Color(0, 0.443137, 1, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_udvyl"]
 render_priority = 0
 shader = ExtResource("35_o67yi")
-shader_parameter/top_color = Color(0.223529, 0.596078, 0.764706, 1)
+shader_parameter/Gradient_Color = Color(0.223529, 0.596078, 0.764706, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_q1yx7"]
 material = SubResource("ShaderMaterial_udvyl")
