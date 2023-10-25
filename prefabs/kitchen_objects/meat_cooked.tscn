@@ -9,7 +9,7 @@
 script = ExtResource("1_5efwl")
 sprite = ExtResource("2_2csrs")
 cooks_into = ExtResource("3_ndidl")
-cook_time = 5.0
+cook_time = 6.0
 can_be_plated = true
 will_burn = true
 
