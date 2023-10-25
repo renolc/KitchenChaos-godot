@@ -1,11 +1,16 @@
 extends BaseCounter
 
 @onready var audio_player: AudioStreamPlayer3D = $StoveSoundPlayer
+@onready var progress_anim_player: AnimationTree = $Progress/AnimationTree
 
 signal cook_progress_update(progress)
 
 var fry_timer: SceneTreeTimer
-var is_burning = false
+var is_burning = false:
+	set(v):
+		is_burning = v
+		progress_anim_player["parameters/conditions/is_burning"] = is_burning
+		progress_anim_player["parameters/conditions/is_not_burning"] = !is_burning
 
 func _process(_delta):
 	if fry_timer:
