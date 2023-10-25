@@ -38,7 +38,7 @@ func _process(_delta):
 		toggle_pause()
 
 	if InputManager.interact_just_pressed():
-		if state == State.WaitingToStart:
+		if !get_tree().paused && state == State.WaitingToStart:
 			state = State.Countdown
 
 func toggle_pause():
