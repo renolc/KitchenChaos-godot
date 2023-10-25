@@ -210,6 +210,7 @@ tint_under = Color(0.298039, 0.298039, 0.298039, 1)
 tint_progress = Color(0, 0.533333, 1, 1)
 
 [node name="TutorialUI" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -483,7 +484,6 @@ recipes = Array[Resource("res://resources/recipes/receipe_resource.gd")]([ExtRes
 
 [node name="NewOrderTimer" type="Timer" parent="Managers/DeliveryManager"]
 wait_time = 4.0
-autostart = true
 
 [node name="FailSfxManager" parent="Managers/DeliveryManager" instance=ExtResource("22_awtfp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -2.5)
@@ -526,5 +526,6 @@ mesh = SubResource("BoxMesh_q1yx7")
 [connection signal="state_changed" from="Managers/GameManager" to="CanvasLayer/TutorialUI" method="state_changed"]
 [connection signal="state_changed" from="Managers/GameManager" to="CanvasLayer/CountdownUI" method="state_changed"]
 [connection signal="state_changed" from="Managers/GameManager" to="CanvasLayer/GameOverUI" method="state_changed"]
+[connection signal="state_changed" from="Managers/GameManager" to="Managers/DeliveryManager" method="state_changed"]
 
 [editable path="CanvasLayer/TutorialUI/TutorialImage/GamepadMove"]

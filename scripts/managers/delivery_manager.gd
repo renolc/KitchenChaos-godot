@@ -6,6 +6,7 @@ extends Node
 
 @onready var fail_sfx: SfxManager = $FailSfxManager
 @onready var success_sfx: SfxManager = $SuccessSfxManager
+@onready var order_timer: Timer = $NewOrderTimer
 
 signal new_order_added(recipe)
 signal order_delivered(recipe)
@@ -20,6 +21,10 @@ var orders_delivered = 0
 func _init():
 	randomize()
 	Instance = self
+
+func state_changed(state: GameManager.State):
+	if state == GameManager.State.Playing:
+		order_timer.start()
 
 func add_new_order():
 	if waiting_recipes.size() < MAX_ORDERS:

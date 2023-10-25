@@ -1,6 +1,8 @@
 extends Control
 
+func _ready():
+	show()
+
 func state_changed(state: GameManager.State):
-	print(state)
-	if state != GameManager.State.WaitingToStart:
+	if state == GameManager.State.Countdown:
 		hide()
