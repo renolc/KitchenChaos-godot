@@ -10,6 +10,7 @@ extends Node
 
 signal new_order_added(recipe)
 signal order_delivered(recipe)
+signal delivery_success(success)
 
 static var Instance: DeliveryManager
 
@@ -50,6 +51,8 @@ func deliver_recipe(plate: Plate):
 		orders_delivered += 1
 		waiting_recipes.erase(matching_recipe)
 		order_delivered.emit(matching_recipe)
+		delivery_success.emit(true)
 		success_sfx.play_random()
 	else:
 		fail_sfx.play_random()
+		delivery_success.emit(false)

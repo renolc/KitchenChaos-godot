@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://xse052q073n6"]
+[gd_scene load_steps=14 format=3 uid="uid://xse052q073n6"]
 
 [ext_resource type="Script" path="res://scripts/counters/delivery_counter_visual.gd" id="1_oeecx"]
 [ext_resource type="PackedScene" uid="uid://jcc1f56n0v6o" path="res://meshes/counters/DeliveryCounter_Visual.glb" id="2_a65gb"]
 [ext_resource type="Shader" path="res://shaders/delivery_counter_arrow.gdshader" id="3_1kf1d"]
 [ext_resource type="Texture2D" uid="uid://c4o78b531ti38" path="res://textures/Arrow.png" id="4_5ktpr"]
+[ext_resource type="Script" path="res://scripts/ui/delivery_result_ui.gd" id="5_uq1sv"]
+[ext_resource type="Texture2D" uid="uid://baubm5ybh25na" path="res://textures/Tick_Border.png" id="6_q7wjx"]
+[ext_resource type="Texture2D" uid="uid://db61wgucsbjny" path="res://textures/Cross.png" id="7_c5q2n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_giy1j"]
 render_priority = 0
@@ -17,6 +20,94 @@ shader_parameter/Texture = ExtResource("4_5ktpr")
 material = SubResource("ShaderMaterial_giy1j")
 size = Vector2(0.7, 0.7)
 
+[sub_resource type="FontVariation" id="FontVariation_1ctyr"]
+variation_embolden = 0.8
+
+[sub_resource type="Animation" id="Animation_7sdxg"]
+resource_name = "pop"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.549779, 1.5516, 0.261799), Vector3(-0.549779, 1.5516, -0.261799), Vector3(-0.549779, 1.5516, 0), Vector3(-0.548983, 1.55112, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.6, 0.6, 0.6), Vector3(1.3, 1.3, 1.3), Vector3(1.1, 1.1, 1.1), Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pnmmq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.548983, 1.55112, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.6, 0.6, 0.6)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jeisg"]
+_data = {
+"RESET": SubResource("Animation_pnmmq"),
+"pop": SubResource("Animation_7sdxg")
+}
+
 [node name="DeliveryCounterVisuals" type="Node3D" node_paths=PackedStringArray("mesh_array")]
 script = ExtResource("1_oeecx")
 mesh_array = [NodePath("DeliveryCounter_Visual/DeliveryCounter_Visual2/KitchenCounter")]
@@ -26,5 +117,78 @@ mesh_array = [NodePath("DeliveryCounter_Visual/DeliveryCounter_Visual2/KitchenCo
 [node name="DeliveryArrow" type="MeshInstance3D" parent="DeliveryCounter_Visual/DeliveryCounter_Visual2/KitchenCounter" index="0"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.846944, 0.0135292)
 mesh = SubResource("PlaneMesh_b1c0w")
+
+[node name="DeliveryResultUI" type="Sprite3D" parent="."]
+transform = Transform3D(0.0118054, -0.313031, 0.511734, 0, 0.511834, 0.313092, -0.599884, -0.00616031, 0.0100707, 1.6, 3, 1.2)
+visible = false
+script = ExtResource("5_uq1sv")
+success_icon = ExtResource("6_q7wjx")
+failure_icon = ExtResource("7_c5q2n")
+
+[node name="SubViewport" type="SubViewport" parent="DeliveryResultUI"]
+size = Vector2i(236, 106)
+render_target_update_mode = 3
+
+[node name="Outline" type="ColorRect" parent="DeliveryResultUI/SubViewport"]
+offset_right = 236.0
+offset_bottom = 106.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0, 0, 0, 1)
+
+[node name="BG" type="ColorRect" parent="DeliveryResultUI/SubViewport/Outline"]
+custom_minimum_size = Vector2(220, 90)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -45.0
+offset_right = 110.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+color = Color(0.321569, 0.6, 0.215686, 1)
+
+[node name="Label" type="Label" parent="DeliveryResultUI/SubViewport/Outline/BG"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = -38.0
+offset_right = 127.0
+offset_bottom = 38.0
+grow_vertical = 2
+theme_override_fonts/font = SubResource("FontVariation_1ctyr")
+theme_override_font_sizes/font_size = 27
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Icon" type="TextureRect" parent="DeliveryResultUI/SubViewport/Outline/BG"]
+texture_filter = 4
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_top = -31.0
+offset_right = -10.0
+offset_bottom = 31.0
+grow_horizontal = 0
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DeliveryResultUI"]
+libraries = {
+"": SubResource("AnimationLibrary_jeisg")
+}
 
 [editable path="DeliveryCounter_Visual"]
