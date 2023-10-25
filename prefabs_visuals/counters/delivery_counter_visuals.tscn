@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://xse052q073n6"]
 
-[ext_resource type="Script" path="res://scripts/counters/counter_visual.gd" id="1_t02yx"]
+[ext_resource type="Script" path="res://scripts/counters/delivery_counter_visual.gd" id="1_oeecx"]
 [ext_resource type="PackedScene" uid="uid://jcc1f56n0v6o" path="res://meshes/counters/DeliveryCounter_Visual.glb" id="2_a65gb"]
 [ext_resource type="Shader" path="res://shaders/delivery_counter_arrow.gdshader" id="3_1kf1d"]
 [ext_resource type="Texture2D" uid="uid://c4o78b531ti38" path="res://textures/Arrow.png" id="4_5ktpr"]
@@ -10,6 +10,7 @@ render_priority = 0
 shader = ExtResource("3_1kf1d")
 shader_parameter/Dir = Vector2(-1, 0)
 shader_parameter/Speed = 1.0
+shader_parameter/Time = 0.0
 shader_parameter/Texture = ExtResource("4_5ktpr")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_b1c0w"]
@@ -17,12 +18,12 @@ material = SubResource("ShaderMaterial_giy1j")
 size = Vector2(0.7, 0.7)
 
 [node name="DeliveryCounterVisuals" type="Node3D" node_paths=PackedStringArray("mesh_array")]
-script = ExtResource("1_t02yx")
+script = ExtResource("1_oeecx")
 mesh_array = [NodePath("DeliveryCounter_Visual/DeliveryCounter_Visual2/KitchenCounter")]
 
 [node name="DeliveryCounter_Visual" parent="." instance=ExtResource("2_a65gb")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="DeliveryCounter_Visual/DeliveryCounter_Visual2/KitchenCounter" index="0"]
+[node name="DeliveryArrow" type="MeshInstance3D" parent="DeliveryCounter_Visual/DeliveryCounter_Visual2/KitchenCounter" index="0"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.846944, 0.0135292)
 mesh = SubResource("PlaneMesh_b1c0w")
 
