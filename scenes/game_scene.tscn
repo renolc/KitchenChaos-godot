@@ -64,7 +64,7 @@ glow_hdr_threshold = 0.5
 [sub_resource type="PlaneMesh" id="PlaneMesh_r5tf6"]
 lightmap_size_hint = Vector2i(127, 127)
 material = ExtResource("1_51bdx")
-size = Vector2(15, 14)
+size = Vector2(15, 12)
 
 [sub_resource type="FontVariation" id="FontVariation_7etkn"]
 variation_embolden = 0.3
@@ -105,9 +105,8 @@ shadow_enabled = true
 environment = SubResource("Environment_gf11u")
 
 [node name="Floor" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.763403, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.763403, 0, 1.26812)
 mesh = SubResource("PlaneMesh_r5tf6")
-metadata/_edit_lock_ = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.694658, 0.71934, 0, -0.71934, 0.694658, 0.75, 21.5, 20.79)
