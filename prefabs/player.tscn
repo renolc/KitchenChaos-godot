@@ -49,6 +49,7 @@ autostart = true
 sfxs = Array[AudioStream]([ExtResource("7_us0d2"), ExtResource("8_4rlbo"), ExtResource("9_hxgui"), ExtResource("10_0lo3x")])
 
 [node name="WalkParticle" parent="." instance=ExtResource("12_caegk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [connection signal="item_picked_up" from="." to="PickupSfxManager" method="play_random"]
 [connection signal="timeout" from="PlayerSounds/StepTimer" to="PlayerSounds" method="timer_timeout"]
