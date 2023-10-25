@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfam0o0byw1w5"]
+[gd_scene load_steps=11 format=3 uid="uid://bfam0o0byw1w5"]
 
 [ext_resource type="PackedScene" uid="uid://d1mw6nt0p34d7" path="res://prefabs/counters/_base_counter.tscn" id="1_dqb05"]
 [ext_resource type="PackedScene" uid="uid://frbw3plsomur" path="res://prefabs_visuals/counters/stove_counter_visuals.tscn" id="2_uhkpa"]
@@ -7,6 +7,9 @@
 [ext_resource type="AudioStream" uid="uid://ce2ppdudqse3n" path="res://sounds/sfx/SFX_pan_sizzle_loop.wav" id="5_758bg"]
 [ext_resource type="Script" path="res://scripts/ui/burn_warning_icon.gd" id="6_ad2x0"]
 [ext_resource type="Texture2D" uid="uid://hoh2i206h1ws" path="res://textures/Warning.png" id="6_ik2ft"]
+[ext_resource type="Script" path="res://scripts/managers/sfx_manager.gd" id="7_8pk02"]
+[ext_resource type="AudioStream" uid="uid://coac4s6c42p62" path="res://sounds/sfx/SFX_warning01.wav" id="8_eeti4"]
+[ext_resource type="AudioStream" uid="uid://bu8yra1mqyu7f" path="res://sounds/sfx/SFX_warning02.wav" id="9_7s7hf"]
 
 [node name="StoveCounter" instance=ExtResource("1_dqb05")]
 script = ExtResource("2_vn1bu")
@@ -28,6 +31,13 @@ double_sided = false
 texture = ExtResource("6_ik2ft")
 script = ExtResource("6_ad2x0")
 
+[node name="WarningTimer" type="Timer" parent="WarningIcon" index="0"]
+wait_time = 0.2
+
+[node name="WarningSfxManager" type="AudioStreamPlayer3D" parent="WarningIcon" index="1"]
+script = ExtResource("7_8pk02")
+sfxs = Array[AudioStream]([ExtResource("8_eeti4"), ExtResource("9_7s7hf")])
+
 [node name="StoveSoundPlayer" type="AudioStreamPlayer3D" parent="." index="5"]
 stream = ExtResource("5_758bg")
 bus = &"SFX"
@@ -35,3 +45,4 @@ bus = &"SFX"
 [connection signal="cook_progress_update" from="." to="StoveCounterVisuals" method="progress_update"]
 [connection signal="cook_progress_update" from="." to="Progress" method="progress_updated"]
 [connection signal="cook_progress_update" from="." to="WarningIcon" method="cook_progress_update"]
+[connection signal="timeout" from="WarningIcon/WarningTimer" to="WarningIcon/WarningSfxManager" method="play_random"]

@@ -1,5 +1,8 @@
 extends Sprite3D
 
+@onready var timer: Timer = $WarningTimer
+@onready var sfx_player: SfxManager = $WarningSfxManager
+
 var counter: BaseCounter
 
 func _ready():
@@ -10,8 +13,10 @@ func cook_progress_update(progress: float):
 		if !visible:
 			show()
 			flash()
+			timer.start()
 	else:
 		hide()
+		timer.stop()
 
 func flash():
 	var alpha: float = modulate.a
