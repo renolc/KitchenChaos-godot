@@ -17,8 +17,6 @@ extends WorldCanvas
 
 func _ready():
 	super()
-	var cam := get_viewport().get_camera_3d()
-	look_at(cam.global_position, cam.basis.y)
 	DeliveryManager.Instance.delivery_success.connect(func(success):
 		if success:
 			bg.color = success_color

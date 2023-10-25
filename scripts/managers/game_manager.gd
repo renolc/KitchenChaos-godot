@@ -37,7 +37,6 @@ func _process(_delta):
 	if InputManager.paused_just_pressed():
 		toggle_pause()
 
-func _unhandled_input(_event):
 	if InputManager.interact_just_pressed():
 		if state == State.WaitingToStart:
 			state = State.Countdown

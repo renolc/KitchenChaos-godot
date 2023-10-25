@@ -36,7 +36,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.2, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.549779, 1.5516, 0.261799), Vector3(-0.549779, 1.5516, -0.261799), Vector3(-0.549779, 1.5516, 0), Vector3(-0.548983, 1.55112, 0)]
+"values": [Vector3(-0.549779, 1.5516, 0.261799), Vector3(-0.549779, 1.5516, -0.523599), Vector3(-0.549779, 1.5516, -0.261799), Vector3(-0.549779, 1.5516, -0.261799)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -126,7 +126,8 @@ success_icon = ExtResource("6_q7wjx")
 failure_icon = ExtResource("7_c5q2n")
 
 [node name="SubViewport" type="SubViewport" parent="DeliveryResultUI"]
-size = Vector2i(236, 106)
+transparent_bg = true
+size = Vector2i(243, 115)
 render_target_update_mode = 3
 
 [node name="Outline" type="ColorRect" parent="DeliveryResultUI/SubViewport"]
@@ -135,6 +136,16 @@ offset_bottom = 106.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 color = Color(0, 0, 0, 1)
+
+[node name="Shadow" type="ColorRect" parent="DeliveryResultUI/SubViewport/Outline"]
+show_behind_parent = true
+offset_left = 7.0
+offset_top = 8.0
+offset_right = 243.0
+offset_bottom = 113.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0, 0, 0, 0.407843)
 
 [node name="BG" type="ColorRect" parent="DeliveryResultUI/SubViewport/Outline"]
 custom_minimum_size = Vector2(220, 90)
