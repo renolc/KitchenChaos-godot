@@ -6,6 +6,8 @@ extends Node
 var selected_material: Material = preload("res://materials/counter_selected.tres")
 
 func _ready():
+	if !Player.Instance: return
+
 	var counter = get_parent()
 	Player.Instance.selected_counter_changed.connect(func(selected):
 		for i in mesh_array:
