@@ -5,11 +5,17 @@ extends BaseCounter
 signal cook_progress_update(progress)
 
 var fry_timer: SceneTreeTimer
+var is_burning = false
 
 func _process(_delta):
 	if fry_timer:
 		var progress = 1 - (fry_timer.time_left / ko.cook_time)
+		is_burning = ko.will_burn && progress > .5
 		cook_progress_update.emit(progress)
+
+func reset_cook_progress():
+	is_burning = false
+	cook_progress_update.emit(0)
 
 func interact():
 	if !ko:
@@ -18,7 +24,7 @@ func interact():
 				start_cooking()
 	else:
 		if ko.try_set_holder(Player.Instance):
-			cook_progress_update.emit(0)
+			reset_cook_progress()
 			audio_player.stop()
 			if fry_timer && fry_timer.time_left > 0:
 				fry_timer.timeout.disconnect(finished_cooking)
@@ -33,7 +39,7 @@ func start_cooking():
 
 func finished_cooking():
 	fry_timer = null
-	cook_progress_update.emit(0)
+	reset_cook_progress()
 	var new_ko := ko.cooks_into.instantiate() as KitchenObject
 	remove_kitchen_object(true)
 	if new_ko.try_set_holder(self):
