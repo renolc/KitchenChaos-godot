@@ -1,7 +1,6 @@
 extends BaseCounter
 
 @onready var audio_player: AudioStreamPlayer3D = $StoveSoundPlayer
-@onready var warning_icon: Sprite3D = $WarningIcon
 
 signal cook_progress_update(progress)
 
@@ -11,9 +10,6 @@ func _process(_delta):
 	if fry_timer:
 		var progress = 1 - (fry_timer.time_left / ko.cook_time)
 		cook_progress_update.emit(progress)
-		warning_icon.visible = ko.will_burn && progress > 0.5
-	else:
-		warning_icon.hide()
 
 func interact():
 	if !ko:

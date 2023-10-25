@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfam0o0byw1w5"]
+[gd_scene load_steps=8 format=3 uid="uid://bfam0o0byw1w5"]
 
 [ext_resource type="PackedScene" uid="uid://d1mw6nt0p34d7" path="res://prefabs/counters/_base_counter.tscn" id="1_dqb05"]
 [ext_resource type="PackedScene" uid="uid://frbw3plsomur" path="res://prefabs_visuals/counters/stove_counter_visuals.tscn" id="2_uhkpa"]
 [ext_resource type="Script" path="res://scripts/counters/stove_counter.gd" id="2_vn1bu"]
 [ext_resource type="PackedScene" uid="uid://bejloxpo6md40" path="res://prefabs/ui/progress.tscn" id="4_peopr"]
 [ext_resource type="AudioStream" uid="uid://ce2ppdudqse3n" path="res://sounds/sfx/SFX_pan_sizzle_loop.wav" id="5_758bg"]
+[ext_resource type="Script" path="res://scripts/ui/burn_warning_icon.gd" id="6_ad2x0"]
 [ext_resource type="Texture2D" uid="uid://hoh2i206h1ws" path="res://textures/Warning.png" id="6_ik2ft"]
 
 [node name="StoveCounter" instance=ExtResource("1_dqb05")]
@@ -25,6 +26,7 @@ pixel_size = 0.005
 billboard = 1
 double_sided = false
 texture = ExtResource("6_ik2ft")
+script = ExtResource("6_ad2x0")
 
 [node name="StoveSoundPlayer" type="AudioStreamPlayer3D" parent="." index="5"]
 stream = ExtResource("5_758bg")
@@ -32,3 +34,4 @@ bus = &"SFX"
 
 [connection signal="cook_progress_update" from="." to="StoveCounterVisuals" method="progress_update"]
 [connection signal="cook_progress_update" from="." to="Progress" method="progress_updated"]
+[connection signal="cook_progress_update" from="." to="WarningIcon" method="cook_progress_update"]
