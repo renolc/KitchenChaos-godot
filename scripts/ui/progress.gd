@@ -1,17 +1,10 @@
-extends Sprite3D
+extends WorldCanvas
 
-@onready var viewport: SubViewport = $SubViewport
 @onready var bar: TextureProgressBar = $SubViewport/TextureProgressBar
 
 func _ready():
+	super()
 	hide()
-
-	# there is currently a bug where viewport textures don't stick when
-	# set in the editor:
-	#   https://github.com/godotengine/godot/issues/66247
-	RenderingServer.frame_post_draw.connect(func():
-		texture = viewport.get_texture()
-	)
 
 func progress_updated(v: float):
 	bar.value = v
