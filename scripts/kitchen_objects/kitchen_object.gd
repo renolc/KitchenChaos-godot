@@ -7,6 +7,7 @@ extends Node3D
 @export var cooks_into: PackedScene
 @export var cook_time: float
 @export var can_be_plated: bool
+@export var will_burn: bool
 
 var holder
 

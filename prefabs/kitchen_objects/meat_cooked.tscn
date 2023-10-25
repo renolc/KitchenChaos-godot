@@ -11,5 +11,6 @@ sprite = ExtResource("2_2csrs")
 cooks_into = ExtResource("3_ndidl")
 cook_time = 5.0
 can_be_plated = true
+will_burn = true
 
 [node name="MeatPattyCooked_Visual" parent="." instance=ExtResource("3_pq87p")]
