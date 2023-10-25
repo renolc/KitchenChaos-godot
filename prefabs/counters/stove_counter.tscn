@@ -1,11 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://bfam0o0byw1w5"]
+[gd_scene load_steps=28 format=3 uid="uid://bfam0o0byw1w5"]
 
 [ext_resource type="PackedScene" uid="uid://d1mw6nt0p34d7" path="res://prefabs/counters/_base_counter.tscn" id="1_dqb05"]
 [ext_resource type="PackedScene" uid="uid://frbw3plsomur" path="res://prefabs_visuals/counters/stove_counter_visuals.tscn" id="2_uhkpa"]
 [ext_resource type="Script" path="res://scripts/counters/stove_counter.gd" id="2_vn1bu"]
 [ext_resource type="PackedScene" uid="uid://bejloxpo6md40" path="res://prefabs/ui/progress.tscn" id="4_peopr"]
 [ext_resource type="AudioStream" uid="uid://ce2ppdudqse3n" path="res://sounds/sfx/SFX_pan_sizzle_loop.wav" id="5_758bg"]
-[ext_resource type="Script" path="res://scripts/ui/burn_warning_icon.gd" id="6_ad2x0"]
 [ext_resource type="Texture2D" uid="uid://hoh2i206h1ws" path="res://textures/Warning.png" id="6_ik2ft"]
 [ext_resource type="Script" path="res://scripts/managers/sfx_manager.gd" id="7_8pk02"]
 [ext_resource type="AudioStream" uid="uid://coac4s6c42p62" path="res://sounds/sfx/SFX_warning01.wav" id="8_eeti4"]
@@ -76,6 +75,69 @@ states/flash/position = Vector2(338.2, 156)
 transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransition_gqqjr"), "RESET", "flash", SubResource("AnimationNodeStateMachineTransition_whk00"), "flash", "RESET", SubResource("AnimationNodeStateMachineTransition_ewh1d")]
 graph_offset = Vector2(95.8799, 31.0275)
 
+[sub_resource type="Animation" id="Animation_4l2a3"]
+resource_name = "flash"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_i6nal"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_it64v"]
+_data = {
+"RESET": SubResource("Animation_i6nal"),
+"flash": SubResource("Animation_4l2a3")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hfsmk"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ge0l5"]
+animation = &"flash"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w6juu"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m5y7k"]
+advance_mode = 2
+advance_condition = &"is_burning"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iio6q"]
+advance_mode = 2
+advance_condition = &"is_not_burning"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_p1hv1"]
+states/RESET/node = SubResource("AnimationNodeAnimation_hfsmk")
+states/RESET/position = Vector2(316.32, 100)
+states/flash/node = SubResource("AnimationNodeAnimation_ge0l5")
+states/flash/position = Vector2(316.32, 178.01)
+transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransition_w6juu"), "RESET", "flash", SubResource("AnimationNodeStateMachineTransition_m5y7k"), "flash", "RESET", SubResource("AnimationNodeStateMachineTransition_iio6q")]
+graph_offset = Vector2(-5.64, 65.01)
+
 [node name="StoveCounter" instance=ExtResource("1_dqb05")]
 script = ExtResource("2_vn1bu")
 
@@ -99,29 +161,40 @@ active = true
 parameters/conditions/is_burning = false
 parameters/conditions/is_not_burning = false
 
-[node name="WarningIcon" type="Sprite3D" parent="." index="4"]
+[node name="BurnWarningIcon" type="Sprite3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.07899, 0)
-visible = false
+modulate = Color(1, 1, 1, 0)
 pixel_size = 0.005
 billboard = 1
 double_sided = false
 texture = ExtResource("6_ik2ft")
-script = ExtResource("6_ad2x0")
 
-[node name="WarningTimer" type="Timer" parent="WarningIcon" index="0"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BurnWarningIcon" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_it64v")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="BurnWarningIcon" index="1"]
+tree_root = SubResource("AnimationNodeStateMachine_p1hv1")
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/conditions/is_burning = false
+parameters/conditions/is_not_burning = false
+
+[node name="BurnWarningSfxTimer" type="Timer" parent="." index="5"]
 wait_time = 0.2
 
-[node name="WarningSfxManager" type="AudioStreamPlayer3D" parent="WarningIcon" index="1"]
+[node name="BurnWarningSfxManager" type="AudioStreamPlayer3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.07899, 0)
 script = ExtResource("7_8pk02")
 sfxs = Array[AudioStream]([ExtResource("8_eeti4"), ExtResource("9_7s7hf")])
 
-[node name="StoveSoundPlayer" type="AudioStreamPlayer3D" parent="." index="5"]
+[node name="StoveSoundPlayer" type="AudioStreamPlayer3D" parent="." index="7"]
 stream = ExtResource("5_758bg")
 bus = &"SFX"
 
 [connection signal="cook_progress_update" from="." to="StoveCounterVisuals" method="progress_update"]
 [connection signal="cook_progress_update" from="." to="Progress" method="progress_updated"]
-[connection signal="cook_progress_update" from="." to="WarningIcon" method="cook_progress_update"]
-[connection signal="timeout" from="WarningIcon/WarningTimer" to="WarningIcon/WarningSfxManager" method="play_random"]
+[connection signal="timeout" from="BurnWarningSfxTimer" to="BurnWarningSfxManager" method="play_random"]
 
 [editable path="Progress"]

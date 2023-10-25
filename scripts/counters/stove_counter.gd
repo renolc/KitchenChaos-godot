@@ -2,15 +2,27 @@ extends BaseCounter
 
 @onready var audio_player: AudioStreamPlayer3D = $StoveSoundPlayer
 @onready var progress_anim_player: AnimationTree = $Progress/AnimationTree
+@onready var warning_icon_anim_player: AnimationTree = $BurnWarningIcon/AnimationTree
+@onready var burn_warning_sfx_timer: Timer = $BurnWarningSfxTimer
 
 signal cook_progress_update(progress)
 
 var fry_timer: SceneTreeTimer
 var is_burning = false:
 	set(v):
+		if is_burning == v: return
 		is_burning = v
+
 		progress_anim_player["parameters/conditions/is_burning"] = is_burning
 		progress_anim_player["parameters/conditions/is_not_burning"] = !is_burning
+
+		warning_icon_anim_player["parameters/conditions/is_burning"] = is_burning
+		warning_icon_anim_player["parameters/conditions/is_not_burning"] = !is_burning
+
+		if is_burning:
+			burn_warning_sfx_timer.start()
+		else:
+			burn_warning_sfx_timer.stop()
 
 func _process(_delta):
 	if fry_timer:
