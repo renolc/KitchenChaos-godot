@@ -14,7 +14,6 @@ top_point = NodePath("../CounterTopPoint")
 
 [node name="SpawnTimer" type="Timer" parent="." index="3"]
 wait_time = 4.0
-autostart = true
 
 [connection signal="plate_removed" from="." to="PlatesCounterVisuals" method="plate_removed"]
 [connection signal="plate_spawned" from="." to="PlatesCounterVisuals" method="plate_spawned"]

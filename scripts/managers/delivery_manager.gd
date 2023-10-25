@@ -24,6 +24,7 @@ func _init():
 
 func state_changed(state: GameManager.State):
 	if state == GameManager.State.Playing:
+		add_new_order()
 		order_timer.start()
 
 func add_new_order():
