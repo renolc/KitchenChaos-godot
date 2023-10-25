@@ -254,17 +254,17 @@ action = "right"
 
 [node name="KeyLeft" parent="CanvasLayer/TutorialUI/TutorialImage" instance=ExtResource("8_l3bqx")]
 layout_mode = 0
-offset_left = 547.0
+offset_left = 518.0
 offset_top = 293.5
-offset_right = 572.0
+offset_right = 543.0
 offset_bottom = 318.5
 action = "left"
 
 [node name="KeyDown" parent="CanvasLayer/TutorialUI/TutorialImage" instance=ExtResource("8_l3bqx")]
 layout_mode = 0
-offset_left = 518.0
+offset_left = 547.0
 offset_top = 293.5
-offset_right = 543.0
+offset_right = 572.0
 offset_bottom = 318.5
 action = "down"
 
