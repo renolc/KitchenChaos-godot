@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://c5pywpg28515m"]
+[gd_scene load_steps=55 format=3 uid="uid://c5pywpg28515m"]
 
 [ext_resource type="Material" uid="uid://sv4vq030f0j8" path="res://materials/floor.tres" id="1_51bdx"]
 [ext_resource type="PackedScene" uid="uid://cxcjdiex5bmyl" path="res://prefabs/player.tscn" id="2_kc4gf"]
@@ -24,8 +24,10 @@
 [ext_resource type="PackedScene" uid="uid://dpjphlkv8dqex" path="res://prefabs/counters/cutting_counter.tscn" id="10_rsvae"]
 [ext_resource type="PackedScene" uid="uid://d1688ycced2kg" path="res://prefabs/counters/trash_counter.tscn" id="11_2wqg4"]
 [ext_resource type="PackedScene" uid="uid://bfam0o0byw1w5" path="res://prefabs/counters/stove_counter.tscn" id="12_sso8r"]
+[ext_resource type="AudioStream" uid="uid://coac4s6c42p62" path="res://sounds/sfx/SFX_warning01.wav" id="13_2be2f"]
 [ext_resource type="PackedScene" uid="uid://b7ukk6uvwgcg8" path="res://prefabs/counters/plates_counter.tscn" id="13_mnk6k"]
 [ext_resource type="PackedScene" uid="uid://5dvel05si6xs" path="res://prefabs/counters/delivery_counter.tscn" id="14_exlrd"]
+[ext_resource type="AudioStream" uid="uid://bu8yra1mqyu7f" path="res://sounds/sfx/SFX_warning02.wav" id="14_hta4w"]
 [ext_resource type="Script" path="res://scripts/managers/delivery_manager.gd" id="15_xpbhf"]
 [ext_resource type="Resource" uid="uid://cegws5dfp23ed" path="res://resources/recipes/burger.tres" id="16_v1nak"]
 [ext_resource type="Resource" uid="uid://cuyxu8clbp16g" path="res://resources/recipes/cheese_burger.tres" id="17_a4lei"]
@@ -85,6 +87,91 @@ font = SubResource("FontVariation_xox8n")
 font_size = 140
 outline_size = 25
 outline_color = Color(0, 0.443137, 1, 1)
+
+[sub_resource type="Animation" id="Animation_hn3pk"]
+resource_name = "count"
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/CountdownUI/Label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.2, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.6, 0.6), Vector2(1.3, 1.3), Vector2(1.1, 1.1), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/CountdownUI/Label:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.075, 0.2, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-0.296706, 0.296706, 0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/CountdownUI/Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cevnr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/CountdownUI/Label:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/CountdownUI/Label:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/CountdownUI/Label:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_236gu"]
+_data = {
+"RESET": SubResource("Animation_cevnr"),
+"count": SubResource("Animation_hn3pk")
+}
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_udvyl"]
 render_priority = 0
@@ -357,16 +444,27 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -41.0
+offset_top = -96.0
+offset_right = 41.0
+offset_bottom = 96.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(40.8024, 95.3087)
 text = "3"
 label_settings = SubResource("LabelSettings_aw3ab")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/CountdownUI"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_236gu")
+}
+
+[node name="CountdownSfxManager" parent="CanvasLayer/CountdownUI" instance=ExtResource("22_awtfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, -2.5)
+sfxs = Array[AudioStream]([ExtResource("13_2be2f"), ExtResource("14_hta4w")])
 
 [node name="GameOverUI" parent="CanvasLayer" instance=ExtResource("8_35l8j")]
 visible = false
