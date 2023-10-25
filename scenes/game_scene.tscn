@@ -187,6 +187,7 @@ size = Vector3(0.25, 3, 1)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.950725, -0.116754, 0.28721, 0.297372, -0.605454, 0.738238, 0.0876999, 0.78727, 0.61034, -1.95866, 4.71214, 1.76132)
 shadow_enabled = true
+shadow_blur = 3.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gf11u")

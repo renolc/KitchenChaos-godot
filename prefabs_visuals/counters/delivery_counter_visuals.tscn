@@ -23,6 +23,45 @@ size = Vector2(0.7, 0.7)
 [sub_resource type="FontVariation" id="FontVariation_1ctyr"]
 variation_embolden = 0.8
 
+[sub_resource type="Animation" id="Animation_pnmmq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.548983, 1.55112, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.6, 0.6, 0.6)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_7sdxg"]
 resource_name = "pop"
 step = 0.05
@@ -63,45 +102,6 @@ tracks/2/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_pnmmq"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.548983, 1.55112, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.6, 0.6, 0.6)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jeisg"]
 _data = {
 "RESET": SubResource("Animation_pnmmq"),
@@ -119,7 +119,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.8
 mesh = SubResource("PlaneMesh_b1c0w")
 
 [node name="DeliveryResultUI" type="Sprite3D" parent="."]
-transform = Transform3D(0.0118054, -0.313031, 0.511734, 0, 0.511834, 0.313092, -0.599884, -0.00616031, 0.0100707, 1.6, 3, 1.2)
+transform = Transform3D(0.011805, -0.313031, 0.511734, 0, 0.511833, 0.313092, -0.599884, -0.00616009, 0.0100703, 1.6, 3, 1.2)
 visible = false
 script = ExtResource("5_uq1sv")
 success_icon = ExtResource("6_q7wjx")
@@ -139,6 +139,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="Shadow" type="ColorRect" parent="DeliveryResultUI/SubViewport/Outline"]
 show_behind_parent = true
+layout_mode = 0
 offset_left = 7.0
 offset_top = 8.0
 offset_right = 243.0
